@@ -49,14 +49,6 @@ export default function FoodSection({ onOpenEnquiry }: FoodSectionProps) {
                   <CheckCircle2 className="w-3.5 h-3.5 text-emerald-700" />
                 </div>
                 <span className="text-xs sm:text-sm font-semibold text-slate-800">
-                  Cooked with RO purified drinking water &amp; farm-fresh ingredients
-                </span>
-              </div>
-              <div className="flex items-center gap-3">
-                <div className="w-5 h-5 rounded-full bg-emerald-100 flex items-center justify-center shrink-0">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-700" />
-                </div>
-                <span className="text-xs sm:text-sm font-semibold text-slate-800">
                   Wholesome Kerala &amp; South Indian homestyle dishes
                 </span>
               </div>
@@ -92,7 +84,7 @@ export default function FoodSection({ onOpenEnquiry }: FoodSectionProps) {
                     Option A: Stay-Only Living
                   </h4>
                   <p className="text-xs text-slate-600 mt-1 leading-relaxed">
-                    Perfect if you work at Technopark, eat out with friends, order food, or have university canteen access. You only pay for your room and utilities.
+                    Simple and flexible. You only pay for your accommodation and utilities with zero compulsory food charges.
                   </p>
                 </div>
 

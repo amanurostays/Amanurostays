@@ -101,7 +101,7 @@ export default function RootLayout({
         <meta name="title" content="Affordable PG in the heart of Trivandrum | Amanuro Stays" />
         <meta property="og:site_name" content="Amanuro Stays" />
         <meta property="og:title" content="Affordable PG in the heart of Trivandrum | Amanuro Stays" />
-        <meta property="og:description" content="Affordable & comfortable Mens PG in Palayam, Trivandrum starting from ₹3,499. High-speed Wi-Fi, washing machine, 24/7 water & power, and homestyle food." />
+        <meta property="og:description" content="Affordable & comfortable Mens PG across Trivandrum starting from ₹3,499. High speed 5G Wi-Fi, washing machine, 24/7 water & power, and homestyle food." />
         <meta property="og:url" content="https://amanuro.in" />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="https://amanuro.in/amanuro-brand-logo.jpg" />
@@ -114,7 +114,7 @@ export default function RootLayout({
         {/* Twitter Card Meta Tags */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Affordable PG in the heart of Trivandrum | Amanuro Stays" />
-        <meta name="twitter:description" content="Affordable & comfortable Mens PG in Palayam, Trivandrum starting from ₹3,499. High-speed Wi-Fi, washing machine, 24/7 water & power, and homestyle food." />
+        <meta name="twitter:description" content="Affordable & comfortable Mens PG across Trivandrum starting from ₹3,499. High speed 5G Wi-Fi, washing machine, 24/7 water & power, and homestyle food." />
         <meta name="twitter:image" content="https://amanuro.in/amanuro-brand-logo.jpg" />
 
         <JsonLd />

@@ -97,7 +97,7 @@ export default function Footer() {
               </li>
               <li>
                 <a href="#dormitory" className="hover:text-amber-300 transition-colors font-bold text-emerald-300 flex items-center gap-1.5">
-                  <span>Executive Dormitory (Daily Basis)</span>
+                  <span>Executive Dormitory (Monthly Basis)</span>
                   <span className="text-[10px] bg-amber-400/20 text-amber-300 px-1.5 rounded border border-amber-400/30">Soon</span>
                 </a>
               </li>
@@ -112,7 +112,7 @@ export default function Footer() {
             <ul className="space-y-2 text-xs">
               <li>
                 <a href="#amenities" className="hover:text-white transition-colors">
-                  High-Speed Wi-Fi
+                  High Speed 5G Wi-Fi
                 </a>
               </li>
               <li>
@@ -131,8 +131,13 @@ export default function Footer() {
                 </a>
               </li>
               <li>
+                <a href="#why-us" className="hover:text-white transition-colors">
+                  Safe &amp; Alcohol/Drug-Free
+                </a>
+              </li>
+              <li>
                 <a href="#amenities" className="hover:text-white transition-colors">
-                  CCTV Security &amp; Housekeeping
+                  Scheduled Cleaning &amp; CCTV
                 </a>
               </li>
             </ul>

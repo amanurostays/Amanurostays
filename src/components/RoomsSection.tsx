@@ -31,10 +31,10 @@ export default function RoomsSection({ onOpenEnquiry }: RoomsSectionProps) {
             <span>Student PG &amp; Working Men&apos;s PG Trivandrum • Starting from ₹3,499</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-teal-950 tracking-tight">
-            Single, Double, Triple &amp; Four Sharing Rooms
+            Single &amp; Sharing Rooms Across Trivandrum
           </h2>
           <p className="text-base text-slate-600">
-            Looking for an <strong className="text-teal-900 font-semibold">affordable PG in Trivandrum</strong>? Amanuro Stays offers well-ventilated, fully furnished rooms for college students and working bachelors in Palayam. Stays start from ₹3,499. Contact us for complete room packages.
+            Looking for an <strong className="text-teal-900 font-semibold">affordable PG in Trivandrum</strong>? Amanuro Stays offers clean, fully furnished single and sharing rooms for college students and working bachelors across Trivandrum. Equipped with <strong className="text-teal-900 font-semibold">high speed 5G Wi-Fi</strong>, washing machine, and scheduled cleaning. Stays start from ₹3,499.
           </p>
         </div>
 

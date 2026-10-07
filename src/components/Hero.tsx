@@ -22,7 +22,7 @@ export default function Hero({ onOpenEnquiry }: HeroProps) {
             {/* Pill Badge */}
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-emerald-900/60 text-amber-300 border border-amber-400/30 backdrop-blur-md">
               <span className="flex h-2 w-2 rounded-full bg-amber-400" />
-              <span>Palayam, Trivandrum • Premier Mens PG, Paying Guest &amp; Homestay</span>
+              <span>Across Trivandrum • Premier Mens PG, Paying Guest &amp; Homestay</span>
             </div>
 
             {/* Main H1 Headline with Confident Typography */}
@@ -38,14 +38,14 @@ export default function Hero({ onOpenEnquiry }: HeroProps) {
 
             {/* Subtitle seamlessly integrating user's target keywords */}
             <p className="text-base sm:text-lg text-emerald-100/90 max-w-2xl leading-relaxed">
-              Looking for an <strong className="text-white font-semibold">affordable PG in Trivandrum</strong> or a trusted <strong className="text-white font-semibold">Paying Guest stay</strong>? Amanuro Stays is the ideal <strong className="text-white font-semibold">student PG</strong>, <strong className="text-white font-semibold">working men&apos;s PG</strong>, and comfortable <strong className="text-white font-semibold">boys lodge &amp; homestay</strong> located in Palayam. Fully equipped with high-speed Wi-Fi, washing machine, 24/7 water &amp; electricity, and optional 3-times homestyle food starting from just <strong className="text-amber-300 font-black">₹3,499/month</strong>.
+              Looking for an <strong className="text-white font-semibold">affordable PG in Trivandrum</strong> or a trusted <strong className="text-white font-semibold">Paying Guest stay</strong>? Amanuro Stays is the ideal <strong className="text-white font-semibold">student PG</strong>, <strong className="text-white font-semibold">working men&apos;s PG</strong>, and comfortable <strong className="text-white font-semibold">boys lodge &amp; homestay</strong> with multiple hubs across Trivandrum. Safe, alcohol-free, drug-free &amp; disturbance-free living equipped with <strong className="text-white font-semibold">high speed 5G Wi-Fi</strong>, washing machine, 24/7 water &amp; electricity, and optional 3-times homestyle food starting from just <strong className="text-amber-300 font-black">₹3,499/month</strong>.
             </p>
 
             {/* Key Bullet Highlights with Refined Depth */}
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 w-full pt-1 text-left">
               <div className="flex items-center gap-2 p-2.5 rounded-xl bg-[#061e17]/80 border border-emerald-800/40">
                 <Wifi className="w-4 h-4 text-emerald-400 shrink-0" />
-                <span className="text-xs font-semibold text-stone-200">PG with Wi-Fi Trivandrum</span>
+                <span className="text-xs font-semibold text-stone-200">High Speed 5G Wi-Fi</span>
               </div>
               <div className="flex items-center gap-2 p-2.5 rounded-xl bg-[#061e17]/80 border border-emerald-800/40">
                 <Shirt className="w-4 h-4 text-emerald-300 shrink-0" />
@@ -61,11 +61,11 @@ export default function Hero({ onOpenEnquiry }: HeroProps) {
               </div>
               <div className="flex items-center gap-2 p-2.5 rounded-xl bg-[#061e17]/80 border border-emerald-800/40">
                 <ShieldCheck className="w-4 h-4 text-emerald-300 shrink-0" />
-                <span className="text-xs font-semibold text-stone-200">Working Men&apos;s PG</span>
+                <span className="text-xs font-semibold text-stone-200">Safe Alcohol &amp; Drug-Free</span>
               </div>
               <div className="flex items-center gap-2 p-2.5 rounded-xl bg-[#061e17]/80 border border-emerald-800/40">
                 <Sparkles className="w-4 h-4 text-amber-300 shrink-0" />
-                <span className="text-xs font-semibold text-stone-200">Student PG Trivandrum</span>
+                <span className="text-xs font-semibold text-stone-200">Student &amp; Working Men PG</span>
               </div>
             </div>
 
@@ -112,11 +112,11 @@ export default function Hero({ onOpenEnquiry }: HeroProps) {
             <div className="pt-4 border-t border-emerald-900/60 flex flex-wrap items-center justify-center lg:justify-start gap-2 text-xs text-stone-400 w-full">
               <div className="flex items-center gap-1.5 text-stone-300 font-medium">
                 <MapPin className="w-3.5 h-3.5 text-amber-400" />
-                <span>Palayam Hub: Near Kerala University, Secretariat &amp; Central Library</span>
+                <span>Hubs Open: Palayam (near Sanskrit College &amp; RBI), Pattom &amp; Edappazhanji</span>
               </div>
               <span className="hidden sm:inline text-stone-600">•</span>
               <span className="text-amber-300 font-semibold">
-                Upcoming: Technopark, Kazhakkoottam &amp; Vazhuthacaud
+                Quick access to all parts of Trivandrum
               </span>
             </div>
           </div>
@@ -127,7 +127,7 @@ export default function Hero({ onOpenEnquiry }: HeroProps) {
               <div className="flex items-center justify-between pb-3.5 border-b border-emerald-800/60">
                 <div>
                   <span className="text-[11px] uppercase font-bold tracking-wider text-amber-400">
-                    Stay Options in Palayam
+                    Stay Options Across Trivandrum
                   </span>
                   <p className="text-sm font-bold text-white">Starting from ₹3,499/mo</p>
                 </div>
@@ -181,17 +181,17 @@ export default function Hero({ onOpenEnquiry }: HeroProps) {
                 ))}
               </div>
 
-              {/* Dormitory daily preview pill */}
+              {/* Dormitory monthly preview pill */}
               <div
-                onClick={() => onOpenEnquiry("Dormitory (Daily Basis)", flagship.name)}
+                onClick={() => onOpenEnquiry("Executive Dormitory (Monthly Basis)", flagship.name)}
                 className="mt-1 p-3 rounded-xl bg-emerald-950/80 hover:bg-emerald-900 border border-emerald-700/50 flex items-center justify-between cursor-pointer transition-colors"
               >
                 <div>
                   <span className="text-xs font-bold text-amber-300 block">
-                    🚀 Executive Dormitory (Daily Basis)
+                    🚀 Executive Dormitory (Monthly Basis)
                   </span>
                   <span className="text-[11px] text-stone-300">
-                    Pod stays for exam students &amp; daily visitors
+                    Pod stays for exam students with study rooms &amp; calm environment
                   </span>
                 </div>
                 <span className="text-xs font-bold px-2 py-0.5 rounded bg-amber-400 text-stone-950">

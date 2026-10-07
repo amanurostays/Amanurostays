@@ -5,30 +5,38 @@ export default function TestimonialsSection() {
   const testimonials = [
     {
       id: "t1",
-      author: "Akhil Nair",
-      role: "Civil Service Aspirant @ Palayam",
-      stayDuration: "Resident for 1 Year",
-      location: "Palayam Hub",
+      author: "Anandhu",
+      role: "Resident",
       rating: 5,
-      review: "Being in Palayam right near the State Central Library and University area has been a game-changer for my exam preparation. High-speed Wi-Fi, zero noise disturbances, and clean housekeeping make it the ideal place to stay.",
+      review: "Good and safe rooms,Good behavior to interact from the owner.Affordable rate.",
     },
     {
       id: "t2",
-      author: "Midhun V.",
-      role: "Software Engineer @ Technopark",
-      stayDuration: "Resident for 8 Months",
-      location: "Palayam Hub",
+      author: "Ijas",
+      role: "Resident",
       rating: 5,
-      review: "The starting price from ₹3,499 with washing machine and 24/7 power backup is the best value in Trivandrum. The optional food arrangement is great when I don't feel like cooking or eating outside.",
+      review: "One of the best PG experiences I have had. The rooms and common areas are kept clean and hygienic. all the basic facilities available. atmosphere is quiet and peaceful, and the management is very supportive whenever we need anything. Definitely recommend Best PG for anyone looking for a comfortable stay in Trivandrum.",
     },
     {
       id: "t3",
-      author: "Vishnu Prasad",
-      role: "PG Scholar @ University of Kerala",
-      stayDuration: "Resident for 6 Months",
-      location: "Palayam Hub",
+      author: "Noble Baiju",
+      role: "Resident",
       rating: 5,
-      review: "Clean washrooms and peaceful environment. The management is transparent and very approachable. Highly recommended for any student or working professional looking for a PG in Trivandrum.",
+      review: "My overall experience staying at this PG was good. The rooms were clean and comfortable, and the facilities provided were satisfactory. The location is convenient, and the atmosphere is pleasant for both students and working professionals. Overall, it was a comfortable and hassle-free stay. Would recommend it to others looking for a good PG accommodation.",
+    },
+    {
+      id: "t4",
+      author: "Prathyush Das",
+      role: "Student Resident",
+      rating: 5,
+      review: "The perfect pg for students- wifi, filtered water, bathroom, bed, pillow.. all included...it was very comfortable to spend our time here",
+    },
+    {
+      id: "t5",
+      author: "Abaze Shone",
+      role: "Resident",
+      rating: 5,
+      review: "I've been here for a month and the service here is exceptional.ive been in tvm in more than 3 pgs and I can assure that it is one of best pg basis on service,environment,ambience, and the owner is very friendly u can feel home all services are available wash machine,purified drinking water,and the provided mess is also good",
     },
   ];
 
@@ -39,18 +47,18 @@ export default function TestimonialsSection() {
         <div className="text-center max-w-3xl mx-auto space-y-3">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-emerald-100 text-teal-900 border border-emerald-200">
             <CheckCircle className="w-3.5 h-3.5 text-emerald-700" />
-            <span>Resident Experiences</span>
+            <span>Genuine Resident Experiences</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-teal-950 tracking-tight">
-            Trusted by Students &amp; Professionals in Trivandrum
+            Trusted by Residents in Trivandrum
           </h2>
           <p className="text-base text-slate-600">
-            Here is what our residents have to say about staying at {PG_DATA.brand.displayName}.
+            Real feedback from students and professionals staying with {PG_DATA.brand.displayName}.
           </p>
         </div>
 
-        {/* Testimonials Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-10">
+        {/* Testimonials Grid: 5 Cards (3 on top row, 2 centered below) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pt-10">
           {testimonials.map((t) => (
             <div
               key={t.id}
@@ -78,7 +86,7 @@ export default function TestimonialsSection() {
                 </div>
                 <div className="text-right">
                   <span className="text-[10px] font-bold text-teal-900 bg-emerald-100 border border-emerald-200 px-2 py-0.5 rounded-md">
-                    {t.stayDuration}
+                    Verified Stay
                   </span>
                 </div>
               </div>

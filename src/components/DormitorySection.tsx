@@ -18,15 +18,15 @@ export default function DormitorySection({ onOpenEnquiry }: DormitorySectionProp
         <div className="text-center max-w-3xl mx-auto space-y-3">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold bg-amber-100 text-amber-900 border border-amber-300">
             <Sparkles className="w-3.5 h-3.5 text-amber-700" />
-            <span>DAILY BASIS STAYS • LAUNCHING SOON</span>
+            <span>MONTHLY / DAILY BASIS • LAUNCHING SOON</span>
           </div>
 
           <h2 className="text-3xl sm:text-4xl font-extrabold text-teal-950 tracking-tight">
-            Executive Dormitory (Daily Basis)
+            Executive Dormitory (Monthly Basis)
           </h2>
 
           <p className="text-base text-slate-600">
-            Smart capsule &amp; pod-style accommodation coming soon to Palayam, Trivandrum. Designed specifically for daily basis stays—ideal for exam candidates, interviewees, and transit visitors.
+            Pod stays for exam students with study rooms and calm environment across Trivandrum. Specially designed capsule living with high speed 5G Wi-Fi, luggage lockers, and dedicated peaceful study spaces.
           </p>
         </div>
 
@@ -36,7 +36,7 @@ export default function DormitorySection({ onOpenEnquiry }: DormitorySectionProp
           <div className="lg:col-span-5 relative min-h-[320px] lg:min-h-full overflow-hidden bg-emerald-950">
             <Image
               src={dormitory.image}
-              alt="Daily basis dormitory stays at Amanuro Stays Trivandrum"
+              alt="Executive dormitory pod stays at Amanuro Stays Trivandrum"
               fill
               className="object-cover"
               sizes="(max-width: 1024px) 100vw, 40vw"
@@ -53,7 +53,7 @@ export default function DormitorySection({ onOpenEnquiry }: DormitorySectionProp
               <span className="text-xs text-amber-300 font-semibold flex items-center gap-1.5">
                 <CalendarDays className="w-4 h-4 text-amber-400" /> Stay Model
               </span>
-              <span className="text-xl font-bold text-white">Daily Basis Stay (Not Monthly)</span>
+              <span className="text-xl font-bold text-white">Monthly / Daily</span>
             </div>
           </div>
 
@@ -62,7 +62,7 @@ export default function DormitorySection({ onOpenEnquiry }: DormitorySectionProp
             <div className="space-y-4">
               <div className="flex flex-wrap items-center gap-2">
                 <span className="px-3 py-1 rounded-md text-xs font-bold bg-amber-400/20 text-amber-300 border border-amber-400/30">
-                  Per-Day Flexible Booking
+                  Monthly / Daily Stay Model
                 </span>
                 <span className="px-3 py-1 rounded-md text-xs font-bold bg-emerald-500/20 text-emerald-200 border border-emerald-500/30">
                   Pre-Registrations Open
@@ -70,7 +70,7 @@ export default function DormitorySection({ onOpenEnquiry }: DormitorySectionProp
               </div>
 
               <h3 className="text-2xl sm:text-3xl font-extrabold text-white">
-                Ultra-Affordable Daily Pod Living for Short-Term Visitors
+                Pod Stays for Exam Students with Study Rooms &amp; Calm Environment
               </h3>
 
               <p className="text-sm text-stone-300 leading-relaxed">
@@ -92,7 +92,7 @@ export default function DormitorySection({ onOpenEnquiry }: DormitorySectionProp
             <div className="pt-6 border-t border-emerald-800/60 space-y-3">
               <div className="flex flex-col sm:flex-row items-center gap-3">
                 <button
-                  onClick={() => onOpenEnquiry("Dormitory (Daily Basis - Launching Soon)")}
+                  onClick={() => onOpenEnquiry("Executive Dormitory (Monthly Basis - Launching Soon)")}
                   className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl text-xs font-extrabold text-stone-950 bg-gradient-to-r from-amber-300 via-amber-400 to-amber-500 hover:from-amber-200 hover:to-amber-400 shadow-md shadow-amber-500/20 transition-all hover:scale-[1.02] cursor-pointer"
                 >
                   <BellRing className="w-4 h-4" />
@@ -100,16 +100,16 @@ export default function DormitorySection({ onOpenEnquiry }: DormitorySectionProp
                 </button>
 
                 <button
-                  onClick={() => onOpenEnquiry("Dormitory (Daily Basis - Launching Soon)")}
+                  onClick={() => onOpenEnquiry("Executive Dormitory (Monthly Basis - Launching Soon)")}
                   className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl text-xs font-bold text-white bg-white/10 hover:bg-white/20 border border-white/20 transition-colors cursor-pointer"
                 >
-                  <span>Inquire for Daily Stay Dates</span>
+                  <span>Inquire for Monthly / Daily Dates</span>
                   <ArrowRight className="w-4 h-4 text-amber-400" />
                 </button>
               </div>
 
               <p className="text-[11px] text-stone-400">
-                ⭐ Ideal for exam attendees (PSC/UPSC/Kerala University), conference delegates, and short-term visitors in Palayam.
+                ⭐ Designed with quiet study zones, alcohol-free &amp; disturbance-free discipline for competitive exam aspirants and students across Trivandrum.
               </p>
             </div>
           </div>

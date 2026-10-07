@@ -23,14 +23,27 @@ export default function BranchesSection({ onOpenEnquiry }: BranchesSectionProps)
         <div className="text-center max-w-3xl mx-auto space-y-3">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-emerald-100 text-teal-900 border border-emerald-200">
             <Building2 className="w-3.5 h-3.5 text-emerald-700" />
-            <span>Trivandrum Network &amp; Rapid Expansion</span>
+            <span>Locations Across Trivandrum</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-teal-950 tracking-tight">
-            Our Locations in Trivandrum
+            Our Hubs Across Trivandrum
           </h2>
           <p className="text-base text-slate-600">
-            Currently operational at our prime hub in <strong className="text-teal-950 font-semibold">Palayam</strong>, with 4 to 5 more strategic branches launching across Trivandrum very soon!
+            We have sufficient branches and prime hubs across Trivandrum with quick access to all parts of the city and all-time availability.
           </p>
+
+          {/* Prime Connectivity Hubs Cloud */}
+          <div className="pt-2 flex flex-wrap items-center justify-center gap-1.5 text-xs">
+            <span className="font-bold text-teal-950 mr-1">Major Hubs:</span>
+            {PG_DATA.hubs.map((hub, idx) => (
+              <span
+                key={idx}
+                className="px-2.5 py-1 rounded-lg bg-emerald-50 text-teal-900 border border-emerald-200/80 font-semibold"
+              >
+                {hub}
+              </span>
+            ))}
+          </div>
         </div>
 
         {/* Branch Selector Tabs */}
@@ -49,12 +62,11 @@ export default function BranchesSection({ onOpenEnquiry }: BranchesSectionProps)
               >
                 <MapPin className={`w-3.5 h-3.5 ${isSelected ? "text-emerald-300" : "text-emerald-600"}`} />
                 <span>{branch.locality}</span>
-                {branch.isFlagship && (
+                {branch.status === "Active" ? (
                   <span className="text-[10px] px-1.5 py-0.2 rounded bg-emerald-100 text-emerald-900 font-bold border border-emerald-300/60">
-                    Now Open
+                    Open
                   </span>
-                )}
-                {branch.status === "Launching Soon" && (
+                ) : (
                   <span className="text-[10px] px-1.5 py-0.2 rounded bg-amber-100 text-amber-900 font-bold border border-amber-300/60">
                     Coming Soon
                   </span>
@@ -75,7 +87,7 @@ export default function BranchesSection({ onOpenEnquiry }: BranchesSectionProps)
                     ? "bg-emerald-100 text-teal-900 border border-emerald-200"
                     : "bg-amber-100 text-amber-900 border border-amber-200"
                 }`}>
-                  {activeBranch.status === "Active" ? "● Currently Open & Accepting Bookings" : "⏳ Expansion Phase — Launching Soon"}
+                  {activeBranch.status === "Active" ? "● Currently Open & Accepting Bookings" : "⏳ Coming Soon"}
                 </span>
                 <span className="text-xs text-slate-500 font-medium">
                   {activeBranch.city}, Kerala
@@ -105,20 +117,20 @@ export default function BranchesSection({ onOpenEnquiry }: BranchesSectionProps)
               {/* Transit & Accessibility Highlights */}
               <div className="p-4 rounded-xl bg-emerald-50/60 border border-emerald-100 space-y-2">
                 <h4 className="text-[11px] font-bold text-teal-950 uppercase tracking-wide">
-                  Location Advantages
+                  Location Highlights
                 </h4>
                 <ul className="text-xs text-slate-700 space-y-1.5">
                   <li className="flex items-center gap-2">
                     <Check className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
-                    <span>Quick access to Palayam &amp; Thampanoor central bus/train terminals</span>
+                    <span>Quick access to all parts of the city and all-time availability</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <Check className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
-                    <span>Walking distance to University of Kerala, libraries &amp; coaching centers</span>
+                    <span>Prime hubs near Sanskrit College, RBI, Secretariat, University &amp; Transit Corridors</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <Check className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
-                    <span>Direct bus connectivity to Technopark Phase 1, Phase 3 and Kazhakkoottam</span>
+                    <span>Strictly alcohol-free, drug-free &amp; disturbance-free safe environment</span>
                   </li>
                 </ul>
               </div>
@@ -134,44 +146,42 @@ export default function BranchesSection({ onOpenEnquiry }: BranchesSectionProps)
                   <Calendar className="w-3.5 h-3.5" />
                   <span>
                     {activeBranch.status === "Active"
-                      ? "Book Visit for Palayam Hub"
+                      ? "Book Visit for this Branch"
                       : "Pre-Register for this Location"}
                   </span>
                 </button>
 
-                {activeBranch.status === "Active" && (
-                  <div className="flex gap-2">
-                    <a
-                      href={`tel:${PG_DATA.brand.primaryPhoneClean}`}
-                      className="inline-flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-xl text-xs font-bold text-teal-950 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 transition-colors"
-                      title="Call 6282830532"
-                    >
-                      <Phone className="w-3.5 h-3.5 text-emerald-700" />
-                      <span>Call</span>
-                    </a>
-                    <a
-                      href={`https://wa.me/${PG_DATA.brand.whatsappNumber}?text=${encodeURIComponent(`Hi Amanuro Stays, I would like to inquire about availability at the ${activeBranch.name}.`)}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-xl text-xs font-bold text-white bg-emerald-600 hover:bg-emerald-700 transition-colors shadow-2xs"
-                      title="WhatsApp 9048575403"
-                    >
-                      <MessageCircle className="w-3.5 h-3.5" />
-                      <span>WhatsApp</span>
-                    </a>
-                  </div>
-                )}
+                <div className="flex gap-2">
+                  <a
+                    href={`tel:${PG_DATA.brand.primaryPhoneClean}`}
+                    className="inline-flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-xl text-xs font-bold text-teal-950 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 transition-colors"
+                    title="Call 6282830532"
+                  >
+                    <Phone className="w-3.5 h-3.5 text-emerald-700" />
+                    <span>Call</span>
+                  </a>
+                  <a
+                    href={`https://wa.me/${PG_DATA.brand.whatsappNumber}?text=${encodeURIComponent(`Hi Amanuro Stays, I would like to inquire about availability at ${activeBranch.name}.`)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-xl text-xs font-bold text-white bg-emerald-600 hover:bg-emerald-700 transition-colors shadow-2xs"
+                    title="WhatsApp 9048575403"
+                  >
+                    <MessageCircle className="w-3.5 h-3.5" />
+                    <span>WhatsApp</span>
+                  </a>
+                </div>
               </div>
 
               <div className="text-xs text-slate-500 pt-2 border-t border-slate-100 flex flex-wrap items-center justify-between gap-2">
                 <a
-                  href={activeBranch.mapDirectionsUrl}
+                  href="https://maps.google.com/?q=Palayam+Thiruvananthapuram"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-1 font-bold text-emerald-700 hover:text-emerald-800 hover:underline"
                 >
                   <Navigation className="w-3.5 h-3.5" />
-                  <span>View Location on Google Maps →</span>
+                  <span>View Palayam Central Hub on Google Maps →</span>
                 </a>
                 <span className="text-slate-500 font-medium">
                   Direct Line: <strong className="text-teal-950">6282830532</strong>
@@ -180,11 +190,11 @@ export default function BranchesSection({ onOpenEnquiry }: BranchesSectionProps)
             </div>
           </div>
 
-          {/* Map Side */}
+          {/* Map Side - Centered on Palayam */}
           <div className="lg:col-span-6 bg-slate-100 relative min-h-[320px] lg:min-h-full">
             <iframe
-              title={`Map of ${activeBranch.name}`}
-              src={activeBranch.mapEmbedUrl}
+              title="Map of Amanuro Stays Palayam Hub"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15783.567300713506!2d76.945532!3d8.502941!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b05bbb6a27e025d%3A0xbcfc11267b14d246!2sPalayam%2C%20Thiruvananthapuram%2C%20Kerala!5e0!3m2!1sen!2sin!4v1700000000000"
               className="w-full h-full border-0 absolute inset-0"
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
@@ -192,17 +202,17 @@ export default function BranchesSection({ onOpenEnquiry }: BranchesSectionProps)
           </div>
         </div>
 
-        {/* 5-Year Expansion Note */}
+        {/* Network Expansion Note */}
         <div className="mt-8 text-center p-5 rounded-2xl bg-gradient-to-r from-emerald-100/60 via-teal-50 to-white border border-emerald-200 max-w-2xl mx-auto space-y-1 shadow-xs">
           <div className="inline-flex items-center gap-1 text-xs font-bold text-teal-900">
             <Sparkles className="w-3.5 h-3.5 text-emerald-700" />
-            <span>Expanding Across Trivandrum</span>
+            <span>Sufficient Branches Across Trivandrum</span>
           </div>
           <p className="text-xs font-bold text-teal-950">
-            Planning 4–5 more PG branches in Trivandrum over the coming months.
+            We have sufficient branches and network hubs across Trivandrum with quick access to all parts of the city and all-time availability.
           </p>
           <p className="text-[11px] text-slate-600">
-            Looking for rooms near Kazhakkoottam, Technopark, or Karyavattom? Pre-register early to lock in early bird discounts.
+            Planning continuous expansion all over Trivandrum including Kazhakkoottam &amp; Karyavattom campus corridors.
           </p>
         </div>
       </div>

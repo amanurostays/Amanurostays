@@ -38,7 +38,7 @@ export default function Header({ onOpenEnquiry }: HeaderProps) {
                 </span>
               </div>
               <p className="text-[10px] sm:text-[11px] font-bold tracking-[0.14em] text-emerald-700 uppercase">
-                Palayam, Trivandrum • Mens PG &amp; Stay
+                Across Trivandrum • Mens PG &amp; Stays
               </p>
             </div>
           </a>
@@ -50,7 +50,7 @@ export default function Header({ onOpenEnquiry }: HeaderProps) {
             </a>
             <a href="#dormitory" className="hover:text-emerald-700 transition-colors flex items-center gap-1.5 py-1">
               <span>Dormitory</span>
-              <span className="text-[10px] bg-emerald-100 text-teal-900 border border-emerald-300 px-1.5 py-0.2 rounded-full font-bold">Daily</span>
+              <span className="text-[10px] bg-emerald-100 text-teal-900 border border-emerald-300 px-1.5 py-0.2 rounded-full font-bold">Monthly</span>
             </a>
             <a href="#amenities" className="hover:text-emerald-700 transition-colors py-1">
               Amenities
@@ -141,7 +141,7 @@ export default function Header({ onOpenEnquiry }: HeaderProps) {
               onClick={() => setMobileMenuOpen(false)}
               className="py-1.5 px-2 rounded-lg hover:bg-emerald-50 text-teal-900 font-bold flex items-center justify-between transition-colors"
             >
-              <span>Executive Dormitory (Daily Basis)</span>
+              <span>Executive Dormitory (Monthly Basis)</span>
               <span className="text-[10px] bg-emerald-100 text-teal-900 border border-emerald-300 px-2 py-0.5 rounded-full">Launching Soon</span>
             </a>
             <a

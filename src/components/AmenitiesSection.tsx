@@ -21,18 +21,18 @@ const iconMap: Record<string, React.ReactNode> = {
 export default function AmenitiesSection() {
   const amenityList = [
     {
-      title: "High-Speed Wi-Fi",
-      seoLabel: "PG with Wi-Fi Trivandrum",
-      desc: "Fast, reliable mesh internet on all floors. Ideal for college online classes, remote IT work, Zoom meetings, and streaming.",
+      title: "High Speed 5G Wi-Fi",
+      seoLabel: "High Speed 5G Wi-Fi Trivandrum",
+      desc: "Fast, reliable high speed 5G Wi-Fi on all floors. Ideal for college online classes, remote IT work, exam preparation, and streaming.",
       icon: "Wifi",
-      badge: "High-Speed Wi-Fi Included",
+      badge: "High Speed 5G Wi-Fi Included",
     },
     {
       title: "Washing Machine Facility",
       seoLabel: "PG with Washing Machine Trivandrum",
       desc: "Dedicated automatic washing machines for residents to do their personal laundry easily with well-ventilated drying space.",
       icon: "Shirt",
-      badge: "Self-Service Laundry",
+      badge: "Washing Machine Facility",
     },
     {
       title: "24/7 Water & Electricity",
@@ -50,17 +50,17 @@ export default function AmenitiesSection() {
     },
     {
       title: "Round-the-Clock Security",
-      seoLabel: "Safe Mens PG Trivandrum",
-      desc: "Premises protected with continuous CCTV camera surveillance and secure entry management to ensure total peace of mind.",
+      seoLabel: "Alcohol & Drug-Free Safe PG",
+      desc: "Strictly alcohol-free, drug-free & disturbance-free safe environment protected with continuous CCTV camera surveillance.",
       icon: "ShieldCheck",
-      badge: "CCTV Surveillance",
+      badge: "Safe & Alcohol/Drug-Free",
     },
     {
-      title: "Regular Housekeeping",
+      title: "Scheduled Cleaning",
       seoLabel: "Clean & Sanitized Living",
       desc: "Scheduled professional cleaning of rooms, corridors, common areas, and washrooms for peak hygiene and cleanliness.",
       icon: "Sparkles",
-      badge: "Daily / Scheduled Cleaning",
+      badge: "Scheduled Cleaning",
     },
   ];
 
@@ -77,7 +77,7 @@ export default function AmenitiesSection() {
             Essential Facilities at our Mens PG in Trivandrum
           </h2>
           <p className="text-base text-slate-600">
-            Everything you need for a peaceful, productive stay in Palayam. Perfect amenities tailored for a <strong className="text-teal-950 font-semibold">working men&apos;s PG</strong> and <strong className="text-teal-950 font-semibold">student PG in Trivandrum</strong>.
+            Everything you need for a peaceful, productive stay across Trivandrum. Perfect amenities tailored for a <strong className="text-teal-950 font-semibold">working men&apos;s PG</strong> and <strong className="text-teal-950 font-semibold">student PG in Trivandrum</strong>.
           </p>
         </div>
 
