@@ -21,11 +21,11 @@ export default function BranchesSection({ onOpenEnquiry }: BranchesSectionProps)
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-3">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-blue-100 text-blue-700">
-            <Building2 className="w-3.5 h-3.5" />
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-emerald-100 text-teal-900 border border-emerald-200">
+            <Building2 className="w-3.5 h-3.5 text-emerald-700" />
             <span>Trivandrum Network &amp; Rapid Expansion</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-teal-950 tracking-tight">
             Our Locations in Trivandrum
           </h2>
           <p className="text-base text-slate-600">
@@ -43,11 +43,11 @@ export default function BranchesSection({ onOpenEnquiry }: BranchesSectionProps)
                 onClick={() => setSelectedBranchId(branch.id)}
                 className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold transition-all cursor-pointer ${
                   isSelected
-                    ? "bg-slate-900 text-white shadow-lg shadow-slate-900/20 scale-105"
-                    : "bg-white text-slate-700 hover:bg-slate-200 border border-slate-200"
+                    ? "bg-teal-950 text-white shadow-lg shadow-teal-950/20 scale-105"
+                    : "bg-white text-slate-700 hover:bg-emerald-50 border border-slate-200"
                 }`}
               >
-                <MapPin className={`w-4 h-4 ${isSelected ? "text-emerald-400" : "text-blue-600"}`} />
+                <MapPin className={`w-4 h-4 ${isSelected ? "text-lime-400" : "text-emerald-600"}`} />
                 <span>{branch.locality}</span>
                 {branch.isFlagship && (
                   <span className="text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 font-bold">
@@ -129,7 +129,7 @@ export default function BranchesSection({ onOpenEnquiry }: BranchesSectionProps)
               <div className="flex flex-col sm:flex-row gap-3">
                 <button
                   onClick={() => onOpenEnquiry(undefined, activeBranch.name)}
-                  className="flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-xl text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 transition-colors cursor-pointer"
+                  className="flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-xl text-sm font-bold text-white bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-500 hover:to-teal-600 transition-colors cursor-pointer shadow-md"
                 >
                   <Calendar className="w-4 h-4" />
                   <span>
@@ -145,7 +145,7 @@ export default function BranchesSection({ onOpenEnquiry }: BranchesSectionProps)
                   href={activeBranch.mapDirectionsUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-1 font-semibold text-blue-600 hover:underline"
+                  className="flex items-center gap-1 font-semibold text-emerald-700 hover:underline"
                 >
                   <Navigation className="w-3.5 h-3.5" />
                   <span>View Palayam Location on Google Maps →</span>

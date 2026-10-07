@@ -74,7 +74,7 @@ export default function TestimonialsSection() {
               <div className="pt-4 border-t border-slate-700/60 flex items-center justify-between">
                 <div>
                   <h4 className="text-sm font-bold text-white">{t.author}</h4>
-                  <p className="text-xs text-blue-400 font-medium">{t.role}</p>
+                  <p className="text-xs text-lime-300 font-semibold">{t.role}</p>
                   <p className="text-[11px] text-slate-400 mt-0.5">
                     {t.location} • {t.stayDuration}
                   </p>

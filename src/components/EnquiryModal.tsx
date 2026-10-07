@@ -198,7 +198,7 @@ export default function EnquiryModal({
               <div className="pt-2">
                 <button
                   type="submit"
-                  className="w-full flex items-center justify-center gap-2 py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm shadow-md transition-all cursor-pointer"
+                  className="w-full flex items-center justify-center gap-2 py-3.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-500 hover:to-teal-600 text-white font-bold text-sm shadow-md shadow-emerald-700/20 transition-all cursor-pointer"
                 >
                   <Calendar className="w-4 h-4" />
                   <span>Submit Inquiry &amp; Request Price Details</span>

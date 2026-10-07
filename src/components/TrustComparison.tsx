@@ -62,9 +62,9 @@ export default function TrustComparison() {
                     <th scope="col" className="py-4 px-6 font-bold text-slate-700 w-1/3">
                       Key Facility
                     </th>
-                    <th scope="col" className="py-4 px-6 font-extrabold text-blue-700 bg-blue-50/80 w-1/3 border-x border-blue-100">
+                    <th scope="col" className="py-4 px-6 font-extrabold text-teal-900 bg-emerald-50/80 w-1/3 border-x border-emerald-100">
                       <div className="flex items-center gap-2">
-                        <Sparkles className="w-4 h-4 text-blue-600" />
+                        <Sparkles className="w-4 h-4 text-emerald-600" />
                         <span>{PG_DATA.brand.displayName} (Palayam)</span>
                       </div>
                     </th>
@@ -75,14 +75,14 @@ export default function TrustComparison() {
                 </thead>
                 <tbody className="divide-y divide-slate-200 bg-white">
                   {comparisonRows.map((row, idx) => (
-                    <tr key={idx} className={idx % 2 === 0 ? "bg-white" : "bg-slate-50/40"}>
+                    <tr key={idx} className={idx % 2 === 0 ? "bg-white" : "bg-emerald-50/20"}>
                       <td className="py-4 px-6 font-semibold text-slate-900">
                         {row.feature}
                       </td>
-                      <td className="py-4 px-6 font-semibold text-emerald-700 bg-blue-50/30 border-x border-blue-100">
+                      <td className="py-4 px-6 font-semibold text-emerald-800 bg-emerald-50/30 border-x border-emerald-100">
                         <div className="flex items-center gap-2">
                           <div className="w-5 h-5 rounded-full bg-emerald-100 flex items-center justify-center shrink-0">
-                            <Check className="w-3.5 h-3.5 text-emerald-600" />
+                            <Check className="w-3.5 h-3.5 text-emerald-700" />
                           </div>
                           <span>{row.amanora}</span>
                         </div>
@@ -105,31 +105,31 @@ export default function TrustComparison() {
 
         {/* 3 Pillar Guarantees */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
-          <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-2">
-            <div className="w-10 h-10 rounded-xl bg-blue-100 flex items-center justify-center text-blue-600 font-bold">
+          <div className="p-6 rounded-2xl bg-emerald-50/40 border border-emerald-100 space-y-2">
+            <div className="w-10 h-10 rounded-xl bg-emerald-100 flex items-center justify-center text-teal-900 font-bold">
               1
             </div>
-            <h4 className="text-base font-bold text-slate-900">Affordable &amp; Flexible Rates</h4>
+            <h4 className="text-base font-bold text-teal-950">Affordable &amp; Flexible Rates</h4>
             <p className="text-xs text-slate-600 leading-relaxed">
               Budget and Premium options starting from just ₹3,499. Pay only for what you use, with stay-only or food-included options.
             </p>
           </div>
 
-          <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-2">
-            <div className="w-10 h-10 rounded-xl bg-emerald-100 flex items-center justify-center text-emerald-600 font-bold">
+          <div className="p-6 rounded-2xl bg-emerald-50/40 border border-emerald-100 space-y-2">
+            <div className="w-10 h-10 rounded-xl bg-emerald-100 flex items-center justify-center text-teal-900 font-bold">
               2
             </div>
-            <h4 className="text-base font-bold text-slate-900">Heart of Trivandrum</h4>
+            <h4 className="text-base font-bold text-teal-950">Heart of Trivandrum</h4>
             <p className="text-xs text-slate-600 leading-relaxed">
               Situated in Palayam near the University of Kerala, Government Secretariat, libraries, and central transit hubs.
             </p>
           </div>
 
-          <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-2">
-            <div className="w-10 h-10 rounded-xl bg-indigo-100 flex items-center justify-center text-indigo-600 font-bold">
+          <div className="p-6 rounded-2xl bg-emerald-50/40 border border-emerald-100 space-y-2">
+            <div className="w-10 h-10 rounded-xl bg-teal-100 flex items-center justify-center text-teal-900 font-bold">
               3
             </div>
-            <h4 className="text-base font-bold text-slate-900">Planned Citywide Network</h4>
+            <h4 className="text-base font-bold text-teal-950">Planned Citywide Network</h4>
             <p className="text-xs text-slate-600 leading-relaxed">
               Expanding with 4–5 more PGs across Technopark, Kazhakkoottam, and Vazhuthacaud for convenient transfers.
             </p>

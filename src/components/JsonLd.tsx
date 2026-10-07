@@ -47,8 +47,9 @@ export default function JsonLd() {
           description: room.subtitle,
           numberOfRooms: 1,
         },
-        price: room.startingPrice,
+        price: PG_DATA.brand.startingPrice,
         priceCurrency: "INR",
+        description: room.startingPriceText,
       })),
     },
   };

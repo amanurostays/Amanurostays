@@ -25,7 +25,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
-      url: `${baseUrl}#food-menu`,
+      url: `${baseUrl}#dormitory`,
+      lastModified: lastMod,
+      changeFrequency: "weekly",
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}#food`,
       lastModified: lastMod,
       changeFrequency: "monthly",
       priority: 0.8,

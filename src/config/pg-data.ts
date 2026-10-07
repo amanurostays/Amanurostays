@@ -23,9 +23,9 @@ export interface RoomPlan {
   title: string;
   subtitle: string;
   tier: "Budget" | "Premium";
-  startingPrice: number;
-  priceDisplay: string;
-  sharingType: "Single" | "Double" | "Triple" | "Four" | "Dormitory";
+  startingPriceText: string;
+  hasStartingRate?: boolean;
+  sharingType: "Single" | "Double" | "Triple" | "Four";
   badge?: string;
   features: string[];
   specs: {
@@ -35,7 +35,6 @@ export interface RoomPlan {
     storage: string;
   };
   image: string;
-  isLaunchingSoon?: boolean;
 }
 
 export interface Amenity {
@@ -50,7 +49,7 @@ export interface Amenity {
 export interface FaqItem {
   question: string;
   answer: string;
-  category: "Pricing & Booking" | "Food & Mess" | "Amenities & Utilities" | "Location & Rules";
+  category: "Pricing & Booking" | "Food & Meals" | "Amenities & Utilities" | "Location & Dormitory";
 }
 
 export const PG_DATA = {
@@ -60,14 +59,16 @@ export const PG_DATA = {
     legalName: "Amanora Stays Men's PG & Coliving",
     tagline: "Premium & Budget Men's PG in Palayam, Trivandrum",
     shortDescription: "Quality living for gentlemen, students, and working professionals in the heart of Trivandrum. High-speed Wi-Fi, washing machine, 24/7 water & electricity, 3-times food arrangement, security, and regular housekeeping.",
-    primaryPhone: "", // kept blank as requested
+    primaryPhone: "", // kept blank
     primaryPhoneClean: "",
-    whatsappNumber: "", // kept blank as requested
+    whatsappNumber: "", // kept blank
     email: "contact@amanorastays.in",
     city: "Trivandrum",
     state: "Kerala",
     startingPrice: 3499,
+    startingPriceDisplay: "₹3,499",
     targetAudience: "Gents / Students & Working Professionals",
+    logoPath: "/logo.png",
   },
 
   branches: [
@@ -151,12 +152,87 @@ export const PG_DATA = {
 
   roomPlans: [
     {
+      id: "four-sharing",
+      title: "Four Sharing Room",
+      subtitle: "Our most economical living option with zero compromise on cleanliness",
+      tier: "Budget",
+      startingPriceText: "Starting from ₹3,499",
+      hasStartingRate: true,
+      sharingType: "Four",
+      badge: "Best Economy Stay",
+      features: [
+        "Starting from ₹3,499 / month",
+        "Individual cot and mattress for each resident",
+        "High-speed Wi-Fi included",
+        "24/7 Water & Electricity covered",
+        "Regular housekeeping & washing machine access",
+        "Optional 3-times daily food arrangement",
+        "Round-the-clock CCTV security",
+      ],
+      specs: {
+        washroom: "Attached Clean Washroom",
+        ventilation: "Airy & bright room",
+        powerBackup: true,
+        storage: "Allocated Lockers/Shelves",
+      },
+      image: "https://images.unsplash.com/photo-1555854877-bab0e564b8d5?auto=format&fit=crop&w=800&q=80",
+    },
+    {
+      id: "triple-sharing",
+      title: "Triple Sharing Room",
+      subtitle: "Spacious shared living offering great comfort at affordable rates",
+      tier: "Budget",
+      startingPriceText: "Contact us for price details",
+      sharingType: "Triple",
+      badge: "Budget Friendly",
+      features: [
+        "Three individual beds with clean setups",
+        "Spacious attached washroom with running water",
+        "Dedicated cupboards per resident",
+        "High-speed Wi-Fi throughout the floor",
+        "Water & electricity charges covered",
+        "Housekeeping & washing machine facility",
+        "3-times food arrangement available on request",
+      ],
+      specs: {
+        washroom: "Spacious Attached",
+        ventilation: "Wide airy windows",
+        powerBackup: true,
+        storage: "Dedicated Cupboards",
+      },
+      image: "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=800&q=80",
+    },
+    {
+      id: "double-sharing",
+      title: "Double Sharing Room",
+      subtitle: "Comfortable dual-occupancy with balanced space and privacy",
+      tier: "Premium",
+      startingPriceText: "Contact us for price details",
+      sharingType: "Double",
+      badge: "Most Popular",
+      features: [
+        "Two separate comfortable beds with quality mattresses",
+        "Attached washroom with 24/7 running water",
+        "High-speed Wi-Fi access",
+        "Separate dedicated wardrobes with locks",
+        "Water and electricity covered",
+        "3-times food arrangement (optional for those who want it)",
+        "Washing machine access & regular housekeeping",
+      ],
+      specs: {
+        washroom: "Attached Washroom",
+        ventilation: "Cross-ventilated room",
+        powerBackup: true,
+        storage: "Individual Wardrobes",
+      },
+      image: "https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?auto=format&fit=crop&w=800&q=80",
+    },
+    {
       id: "single-premium",
       title: "Single Room",
       subtitle: "Personal private sanctuary for students & focused professionals",
       tier: "Premium",
-      startingPrice: 6999,
-      priceDisplay: "Starts from ₹6,999",
+      startingPriceText: "Contact us for price details",
       sharingType: "Single",
       badge: "Maximum Privacy",
       features: [
@@ -177,103 +253,22 @@ export const PG_DATA = {
       },
       image: "https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?auto=format&fit=crop&w=800&q=80",
     },
-    {
-      id: "double-sharing",
-      title: "Double Sharing Room",
-      subtitle: "Comfortable dual-occupancy with balanced space and privacy",
-      tier: "Premium",
-      startingPrice: 4999,
-      priceDisplay: "Starts from ₹4,999",
-      sharingType: "Double",
-      badge: "Most Popular",
-      features: [
-        "Two separate comfortable beds with quality mattresses",
-        "Attached washroom with 24/7 running water",
-        "High-speed Wi-Fi access",
-        "Separate dedicated wardrobes with locks",
-        "Water and electricity covered",
-        "3 times food arrangement (optional for those who want it)",
-        "Washing machine access & housekeeping",
-        "CCTV security and peaceful atmosphere",
-      ],
-      specs: {
-        washroom: "Attached Washroom",
-        ventilation: "Cross-ventilated room",
-        powerBackup: true,
-        storage: "Individual Wardrobes",
-      },
-      image: "https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?auto=format&fit=crop&w=800&q=80",
-    },
-    {
-      id: "triple-sharing",
-      title: "Triple Sharing Room",
-      subtitle: "Spacious shared living offering premium amenities at affordable rates",
-      tier: "Budget",
-      startingPrice: 3999,
-      priceDisplay: "Starts from ₹3,999",
-      sharingType: "Triple",
-      badge: "Budget Friendly",
-      features: [
-        "Three individual beds with clean bed setups",
-        "Spacious attached washroom with running water",
-        "Dedicated cupboards/shelves per resident",
-        "High-speed Wi-Fi throughout the floor",
-        "Water & electricity charges included",
-        "Housekeeping & washing machine facility",
-        "3-times food arrangement (optional add-on)",
-        "Secure premises with CCTV coverage",
-      ],
-      specs: {
-        washroom: "Spacious Attached",
-        ventilation: "Wide airy windows",
-        powerBackup: true,
-        storage: "Dedicated Cupboards",
-      },
-      image: "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=800&q=80",
-    },
-    {
-      id: "four-sharing",
-      title: "Four Sharing Room",
-      subtitle: "Our most economical living option with zero compromise on cleanliness",
-      tier: "Budget",
-      startingPrice: 3499,
-      priceDisplay: "Starts from ₹3,499",
-      sharingType: "Four",
-      badge: "Best Economy Stay",
-      features: [
-        "Individual cot and mattress for each resident",
-        "Unbeatable entry price starting from ₹3,499",
-        "High-speed Wi-Fi for study & work",
-        "Water & electricity included",
-        "Regular housekeeping of room and washrooms",
-        "Washing machine facility for clothes",
-        "Optional 3-times daily meals available",
-        "Round-the-clock security surveillance",
-      ],
-      specs: {
-        washroom: "Attached Clean Washroom",
-        ventilation: "Airy & bright room",
-        powerBackup: true,
-        storage: "Allocated Lockers/Shelves",
-      },
-      image: "https://images.unsplash.com/photo-1555854877-bab0e564b8d5?auto=format&fit=crop&w=800&q=80",
-    },
   ] as RoomPlan[],
 
   dormitory: {
-    title: "Executive Dormitory Stays",
-    subtitle: "Ultra-flexible, pocket-friendly capsule & pod-style community living in Trivandrum",
-    startingPrice: 2999,
+    title: "Executive Dormitory (Daily Basis)",
+    subtitle: "Affordable daily stay pods for travelers, exam aspirants, and short-term visitors in Trivandrum",
     status: "Launching Soon",
-    badge: "Coming Soon to Palayam & Technopark",
-    description: "Designed for job aspirants, exam candidates, interns, and backpackers looking for short or medium-term stays with individual privacy curtains, personal charging ports, Wi-Fi, and clean washrooms.",
+    stayType: "Daily Basis Stay (Not Monthly)",
+    badge: "Daily Basis Stay • Launching Soon",
+    description: "Planned exclusively for daily basis guests—such as candidates writing PSC/university exams, job interviewees, transit travelers, and backpackers looking for comfortable short-term accommodation in Palayam.",
     highlights: [
-      "Custom privacy curtains and reading lamp per pod",
-      "Individual secure luggage locker",
-      "High-speed Wi-Fi and common study zone",
-      "24/7 Water, Electricity & Housekeeping",
-      "Washing machine and optional meal arrangement",
-      "Prime Palayam center location - walkable to coaching centers & bus hubs",
+      "Daily basis booking model (pay per day / flexible short stays)",
+      "Individual bed pod with clean linen and charging points",
+      "Secure individual luggage lockers",
+      "High-speed Wi-Fi and clean washroom facilities",
+      "24/7 Water & Electricity",
+      "Walking distance to Palayam central bus hubs & exam centers",
     ],
     image: "https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=800&q=80",
   },
@@ -282,7 +277,7 @@ export const PG_DATA = {
     {
       id: "wifi",
       title: "High-Speed Wi-Fi",
-      description: "Fast, reliable internet across all floors and rooms, ideal for college study, IT work, and video streaming.",
+      description: "Fast, reliable internet across all floors and rooms, ideal for college study, IT work, and browsing.",
       category: "Essential Utilities",
       iconName: "Wifi",
       highlight: "Uncapped High Speed",
@@ -290,31 +285,31 @@ export const PG_DATA = {
     {
       id: "washing-machine",
       title: "Washing Machine",
-      description: "Dedicated automatic washing machines for residents to do their laundry hassle-free, with drying area.",
+      description: "Dedicated automatic washing machines for residents to do their laundry conveniently.",
       category: "Living Comfort",
       iconName: "Shirt",
       highlight: "Self-Service Laundry",
     },
     {
       id: "water-electricity",
-      title: "24/7 Water & Electricity",
-      description: "Continuous running water supply and electricity coverage to ensure you never face utility disruptions.",
+      title: "Water & Electricity",
+      description: "24/7 continuous running water supply and electricity coverage to ensure you never face utility disruptions.",
       category: "Essential Utilities",
       iconName: "Zap",
-      highlight: "Continuous Supply",
+      highlight: "24/7 Continuous Supply",
     },
     {
       id: "food-arrangement",
       title: "3 Times Food Arrangement",
-      description: "Hygienic 3-times homestyle meal arrangements (Breakfast, Lunch & Dinner) available for residents who want it.",
+      description: "Hygienic 3-times homestyle meal arrangement (Breakfast, Lunch & Dinner) available for those who want it.",
       category: "Food & Dining",
       iconName: "Utensils",
-      highlight: "Optional Meal Service",
+      highlight: "Optional For Those Who Want It",
     },
     {
       id: "security",
       title: "Round-the-Clock Security",
-      description: "Premises protected with CCTV surveillance and secure entry management to ensure resident safety at all times.",
+      description: "Premises protected with CCTV surveillance and secure entry management for resident safety.",
       category: "Safety & Cleanliness",
       iconName: "ShieldCheck",
       highlight: "Safe & Protected",
@@ -322,7 +317,7 @@ export const PG_DATA = {
     {
       id: "housekeeping",
       title: "Regular Housekeeping",
-      description: "Scheduled cleaning of common areas, corridors, and washrooms to maintain high hygiene and cleanliness standards.",
+      description: "Scheduled cleaning of common areas, corridors, and washrooms to maintain high hygiene standards.",
       category: "Safety & Cleanliness",
       iconName: "Sparkles",
       highlight: "Clean & Sanitized",
@@ -332,40 +327,40 @@ export const PG_DATA = {
   faqs: [
     {
       question: "Where is Amanora Stays located in Trivandrum?",
-      answer: "Our main hub is situated in Palayam, Trivandrum—within walking distance of the University of Kerala, Government Secretariat, Saphalyam Complex, and Palayam bus junction. We are also expanding to Kazhakkoottam (near Technopark), Vazhuthacaud, and Karyavattom.",
-      category: "Location & Rules",
+      answer: "Our main hub is situated in Palayam, Trivandrum—within walking distance of the University of Kerala, Government Secretariat, Saphalyam Complex, and Palayam bus junction. We are also planning 4 to 5 more PGs across Trivandrum soon.",
+      category: "Location & Dormitory",
     },
     {
-      question: "What are the available room types and starting prices?",
-      answer: "We offer Single, Double, Triple, and Four sharing rooms in both Premium and Budget categories starting from ₹3,499. Exact monthly pricing varies based on room type and amenities. Contact us for current price details and package options.",
+      question: "What is the starting price for rooms at Amanora Stays?",
+      answer: "Our room stays start from ₹3,499 for four-sharing budget accommodations. For Single, Double, and Triple sharing options, please contact us directly for exact price details and availability.",
       category: "Pricing & Booking",
     },
     {
-      question: "Is food mandatory or optional at Amanora Stays?",
-      answer: "Food is flexible! We provide 3-times homestyle meal arrangements (breakfast, lunch, and dinner) specifically for those residents who want it. If you prefer eating outside or ordering, you can opt for stay-only plans.",
-      category: "Food & Mess",
+      question: "Is the Dormitory option available on a monthly or daily basis?",
+      answer: "Our upcoming Dormitory option is being launched strictly on a daily basis (per-day stays), specifically tailored for exam aspirants, interview candidates, and short-term visitors in Trivandrum. It is not for monthly stays.",
+      category: "Location & Dormitory",
     },
     {
-      question: "What utilities are included in the stay?",
-      answer: "High-speed Wi-Fi, 24/7 water and electricity, regular housekeeping, washing machine access, and security surveillance are fully provided for residents.",
+      question: "How does the food arrangement work?",
+      answer: "We offer an optional 3-times homestyle meal arrangement (Breakfast, Lunch, and Dinner) for those who want it. Residents who prefer eating outside or ordering can choose stay-only plans.",
+      category: "Food & Meals",
+    },
+    {
+      question: "Are water and electricity charges included?",
+      answer: "Yes, 24/7 water and electricity coverage is fully provided for our residents along with high-speed Wi-Fi, washing machine access, and regular housekeeping.",
       category: "Amenities & Utilities",
     },
     {
-      question: "When is the Dormitory option launching?",
-      answer: "Our executive Dormitory stay option is Launching Soon in Trivandrum. It is designed for students, exam aspirants, and short-term visitors who want ultra-budget capsule beds with all standard amenities.",
-      category: "Pricing & Booking",
-    },
-    {
-      question: "How can I book a room visit or get exact price details?",
-      answer: "You can click the 'Contact Us' or 'Schedule a Visit' button on the website and submit your inquiry form. Our team will promptly get in touch with available bed options and customized pricing.",
+      question: "How can I inquire about room availability or book a visit?",
+      answer: "Click the 'Schedule Visit' or 'Contact Us' button anywhere on the page to submit your details. Our property team will promptly get in touch with you.",
       category: "Pricing & Booking",
     },
   ] as FaqItem[],
 
   seo: {
     siteUrl: "https://amanorastays.in",
-    metaTitle: "Amanora Stays | Best Men's PG & Coliving in Palayam, Trivandrum",
-    metaDescription: "Looking for a quality Gents PG in Palayam, Trivandrum? Amanora Stays offers Single, Double, Triple & Four sharing rooms (Budget & Premium) starting from ₹3,499. High-speed Wi-Fi, washing machine, 24/7 water & power, 3x food arrangement & security.",
+    metaTitle: "Amanora Stays | Men's PG & Coliving in Palayam, Trivandrum",
+    metaDescription: "Looking for a quality Gents PG in Palayam, Trivandrum? Amanora Stays offers Single, Double, Triple & Four sharing rooms starting from ₹3,499. High-speed Wi-Fi, washing machine, water & electricity, 3x food arrangement & security.",
     keywords: [
       "Amanora Stays",
       "Amanora PG Trivandrum",
@@ -374,10 +369,9 @@ export const PG_DATA = {
       "PG in Trivandrum for Gents",
       "Budget PG in Trivandrum",
       "Single room PG Palayam",
+      "Four sharing PG Trivandrum",
       "Hostel near University of Kerala Palayam",
-      "PG near Secretariat Trivandrum",
-      "Paying guest accommodation Trivandrum",
-      "Technopark PG Trivandrum",
+      "Daily stay dormitory Trivandrum",
     ],
   },
 };

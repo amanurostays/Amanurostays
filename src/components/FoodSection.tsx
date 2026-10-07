@@ -1,6 +1,6 @@
 "use client";
 
-import { Utensils, CheckCircle2, Clock, Sparkles, HeartHandshake } from "lucide-react";
+import { Utensils, CheckCircle2, Sparkles, HeartHandshake, ShieldCheck, Flame } from "lucide-react";
 import { PG_DATA } from "@/config/pg-data";
 
 interface FoodSectionProps {
@@ -9,108 +9,107 @@ interface FoodSectionProps {
 
 export default function FoodSection({ onOpenEnquiry }: FoodSectionProps) {
   return (
-    <section id="food-menu" className="py-20 bg-amber-50/50 text-slate-900 scroll-mt-20">
+    <section id="food" className="py-20 bg-emerald-50/50 text-slate-900 scroll-mt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           {/* Left Column */}
-          <div className="lg:col-span-5 space-y-6">
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-amber-200/80 text-amber-900">
-              <Utensils className="w-3.5 h-3.5" />
-              <span>Optional Meal Arrangement</span>
+          <div className="lg:col-span-6 space-y-6">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-emerald-100 text-teal-900 border border-emerald-200">
+              <Utensils className="w-3.5 h-3.5 text-emerald-700" />
+              <span>Flexible Dining Option</span>
             </div>
 
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight">
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-teal-950 tracking-tight leading-tight">
               3-Times Homestyle Food Arrangement
             </h2>
 
             <p className="text-base text-slate-700 leading-relaxed">
-              We understand that every resident has different preferences. At {PG_DATA.brand.displayName}, we offer an in-house hygienic food arrangement for residents who want daily meals, prepared fresh with authentic Kerala and South Indian taste.
+              At {PG_DATA.brand.displayName}, we respect that every resident has different routines and preferences. We offer a hygienic 3-times homestyle meal arrangement available specifically for those who want it.
             </p>
 
             <div className="space-y-3 pt-2">
               <div className="flex items-center gap-3">
                 <div className="w-5 h-5 rounded-full bg-emerald-100 flex items-center justify-center shrink-0">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
+                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-700" />
                 </div>
-                <span className="text-sm font-medium text-slate-800">
-                  Optional: Choose Stay + Food OR Stay-Only plan
+                <span className="text-sm font-semibold text-slate-800">
+                  Total Flexibility: Choose Stay + Food OR Stay-Only plan
                 </span>
               </div>
               <div className="flex items-center gap-3">
                 <div className="w-5 h-5 rounded-full bg-emerald-100 flex items-center justify-center shrink-0">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
+                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-700" />
                 </div>
-                <span className="text-sm font-medium text-slate-800">
-                  Breakfast, Lunch &amp; Dinner prepared fresh daily
+                <span className="text-sm font-semibold text-slate-800">
+                  Freshly cooked Breakfast, Lunch &amp; Dinner for subscribers
                 </span>
               </div>
               <div className="flex items-center gap-3">
                 <div className="w-5 h-5 rounded-full bg-emerald-100 flex items-center justify-center shrink-0">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
+                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-700" />
                 </div>
-                <span className="text-sm font-medium text-slate-800">
-                  RO purified drinking water &amp; hygienic cooking methods
+                <span className="text-sm font-semibold text-slate-800">
+                  Prepared in hygienic conditions with pure drinking water
+                </span>
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="w-5 h-5 rounded-full bg-emerald-100 flex items-center justify-center shrink-0">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-700" />
+                </div>
+                <span className="text-sm font-semibold text-slate-800">
+                  Authentic Kerala &amp; South Indian homestyle dishes
                 </span>
               </div>
             </div>
 
-            <div className="pt-4">
+            <div className="pt-2">
               <button
                 onClick={onOpenEnquiry}
-                className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl text-sm font-semibold text-white bg-amber-800 hover:bg-amber-900 shadow-md transition-all cursor-pointer"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl text-sm font-bold text-white bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-500 hover:to-teal-600 shadow-md shadow-emerald-700/20 transition-all cursor-pointer"
               >
                 <Sparkles className="w-4 h-4" />
-                <span>Inquire About Meal Plans &amp; Rates</span>
+                <span>Inquire for Stay with Meal Options</span>
               </button>
             </div>
           </div>
 
-          {/* Right Column */}
-          <div className="lg:col-span-7 space-y-4">
-            <div className="bg-white rounded-2xl p-6 sm:p-8 border border-amber-200/80 shadow-md space-y-6">
-              <div className="flex items-center justify-between pb-4 border-b border-slate-100">
-                <div className="flex items-center gap-2">
-                  <Clock className="w-5 h-5 text-amber-700" />
-                  <h3 className="text-lg font-bold text-slate-900">Meal Schedule for Subscribers</h3>
+          {/* Right Column: Visual highlights without timetable */}
+          <div className="lg:col-span-6 space-y-4">
+            <div className="bg-white rounded-3xl p-6 sm:p-8 border border-emerald-100 shadow-md space-y-6">
+              <div className="flex items-center gap-3 pb-4 border-b border-slate-100">
+                <div className="w-10 h-10 rounded-xl bg-emerald-100 flex items-center justify-center text-emerald-700">
+                  <Flame className="w-5 h-5" />
                 </div>
-                <span className="text-xs font-semibold px-2.5 py-1 rounded bg-amber-100 text-amber-800">
-                  For Those Who Want It
-                </span>
+                <div>
+                  <h3 className="text-lg font-bold text-teal-950">Homestyle Quality &amp; Hygiene</h3>
+                  <p className="text-xs text-slate-500">Only for those who opt in — zero compulsory food fees</p>
+                </div>
               </div>
 
-              <div className="space-y-4">
-                <div className="p-4 rounded-xl bg-slate-50 border border-slate-200/60">
-                  <span className="text-xs font-bold text-amber-800 tracking-wide block uppercase mb-1">
-                    Morning Breakfast (7:30 AM - 9:30 AM)
-                  </span>
-                  <p className="text-sm text-slate-700 font-medium">
-                    Fresh Kerala breakfast favourites: Idli Sambar, Dosa, Puttu &amp; Kadala, Appam, Upma, Tea &amp; Coffee.
+              <div className="space-y-3">
+                <div className="p-4 rounded-xl bg-emerald-50/60 border border-emerald-100">
+                  <h4 className="text-xs font-bold text-teal-900 uppercase tracking-wide">
+                    Option A: Stay-Only Living
+                  </h4>
+                  <p className="text-sm text-slate-600 mt-1">
+                    Perfect if you work at Technopark, eat out with colleagues, order food, or have university canteen access. You only pay for your room and utilities.
                   </p>
                 </div>
 
-                <div className="p-4 rounded-xl bg-slate-50 border border-slate-200/60">
-                  <span className="text-xs font-bold text-amber-800 tracking-wide block uppercase mb-1">
-                    Afternoon Lunch (12:30 PM - 2:30 PM)
-                  </span>
-                  <p className="text-sm text-slate-700 font-medium">
-                    Homestyle Kerala Meals: Rice, Sambar, Moru Curry, Thoran, Mezhukkupuratti, Curd, and Fish/Egg options.
-                  </p>
-                </div>
-
-                <div className="p-4 rounded-xl bg-slate-50 border border-slate-200/60">
-                  <span className="text-xs font-bold text-amber-800 tracking-wide block uppercase mb-1">
-                    Evening Dinner (8:00 PM - 10:00 PM)
-                  </span>
-                  <p className="text-sm text-slate-700 font-medium">
-                    Hot Chapati / Rice, Dal Fry, Fresh vegetable curries, and periodic special non-veg / chicken dishes.
+                <div className="p-4 rounded-xl bg-emerald-50/60 border border-emerald-100">
+                  <h4 className="text-xs font-bold text-teal-900 uppercase tracking-wide">
+                    Option B: Stay + 3x Daily Food Arrangement
+                  </h4>
+                  <p className="text-sm text-slate-600 mt-1">
+                    Hassle-free homestyle breakfast, lunch, and dinner provided daily so you can focus completely on your studies or work without worrying about meal hunting.
                   </p>
                 </div>
               </div>
 
-              <div className="p-4 rounded-xl bg-amber-50 border border-amber-200 flex items-start gap-3">
-                <HeartHandshake className="w-5 h-5 text-amber-700 shrink-0 mt-0.5" />
-                <div className="text-xs text-amber-900 leading-relaxed">
-                  <strong>Total Flexibility:</strong> Not interested in mess food? No problem! You only pay for your accommodation and utilities.
+              <div className="p-4 rounded-xl bg-teal-900 text-white flex items-start gap-3">
+                <HeartHandshake className="w-5 h-5 text-lime-400 shrink-0 mt-0.5" />
+                <div className="text-xs text-emerald-100 leading-relaxed">
+                  <strong>Transparent Policy:</strong> You are never locked into a food contract you don&apos;t need. Inform our team during room selection to choose your plan.
                 </div>
               </div>
             </div>

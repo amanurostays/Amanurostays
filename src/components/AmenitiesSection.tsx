@@ -24,10 +24,10 @@ export default function AmenitiesSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-3">
-          <span className="text-xs font-bold uppercase tracking-wider text-blue-600">
+          <span className="text-xs font-bold uppercase tracking-wider text-emerald-700">
             Hassle-Free Daily Living
           </span>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-teal-950 tracking-tight">
             Essential Facilities &amp; Amenities
           </h2>
           <p className="text-base text-slate-600">
@@ -70,10 +70,10 @@ export default function AmenitiesSection() {
         </div>
 
         {/* Food Arrangement Banner */}
-        <div className="mt-12 p-6 rounded-2xl bg-slate-900 text-white">
+        <div className="mt-12 p-6 rounded-2xl bg-teal-950 border border-emerald-800/60 text-white">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <div className="space-y-1 text-center md:text-left">
-              <div className="inline-flex items-center gap-1 text-xs font-bold text-emerald-400">
+              <div className="inline-flex items-center gap-1 text-xs font-bold text-lime-400">
                 <Utensils className="w-3.5 h-3.5" />
                 <span>Flexible Food Arrangements</span>
               </div>
@@ -84,7 +84,7 @@ export default function AmenitiesSection() {
             </div>
             <a
               href="#rooms"
-              className="px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 font-semibold text-xs tracking-wide shadow-md transition-all whitespace-nowrap"
+              className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-500 hover:to-teal-600 font-bold text-xs tracking-wide shadow-md transition-all whitespace-nowrap"
             >
               Check Rooms &amp; Rates
             </a>
