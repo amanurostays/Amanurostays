@@ -11,6 +11,7 @@ import BranchesSection from "@/components/BranchesSection";
 import TrustComparison from "@/components/TrustComparison";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import FaqSection from "@/components/FaqSection";
+import LocalSeoCloud from "@/components/LocalSeoCloud";
 import Footer from "@/components/Footer";
 import FloatingActionBar from "@/components/FloatingActionBar";
 import EnquiryModal from "@/components/EnquiryModal";
@@ -63,9 +64,12 @@ export default function Home() {
 
         {/* AEO / GEO Answer Engine Optimized FAQ Accordion */}
         <FaqSection onOpenEnquiry={() => handleOpenEnquiry()} />
+
+        {/* Local SEO Keyword Search Cloud */}
+        <LocalSeoCloud />
       </main>
 
-      {/* Comprehensive Footer with amanorastays.in Branding & Expansion Desk */}
+      {/* Comprehensive Footer with amanorastays.in Branding */}
       <Footer />
 
       {/* Mobile Sticky Bottom Conversion Bar + Desktop Action Bubble */}

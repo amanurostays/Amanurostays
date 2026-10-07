@@ -17,6 +17,7 @@ export default function JsonLd() {
     priceRange: "Starting from ₹3,499/month",
     currenciesAccepted: "INR",
     paymentAccepted: "Cash, UPI, Bank Transfer",
+    keywords: PG_DATA.seo.keywords.join(", "),
     address: {
       "@type": "PostalAddress",
       streetAddress: flagship.address,

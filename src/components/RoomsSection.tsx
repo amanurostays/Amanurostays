@@ -24,21 +24,21 @@ export default function RoomsSection({ onOpenEnquiry }: RoomsSectionProps) {
   return (
     <section id="rooms" className="py-20 bg-slate-50 text-slate-900 scroll-mt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
+        {/* Section Header with Proper Centering & High-Intent SEO Keywords */}
         <div className="text-center max-w-3xl mx-auto space-y-3">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-emerald-100 text-teal-900 border border-emerald-200">
             <Sparkles className="w-3.5 h-3.5 text-emerald-700" />
-            <span>Budget &amp; Premium Stays • Starting from ₹3,499</span>
+            <span>Student PG &amp; Working Men&apos;s PG Trivandrum • Starting from ₹3,499</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-teal-950 tracking-tight">
             Single, Double, Triple &amp; Four Sharing Rooms
           </h2>
           <p className="text-base text-slate-600">
-            Tailored for students and working professionals in Palayam, Trivandrum. Stays start from ₹3,499. Contact us for custom room packages and exact price details.
+            Looking for an <strong>affordable PG in Trivandrum</strong>? Amanora Stays offers well-ventilated, fully furnished rooms for college students and working bachelors in Palayam. Stays start from ₹3,499. Contact us for complete room packages.
           </p>
         </div>
 
-        {/* Filter Pills */}
+        {/* Filter Pills Centered */}
         <div className="flex flex-wrap items-center justify-center gap-2 pt-8 pb-10">
           {filterOptions.map((option) => (
             <button
@@ -46,7 +46,7 @@ export default function RoomsSection({ onOpenEnquiry }: RoomsSectionProps) {
               onClick={() => setSelectedFilter(option)}
               className={`px-4 py-2 rounded-full text-sm font-semibold transition-all cursor-pointer ${
                 selectedFilter === option
-                  ? "bg-teal-900 text-white shadow-md shadow-teal-900/20"
+                  ? "bg-teal-950 text-white shadow-md shadow-teal-950/20 scale-105"
                   : "bg-white text-slate-700 hover:bg-emerald-50 border border-slate-200 hover:border-emerald-300"
               }`}
             >
@@ -55,66 +55,66 @@ export default function RoomsSection({ onOpenEnquiry }: RoomsSectionProps) {
           ))}
         </div>
 
-        {/* Rooms Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {/* Rooms Grid: Perfectly Aligned 4-Column Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
           {filteredRooms.map((room) => (
             <div
               key={room.id}
-              className="flex flex-col bg-white rounded-2xl overflow-hidden border border-emerald-100 shadow-sm hover:shadow-xl hover:border-emerald-300 transition-all duration-300 group"
+              className="flex flex-col justify-between h-full bg-white rounded-2xl overflow-hidden border border-emerald-100 shadow-sm hover:shadow-xl hover:border-emerald-300 transition-all duration-300 group"
             >
               {/* Image & Badges */}
-              <div className="relative h-48 w-full overflow-hidden bg-slate-100">
-                <Image
-                  src={room.image}
-                  alt={`${room.title} at ${PG_DATA.brand.displayName} Palayam Trivandrum`}
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-500"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-teal-950/80 via-transparent to-transparent" />
+              <div>
+                <div className="relative h-48 w-full overflow-hidden bg-slate-100">
+                  <Image
+                    src={room.image}
+                    alt={`${room.title} - Mens PG Trivandrum`}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-teal-950/80 via-transparent to-transparent" />
 
-                {/* Tier Badge top-left */}
-                <span className={`absolute top-3 left-3 px-2.5 py-1 rounded-full text-[11px] font-bold text-white shadow-md ${
-                  room.tier === "Premium" ? "bg-teal-700" : "bg-emerald-600"
-                }`}>
-                  {room.tier} Tier
-                </span>
+                  {/* Tier Badge top-left */}
+                  <span className={`absolute top-3 left-3 px-2.5 py-1 rounded-full text-[11px] font-bold text-white shadow-md ${
+                    room.tier === "Premium" ? "bg-teal-700" : "bg-emerald-600"
+                  }`}>
+                    {room.tier} Tier
+                  </span>
 
-                {/* Sharing label top-right */}
-                <span className="absolute top-3 right-3 px-2 py-0.5 rounded text-[11px] font-semibold bg-slate-950/80 text-white backdrop-blur-md">
-                  {room.sharingType} Sharing
-                </span>
+                  {/* Sharing label top-right */}
+                  <span className="absolute top-3 right-3 px-2 py-0.5 rounded text-[11px] font-semibold bg-slate-950/80 text-white backdrop-blur-md">
+                    {room.sharingType} Sharing
+                  </span>
 
-                {/* Price Display */}
-                <div className="absolute bottom-3 left-3 right-3 text-white">
-                  {room.hasStartingRate ? (
-                    <div>
-                      <div className="text-[11px] text-emerald-200 font-medium">Monthly Tariff</div>
-                      <div className="text-xl font-black text-lime-300">
-                        Starting from ₹3,499
+                  {/* Price Display */}
+                  <div className="absolute bottom-3 left-3 right-3 text-white">
+                    {room.hasStartingRate ? (
+                      <div>
+                        <div className="text-[11px] text-emerald-200 font-medium">Monthly Tariff</div>
+                        <div className="text-xl font-black text-lime-300">
+                          Starting from ₹3,499
+                        </div>
                       </div>
-                    </div>
-                  ) : (
-                    <div>
-                      <div className="text-[11px] text-emerald-200 font-medium">Pricing Details</div>
-                      <div className="text-sm font-bold text-white">
-                        Contact us for price details
+                    ) : (
+                      <div>
+                        <div className="text-[11px] text-emerald-200 font-medium">Pricing Details</div>
+                        <div className="text-sm font-bold text-white">
+                          Contact us for price details
+                        </div>
                       </div>
-                    </div>
-                  )}
+                    )}
+                  </div>
                 </div>
-              </div>
 
-              {/* Room Body */}
-              <div className="p-5 flex-1 flex flex-col justify-between space-y-4">
-                <div>
+                {/* Room Details */}
+                <div className="p-5 space-y-3">
                   <h3 className="text-lg font-bold text-slate-900 group-hover:text-emerald-700 transition-colors">
                     {room.title}
                   </h3>
-                  <p className="text-xs text-slate-500 mt-1 line-clamp-2">{room.subtitle}</p>
+                  <p className="text-xs text-slate-500 line-clamp-2">{room.subtitle}</p>
 
                   {/* Quick specs */}
-                  <div className="mt-3 py-2.5 px-3 rounded-lg bg-emerald-50/60 border border-emerald-100 text-xs text-slate-700 space-y-1">
+                  <div className="py-2.5 px-3 rounded-lg bg-emerald-50/60 border border-emerald-100 text-xs text-slate-700 space-y-1">
                     <div className="flex justify-between">
                       <span className="text-slate-500">Washroom:</span>
                       <span className="font-semibold text-teal-950">{room.specs.washroom}</span>
@@ -130,7 +130,7 @@ export default function RoomsSection({ onOpenEnquiry }: RoomsSectionProps) {
                   </div>
 
                   {/* Key Included Features */}
-                  <div className="mt-4 space-y-1.5">
+                  <div className="pt-1 space-y-1.5">
                     <p className="text-[11px] font-bold text-teal-950 uppercase tracking-wider">
                       Included with Stay:
                     </p>
@@ -144,30 +144,30 @@ export default function RoomsSection({ onOpenEnquiry }: RoomsSectionProps) {
                     </ul>
                   </div>
                 </div>
+              </div>
 
-                {/* Footer CTAs for this room */}
-                <div className="pt-3 border-t border-slate-100 space-y-2">
-                  <div className="text-[11px] text-center font-medium text-teal-900 bg-emerald-50/80 py-1.5 px-2 rounded-md">
-                    Contact us for exact price details
-                  </div>
+              {/* Footer CTAs for this room */}
+              <div className="p-5 pt-0 space-y-2 mt-auto">
+                <div className="text-[11px] text-center font-medium text-teal-900 bg-emerald-50/80 py-1.5 px-2 rounded-md">
+                  Contact us for exact price details
+                </div>
 
-                  <div className="grid grid-cols-2 gap-2">
-                    <button
-                      onClick={() => onOpenEnquiry(`${room.title} (${room.tier})`)}
-                      className="w-full flex items-center justify-center gap-1 py-2.5 px-2 rounded-lg text-xs font-bold text-white bg-teal-900 hover:bg-teal-800 transition-colors cursor-pointer"
-                    >
-                      <Calendar className="w-3.5 h-3.5" />
-                      <span>Book Visit</span>
-                    </button>
+                <div className="grid grid-cols-2 gap-2">
+                  <button
+                    onClick={() => onOpenEnquiry(`${room.title} (${room.tier})`)}
+                    className="w-full flex items-center justify-center gap-1 py-2.5 px-2 rounded-lg text-xs font-bold text-white bg-teal-950 hover:bg-teal-900 transition-colors cursor-pointer"
+                  >
+                    <Calendar className="w-3.5 h-3.5" />
+                    <span>Book Visit</span>
+                  </button>
 
-                    <button
-                      onClick={() => onOpenEnquiry(`${room.title} (${room.tier})`)}
-                      className="w-full flex items-center justify-center gap-1 py-2.5 px-2 rounded-lg text-xs font-bold text-teal-950 bg-emerald-100 hover:bg-emerald-200 transition-colors cursor-pointer"
-                    >
-                      <MessageCircle className="w-3.5 h-3.5 text-emerald-700" />
-                      <span>Inquire Rate</span>
-                    </button>
-                  </div>
+                  <button
+                    onClick={() => onOpenEnquiry(`${room.title} (${room.tier})`)}
+                    className="w-full flex items-center justify-center gap-1 py-2.5 px-2 rounded-lg text-xs font-bold text-teal-950 bg-emerald-100 hover:bg-emerald-200 transition-colors cursor-pointer"
+                  >
+                    <MessageCircle className="w-3.5 h-3.5 text-emerald-700" />
+                    <span>Inquire Rate</span>
+                  </button>
                 </div>
               </div>
             </div>
@@ -175,14 +175,14 @@ export default function RoomsSection({ onOpenEnquiry }: RoomsSectionProps) {
         </div>
 
         {/* Dormitory Promo Banner inside Rooms Section */}
-        <div className="mt-12 p-6 rounded-2xl bg-gradient-to-r from-emerald-50 via-teal-50 to-white border border-emerald-200 flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="mt-12 p-6 rounded-2xl bg-gradient-to-r from-emerald-50 via-teal-50 to-white border border-emerald-200 flex flex-col md:flex-row items-center justify-between gap-6 shadow-sm">
           <div className="space-y-1 text-center md:text-left">
             <div className="inline-flex items-center gap-1.5 text-xs font-bold text-teal-900">
               <Sparkles className="w-3.5 h-3.5 text-emerald-600" />
-              <span>Looking for Short-Term / Daily Stay Pods?</span>
+              <span>Looking for Short-Term / Daily Stay Pods in Trivandrum?</span>
             </div>
             <h4 className="text-lg font-bold text-teal-950">
-              Executive Dormitory (Daily Basis) — Launching Soon in Trivandrum!
+              Executive Dormitory (Daily Basis) — Launching Soon in Palayam!
             </h4>
             <p className="text-xs text-slate-600">
               Specialized per-day pod accommodation for exam candidates, interviewees, and transit visitors.
@@ -191,7 +191,7 @@ export default function RoomsSection({ onOpenEnquiry }: RoomsSectionProps) {
 
           <a
             href="#dormitory"
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-teal-900 hover:bg-teal-800 text-white font-bold text-xs tracking-wide shadow-md transition-all whitespace-nowrap cursor-pointer"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-teal-950 hover:bg-teal-900 text-white font-bold text-xs tracking-wide shadow-md transition-all whitespace-nowrap cursor-pointer shrink-0"
           >
             <span>View Daily Dormitory</span>
             <ArrowRight className="w-4 h-4" />

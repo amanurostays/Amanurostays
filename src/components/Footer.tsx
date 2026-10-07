@@ -12,17 +12,22 @@ export default function Footer() {
           {/* Brand Col */}
           <div className="space-y-4">
             <div className="flex items-center gap-3">
-              <div className="relative w-10 h-10 shrink-0">
+              <div className="relative w-12 h-12 shrink-0 rounded-xl overflow-hidden bg-white p-0.5 border border-emerald-800/80 shadow-md">
                 <Image
                   src="/logo.png"
                   alt="Amanora Stays Logo"
                   fill
-                  className="object-contain"
+                  className="object-contain p-0.5"
                 />
               </div>
-              <span className="text-xl font-black tracking-tight text-white uppercase">
-                {PG_DATA.brand.displayName}
-              </span>
+              <div>
+                <span className="text-xl font-black tracking-tight text-white uppercase block leading-tight">
+                  {PG_DATA.brand.displayName}
+                </span>
+                <span className="text-[10px] text-lime-400 font-bold tracking-wider">
+                  Comfort. Living. Belonging.
+                </span>
+              </div>
             </div>
 
             <p className="text-xs text-slate-300 leading-relaxed max-w-sm">

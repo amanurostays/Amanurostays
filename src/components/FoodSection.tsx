@@ -11,23 +11,23 @@ export default function FoodSection({ onOpenEnquiry }: FoodSectionProps) {
   return (
     <section id="food" className="py-20 bg-emerald-50/50 text-slate-900 scroll-mt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          {/* Left Column */}
-          <div className="lg:col-span-6 space-y-6">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+          {/* Left Column: Heading & Description with SEO Keywords */}
+          <div className="lg:col-span-6 space-y-6 text-center lg:text-left flex flex-col items-center lg:items-start">
             <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-emerald-100 text-teal-900 border border-emerald-200">
               <Utensils className="w-3.5 h-3.5 text-emerald-700" />
-              <span>Flexible Dining Option</span>
+              <span>PG with Food Trivandrum • Flexible Choice</span>
             </div>
 
             <h2 className="text-3xl sm:text-4xl font-extrabold text-teal-950 tracking-tight leading-tight">
               3-Times Homestyle Food Arrangement
             </h2>
 
-            <p className="text-base text-slate-700 leading-relaxed">
-              At {PG_DATA.brand.displayName}, we respect that every resident has different routines and preferences. We offer a hygienic 3-times homestyle meal arrangement available specifically for those who want it.
+            <p className="text-base text-slate-700 leading-relaxed max-w-xl">
+              Looking for a <strong>PG with food in Trivandrum</strong>? At Amanora Stays, we offer a clean, hygienic 3-times homestyle meal arrangement available specifically for residents who want daily meals. Perfect for university scholars at our <strong>student PG</strong> and IT professionals staying at our <strong>working men&apos;s PG</strong>.
             </p>
 
-            <div className="space-y-3 pt-2">
+            <div className="space-y-3 pt-1 w-full text-left">
               <div className="flex items-center gap-3">
                 <div className="w-5 h-5 rounded-full bg-emerald-100 flex items-center justify-center shrink-0">
                   <CheckCircle2 className="w-3.5 h-3.5 text-emerald-700" />
@@ -41,7 +41,7 @@ export default function FoodSection({ onOpenEnquiry }: FoodSectionProps) {
                   <CheckCircle2 className="w-3.5 h-3.5 text-emerald-700" />
                 </div>
                 <span className="text-sm font-semibold text-slate-800">
-                  Freshly cooked Breakfast, Lunch &amp; Dinner for subscribers
+                  Breakfast, Lunch &amp; Dinner prepared fresh daily for subscribers
                 </span>
               </div>
               <div className="flex items-center gap-3">
@@ -49,7 +49,7 @@ export default function FoodSection({ onOpenEnquiry }: FoodSectionProps) {
                   <CheckCircle2 className="w-3.5 h-3.5 text-emerald-700" />
                 </div>
                 <span className="text-sm font-semibold text-slate-800">
-                  Prepared in hygienic conditions with pure drinking water
+                  Cooked with RO purified drinking water &amp; farm-fresh ingredients
                 </span>
               </div>
               <div className="flex items-center gap-3">
@@ -57,7 +57,7 @@ export default function FoodSection({ onOpenEnquiry }: FoodSectionProps) {
                   <CheckCircle2 className="w-3.5 h-3.5 text-emerald-700" />
                 </div>
                 <span className="text-sm font-semibold text-slate-800">
-                  Authentic Kerala &amp; South Indian homestyle dishes
+                  Wholesome Kerala &amp; South Indian homestyle dishes
                 </span>
               </div>
             </div>
@@ -73,11 +73,11 @@ export default function FoodSection({ onOpenEnquiry }: FoodSectionProps) {
             </div>
           </div>
 
-          {/* Right Column: Visual highlights without timetable */}
-          <div className="lg:col-span-6 space-y-4">
+          {/* Right Column: Visual highlights with Clean Symmetric Alignment */}
+          <div className="lg:col-span-6 w-full">
             <div className="bg-white rounded-3xl p-6 sm:p-8 border border-emerald-100 shadow-md space-y-6">
               <div className="flex items-center gap-3 pb-4 border-b border-slate-100">
-                <div className="w-10 h-10 rounded-xl bg-emerald-100 flex items-center justify-center text-emerald-700">
+                <div className="w-10 h-10 rounded-xl bg-emerald-100 flex items-center justify-center text-emerald-700 shrink-0">
                   <Flame className="w-5 h-5" />
                 </div>
                 <div>
@@ -92,7 +92,7 @@ export default function FoodSection({ onOpenEnquiry }: FoodSectionProps) {
                     Option A: Stay-Only Living
                   </h4>
                   <p className="text-sm text-slate-600 mt-1">
-                    Perfect if you work at Technopark, eat out with colleagues, order food, or have university canteen access. You only pay for your room and utilities.
+                    Perfect if you work at Technopark, eat out with friends, order food, or have university canteen access. You only pay for your room and utilities.
                   </p>
                 </div>
 
@@ -106,7 +106,7 @@ export default function FoodSection({ onOpenEnquiry }: FoodSectionProps) {
                 </div>
               </div>
 
-              <div className="p-4 rounded-xl bg-teal-900 text-white flex items-start gap-3">
+              <div className="p-4 rounded-xl bg-teal-950 text-white flex items-start gap-3">
                 <HeartHandshake className="w-5 h-5 text-lime-400 shrink-0 mt-0.5" />
                 <div className="text-xs text-emerald-100 leading-relaxed">
                   <strong>Transparent Policy:</strong> You are never locked into a food contract you don&apos;t need. Inform our team during room selection to choose your plan.

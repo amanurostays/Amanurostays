@@ -13,7 +13,7 @@ export default function Header({ onOpenEnquiry }: HeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-white/95 backdrop-blur-md border-b border-emerald-100/80 transition-all">
+    <header className="sticky top-0 z-50 w-full bg-white/95 backdrop-blur-md border-b border-emerald-100 shadow-sm transition-all">
       {/* Top micro-announcement bar */}
       <div className="bg-gradient-to-r from-teal-950 via-slate-900 to-emerald-950 text-white text-xs py-2 px-4">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
@@ -22,7 +22,7 @@ export default function Header({ onOpenEnquiry }: HeaderProps) {
               <Sparkles className="w-3 h-3 mr-1 inline" /> Admissions Open
             </span>
             <span className="text-zinc-300 hidden md:inline">
-              Palayam, Trivandrum • Stays Starting from ₹3,499 • High-Speed Wi-Fi &amp; 3x Food Arrangement
+              Top Rated Mens PG &amp; Boys PG in Palayam, Trivandrum • Starting from ₹3,499
             </span>
           </div>
           <div className="flex items-center gap-4 text-zinc-300">
@@ -47,24 +47,24 @@ export default function Header({ onOpenEnquiry }: HeaderProps) {
 
       {/* Main navigation */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 sm:h-20">
+        <div className="flex items-center justify-between h-20">
           {/* Logo & Brand using uploaded logo */}
-          <a href="#" className="flex items-center gap-3 group">
-            <div className="relative w-11 h-11 sm:w-12 sm:h-12 shrink-0 group-hover:scale-105 transition-transform">
+          <a href="#" className="flex items-center gap-3 group py-1">
+            <div className="relative w-12 h-12 sm:w-14 sm:h-14 shrink-0 rounded-xl overflow-hidden border border-emerald-100 shadow-sm group-hover:scale-105 transition-transform bg-white">
               <Image
                 src="/logo.png"
-                alt="Amanora Stays Logo"
+                alt="Amanora Stays - Mens PG in Trivandrum"
                 fill
-                className="object-contain"
+                className="object-contain p-0.5"
                 priority
               />
             </div>
-            <div>
-              <span className="text-xl sm:text-2xl font-black tracking-tight text-teal-950 group-hover:text-emerald-700 transition-colors uppercase">
+            <div className="flex flex-col justify-center">
+              <span className="text-xl sm:text-2xl font-black tracking-tight text-teal-950 group-hover:text-emerald-700 transition-colors uppercase leading-tight">
                 {PG_DATA.brand.displayName}
               </span>
-              <p className="text-[11px] font-bold text-emerald-700 tracking-wider hidden sm:block">
-                PALAYAM, TRIVANDRUM
+              <p className="text-[10px] sm:text-[11px] font-bold text-emerald-700 tracking-wider">
+                PALAYAM, TRIVANDRUM • MENS PG
               </p>
             </div>
           </a>
@@ -96,7 +96,7 @@ export default function Header({ onOpenEnquiry }: HeaderProps) {
           <div className="hidden sm:flex items-center gap-3">
             <button
               onClick={() => onOpenEnquiry()}
-              className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl text-sm font-semibold text-teal-900 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 transition-colors cursor-pointer"
+              className="inline-flex items-center gap-2 px-3.5 py-2.5 rounded-xl text-sm font-semibold text-teal-900 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 transition-colors cursor-pointer"
             >
               <MessageCircle className="w-4 h-4 text-emerald-700" />
               <span>Contact for Price</span>

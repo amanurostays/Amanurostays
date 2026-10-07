@@ -51,10 +51,10 @@ export const metadata: Metadata = {
     siteName: PG_DATA.brand.displayName,
     images: [
       {
-        url: "https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?auto=format&fit=crop&w=1200&q=80",
-        width: 1200,
-        height: 630,
-        alt: `${PG_DATA.brand.displayName} - Premium & Budget Men's PG Palayam Trivandrum`,
+        url: "/logo.png",
+        width: 800,
+        height: 800,
+        alt: `${PG_DATA.brand.displayName} - Mens PG in Trivandrum`,
       },
     ],
   },
