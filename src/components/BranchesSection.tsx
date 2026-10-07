@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { MapPin, Phone, MessageCircle, Navigation, Building2, Check, Clock } from "lucide-react";
+import { MapPin, Navigation, Building2, Check, Sparkles, Calendar } from "lucide-react";
 import { PG_DATA, Branch } from "@/config/pg-data";
 
 interface BranchesSectionProps {
@@ -23,13 +23,13 @@ export default function BranchesSection({ onOpenEnquiry }: BranchesSectionProps)
         <div className="text-center max-w-3xl mx-auto space-y-3">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-blue-100 text-blue-700">
             <Building2 className="w-3.5 h-3.5" />
-            <span>Expanding Across Prime Tech Corridors</span>
+            <span>Trivandrum Network &amp; Rapid Expansion</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-            Our Prime Locations
+            Our Locations in Trivandrum
           </h2>
           <p className="text-base text-slate-600">
-            Conveniently located within 5 to 10 minutes of major tech parks, metro stations, food streets, and gyms.
+            Currently operational at our prime hub in <strong>Palayam</strong>, with 4 to 5 more strategic branches launching across Trivandrum very soon!
           </p>
         </div>
 
@@ -41,7 +41,7 @@ export default function BranchesSection({ onOpenEnquiry }: BranchesSectionProps)
               <button
                 key={branch.id}
                 onClick={() => setSelectedBranchId(branch.id)}
-                className={`flex items-center gap-2.5 px-5 py-3 rounded-xl text-sm font-semibold transition-all cursor-pointer ${
+                className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold transition-all cursor-pointer ${
                   isSelected
                     ? "bg-slate-900 text-white shadow-lg shadow-slate-900/20 scale-105"
                     : "bg-white text-slate-700 hover:bg-slate-200 border border-slate-200"
@@ -50,13 +50,13 @@ export default function BranchesSection({ onOpenEnquiry }: BranchesSectionProps)
                 <MapPin className={`w-4 h-4 ${isSelected ? "text-emerald-400" : "text-blue-600"}`} />
                 <span>{branch.locality}</span>
                 {branch.isFlagship && (
-                  <span className="text-[10px] px-2 py-0.5 rounded-full bg-blue-500/20 text-blue-300 font-medium">
-                    Flagship
+                  <span className="text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 font-bold">
+                    Now Open
                   </span>
                 )}
-                {branch.status === "Opening Soon" && (
-                  <span className="text-[10px] px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-300 font-medium">
-                    Upcoming
+                {branch.status === "Launching Soon" && (
+                  <span className="text-[10px] px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-600 font-medium">
+                    Coming Soon
                   </span>
                 )}
               </button>
@@ -75,10 +75,10 @@ export default function BranchesSection({ onOpenEnquiry }: BranchesSectionProps)
                     ? "bg-emerald-100 text-emerald-800"
                     : "bg-amber-100 text-amber-800"
                 }`}>
-                  {activeBranch.status === "Active" ? "● Currently Accepting Bookings" : "⏳ Pre-Registrations Open"}
+                  {activeBranch.status === "Active" ? "● Currently Open & Accepting Bookings" : "⏳ Expansion Phase — Launching Soon"}
                 </span>
-                <span className="text-xs text-slate-600 font-medium">
-                  Capacity: {activeBranch.totalBeds} Beds
+                <span className="text-xs text-slate-500 font-medium">
+                  {activeBranch.city}, Kerala
                 </span>
               </div>
 
@@ -90,14 +90,14 @@ export default function BranchesSection({ onOpenEnquiry }: BranchesSectionProps)
                 <div className="flex items-start gap-2.5">
                   <MapPin className="w-4 h-4 text-blue-600 shrink-0 mt-1" />
                   <p>
-                    <strong className="text-slate-800">Address:</strong> {activeBranch.address}
+                    <strong className="text-slate-800">Location:</strong> {activeBranch.address}
                   </p>
                 </div>
 
                 <div className="flex items-start gap-2.5">
                   <Navigation className="w-4 h-4 text-emerald-600 shrink-0 mt-1" />
                   <p>
-                    <strong className="text-slate-800">Landmark:</strong> {activeBranch.landmark}
+                    <strong className="text-slate-800">Landmarks:</strong> {activeBranch.landmark}
                   </p>
                 </div>
               </div>
@@ -105,20 +105,20 @@ export default function BranchesSection({ onOpenEnquiry }: BranchesSectionProps)
               {/* Transit & Accessibility Highlights */}
               <div className="p-4 rounded-xl bg-slate-50 border border-slate-100 space-y-2">
                 <h4 className="text-xs font-bold text-slate-900 uppercase tracking-wide">
-                  Transit & Neighborhood Connectivity
+                  Location Advantages
                 </h4>
                 <ul className="text-xs text-slate-600 space-y-1.5">
                   <li className="flex items-center gap-2">
                     <Check className="w-3.5 h-3.5 text-emerald-500" />
-                    <span>Walking distance to quick bus stops and auto stands</span>
+                    <span>Quick access to Palayam &amp; Thampanoor central bus/train terminals</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <Check className="w-3.5 h-3.5 text-emerald-500" />
-                    <span>Surrounded by popular cafes, cult.fit/gyms, supermarkets, & laundry</span>
+                    <span>Walking distance to University of Kerala, libraries &amp; civil coaching centers</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <Check className="w-3.5 h-3.5 text-emerald-500" />
-                    <span>Safe, well-lit residential street with CCTV perimeter</span>
+                    <span>Direct bus routes to Technopark Phase 1, Phase 3 and Kazhakkoottam</span>
                   </li>
                 </ul>
               </div>
@@ -131,31 +131,16 @@ export default function BranchesSection({ onOpenEnquiry }: BranchesSectionProps)
                   onClick={() => onOpenEnquiry(undefined, activeBranch.name)}
                   className="flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-xl text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 transition-colors cursor-pointer"
                 >
-                  <span>Book Visit for this Branch</span>
+                  <Calendar className="w-4 h-4" />
+                  <span>
+                    {activeBranch.status === "Active"
+                      ? "Book Visit for Palayam Hub"
+                      : "Pre-Register for this Location"}
+                  </span>
                 </button>
-
-                <a
-                  href={`https://wa.me/${activeBranch.whatsapp}?text=${encodeURIComponent(
-                    `Hello, I would like to inquire about bed availability at ${activeBranch.name}.`
-                  )}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 py-3 px-5 rounded-xl text-sm font-semibold text-emerald-950 bg-emerald-400 hover:bg-emerald-300 transition-colors"
-                >
-                  <MessageCircle className="w-4 h-4" />
-                  <span>WhatsApp</span>
-                </a>
               </div>
 
-              <div className="flex items-center justify-between text-xs text-slate-500 pt-2 border-t border-slate-100">
-                <a
-                  href={`tel:${activeBranch.phone}`}
-                  className="flex items-center gap-1.5 font-medium text-slate-700 hover:text-blue-600"
-                >
-                  <Phone className="w-3.5 h-3.5 text-blue-600" />
-                  <span>{activeBranch.phone}</span>
-                </a>
-
+              <div className="text-xs text-slate-500 pt-2 border-t border-slate-100">
                 <a
                   href={activeBranch.mapDirectionsUrl}
                   target="_blank"
@@ -163,7 +148,7 @@ export default function BranchesSection({ onOpenEnquiry }: BranchesSectionProps)
                   className="flex items-center gap-1 font-semibold text-blue-600 hover:underline"
                 >
                   <Navigation className="w-3.5 h-3.5" />
-                  <span>Open in Google Maps →</span>
+                  <span>View Palayam Location on Google Maps →</span>
                 </a>
               </div>
             </div>
@@ -179,6 +164,20 @@ export default function BranchesSection({ onOpenEnquiry }: BranchesSectionProps)
               referrerPolicy="no-referrer-when-downgrade"
             />
           </div>
+        </div>
+
+        {/* 5-Year Expansion Note */}
+        <div className="mt-8 text-center p-6 rounded-2xl bg-white border border-slate-200 shadow-sm max-w-2xl mx-auto space-y-1">
+          <div className="inline-flex items-center gap-1 text-xs font-bold text-blue-600">
+            <Sparkles className="w-3.5 h-3.5" />
+            <span>Expanding Across Trivandrum</span>
+          </div>
+          <p className="text-sm font-semibold text-slate-800">
+            Planning 4–5 more PG branches in Trivandrum over the coming months.
+          </p>
+          <p className="text-xs text-slate-500">
+            Looking for rooms near Kazhakkoottam, Technopark, or Karyavattom? Pre-register early to lock in early bird discounts.
+          </p>
         </div>
       </div>
     </section>

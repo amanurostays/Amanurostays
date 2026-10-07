@@ -20,8 +20,8 @@ export default function EnquiryModal({
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [branch, setBranch] = useState(defaultBranch || PG_DATA.branches[0].name);
-  const [roomType, setRoomType] = useState(defaultRoomType || "Single Private");
-  const [moveInTimeline, setMoveInTimeline] = useState("Within 7 Days");
+  const [roomType, setRoomType] = useState(defaultRoomType || "Four Sharing (Budget - Starts ₹3,499)");
+  const [moveInTimeline, setMoveInTimeline] = useState("Immediately (Within 24-48 hrs)");
   const [submitted, setSubmitted] = useState(false);
 
   useEffect(() => {
@@ -35,21 +35,21 @@ export default function EnquiryModal({
     e.preventDefault();
     if (!name || !phone) return;
 
-    // Construct the WhatsApp Lead Message
-    const text = `*New Room Visit & Booking Inquiry*\n\n` +
-      `👤 *Name:* ${name}\n` +
-      `📞 *Phone:* ${phone}\n` +
-      `📍 *Preferred Branch:* ${branch}\n` +
-      `🛏️ *Room Type:* ${roomType}\n` +
-      `📅 *Move-in Timeline:* ${moveInTimeline}\n\n` +
-      `Hi Zenith Living, I'd like to schedule a room visit for this requirement. Please confirm availability.`;
+    // If whatsapp is configured in pg-data.ts, open WhatsApp
+    if (PG_DATA.brand.whatsappNumber && PG_DATA.brand.whatsappNumber.length > 5) {
+      const text = `*New Stay & Price Inquiry - Amanora Stays*\n\n` +
+        `👤 *Name:* ${name}\n` +
+        `📞 *Contact Number:* ${phone}\n` +
+        `📍 *Branch:* ${branch}\n` +
+        `🛏️ *Room Preference:* ${roomType}\n` +
+        `📅 *Move-in Date:* ${moveInTimeline}\n\n` +
+        `Hi Amanora Stays, please share current room availability and exact pricing details.`;
 
-    const whatsappUrl = `https://wa.me/${PG_DATA.brand.whatsappNumber}?text=${encodeURIComponent(text)}`;
+      const whatsappUrl = `https://wa.me/${PG_DATA.brand.whatsappNumber}?text=${encodeURIComponent(text)}`;
+      window.open(whatsappUrl, "_blank");
+    }
 
     setSubmitted(true);
-
-    // Open WhatsApp in new tab
-    window.open(whatsappUrl, "_blank");
   };
 
   const handleResetAndClose = () => {
@@ -65,16 +65,16 @@ export default function EnquiryModal({
           <div className="space-y-1">
             <div className="flex items-center gap-1.5 text-xs font-semibold text-emerald-400">
               <Sparkles className="w-3.5 h-3.5" />
-              <span>Instant Confirmation • Zero Brokerage</span>
+              <span>Palayam, Trivandrum • Starting from ₹3,499</span>
             </div>
-            <h3 className="text-xl font-bold">Schedule a Free Room Visit</h3>
+            <h3 className="text-xl font-bold">Inquire for Exact Price Details</h3>
             <p className="text-xs text-slate-300">
-              Experience the rooms, food, and facilities in person before deciding.
+              Schedule a free visit or request live availability &amp; room rates.
             </p>
           </div>
           <button
             onClick={handleResetAndClose}
-            className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors"
+            className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors cursor-pointer"
             aria-label="Close modal"
           >
             <X className="w-5 h-5" />
@@ -88,9 +88,9 @@ export default function EnquiryModal({
               <div className="w-14 h-14 bg-emerald-100 rounded-full flex items-center justify-center mx-auto text-emerald-600">
                 <CheckCircle2 className="w-8 h-8" />
               </div>
-              <h4 className="text-xl font-bold text-slate-900">Enquiry Sent to WhatsApp!</h4>
+              <h4 className="text-xl font-bold text-slate-900">Enquiry Received!</h4>
               <p className="text-sm text-slate-600 max-w-sm mx-auto">
-                Thank you, <strong>{name}</strong>! Your inquiry for <strong>{roomType}</strong> at <strong>{branch}</strong> is being processed. Our manager will reply on WhatsApp within minutes.
+                Thank you, <strong>{name}</strong>! Your inquiry for <strong>{roomType}</strong> at <strong>{branch}</strong> has been noted. Our team will contact you at <strong>{phone}</strong> with exact room rates and visit availability.
               </p>
               <div className="pt-2">
                 <button
@@ -152,7 +152,7 @@ export default function EnquiryModal({
                   >
                     {PG_DATA.branches.map((b) => (
                       <option key={b.id} value={b.name}>
-                        {b.locality}
+                        {b.locality} ({b.status})
                       </option>
                     ))}
                   </select>
@@ -168,9 +168,11 @@ export default function EnquiryModal({
                     onChange={(e) => setRoomType(e.target.value)}
                     className="w-full py-2.5 px-3 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none bg-white"
                   >
-                    <option value="Single Private">Single Private (AC/Non-AC)</option>
-                    <option value="Double Sharing">Double Sharing</option>
-                    <option value="Triple Sharing">Triple Sharing</option>
+                    <option value="Single Room (Premium Tier)">Single Room (Premium Tier)</option>
+                    <option value="Double Sharing (Premium Tier)">Double Sharing (Premium Tier)</option>
+                    <option value="Triple Sharing (Budget Tier)">Triple Sharing (Budget Tier)</option>
+                    <option value="Four Sharing (Budget - Starts ₹3,499)">Four Sharing (Budget - Starts ₹3,499)</option>
+                    <option value="Dormitory (Launching Soon)">Dormitory (Launching Soon)</option>
                   </select>
                 </div>
               </div>
@@ -196,15 +198,15 @@ export default function EnquiryModal({
               <div className="pt-2">
                 <button
                   type="submit"
-                  className="w-full flex items-center justify-center gap-2 py-3 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-bold text-sm shadow-md transition-all cursor-pointer"
+                  className="w-full flex items-center justify-center gap-2 py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm shadow-md transition-all cursor-pointer"
                 >
-                  <MessageCircle className="w-4 h-4 fill-white" />
-                  <span>Send Enquiry via WhatsApp &amp; Book Tour</span>
+                  <Calendar className="w-4 h-4" />
+                  <span>Submit Inquiry &amp; Request Price Details</span>
                 </button>
               </div>
 
               <p className="text-center text-[11px] text-slate-500 pt-1">
-                🔒 Your number is kept strictly private. Zero spam.
+                🔒 Your contact details are kept strictly private. Zero spam.
               </p>
             </form>
           )}

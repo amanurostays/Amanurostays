@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(PG_DATA.seo.siteUrl),
   title: {
     default: PG_DATA.seo.metaTitle,
-    template: `%s | ${PG_DATA.brand.name}`,
+    template: `%s | ${PG_DATA.brand.displayName}`,
   },
   description: PG_DATA.seo.metaDescription,
   keywords: PG_DATA.seo.keywords,
@@ -48,13 +48,13 @@ export const metadata: Metadata = {
     url: PG_DATA.seo.siteUrl,
     title: PG_DATA.seo.metaTitle,
     description: PG_DATA.seo.metaDescription,
-    siteName: PG_DATA.brand.name,
+    siteName: PG_DATA.brand.displayName,
     images: [
       {
         url: "https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?auto=format&fit=crop&w=1200&q=80",
         width: 1200,
         height: 630,
-        alt: `${PG_DATA.brand.name} - Luxury Men's PG & Coliving`,
+        alt: `${PG_DATA.brand.displayName} - Premium & Budget Men's PG Palayam Trivandrum`,
       },
     ],
   },

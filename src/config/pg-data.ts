@@ -15,396 +15,369 @@ export interface Branch {
   };
   totalBeds: number;
   isFlagship: boolean;
-  status: "Active" | "Opening Soon";
+  status: "Active" | "Launching Soon";
 }
 
 export interface RoomPlan {
   id: string;
   title: string;
   subtitle: string;
-  pricePerMonth: number;
-  originalPrice?: number;
-  securityDeposit: string;
-  sharingType: "Single Private" | "Double Sharing" | "Triple Sharing" | "Four Sharing";
+  tier: "Budget" | "Premium";
+  startingPrice: number;
+  priceDisplay: string;
+  sharingType: "Single" | "Double" | "Triple" | "Four" | "Dormitory";
   badge?: string;
   features: string[];
   specs: {
-    roomSize: string;
-    washroom: "Attached Private" | "Attached Dedicated";
-    acAvailable: boolean;
-    balcony: boolean;
-    workDesk: boolean;
+    washroom: string;
+    ventilation: string;
+    powerBackup: boolean;
+    storage: string;
   };
   image: string;
+  isLaunchingSoon?: boolean;
 }
 
 export interface Amenity {
   id: string;
   title: string;
   description: string;
-  category: "Comfort & Living" | "Food & Dining" | "Work & Tech" | "Safety & Cleanliness";
+  category: "Essential Utilities" | "Food & Dining" | "Living Comfort" | "Safety & Cleanliness";
   iconName: string;
   highlight?: string;
-}
-
-export interface Review {
-  id: string;
-  author: string;
-  role: string;
-  stayDuration: string;
-  branch: string;
-  rating: number;
-  review: string;
-  date: string;
 }
 
 export interface FaqItem {
   question: string;
   answer: string;
-  category: "Pricing & Booking" | "Food & Meals" | "Amenities & Facilities" | "Rules & Safety";
+  category: "Pricing & Booking" | "Food & Mess" | "Amenities & Utilities" | "Location & Rules";
 }
 
 export const PG_DATA = {
   brand: {
-    name: "Zenith Living",
-    legalName: "Zenith Living Luxury Men's PG & Coliving",
-    tagline: "Premium Men's PG & Coliving Spaces Designed for Ambitious Minds",
-    shortDescription: "Experience hassle-free coliving for gentlemen. Fully furnished premium rooms, 3-times homestyle meals, 300 Mbps Wi-Fi, daily housekeeping, and 24/7 biometric security.",
-    primaryPhone: "+91 98765 43210",
-    primaryPhoneClean: "+919876543210",
-    whatsappNumber: "919876543210",
-    whatsappDefaultMessage: "Hello Zenith Living, I'm interested in booking a room visit. Please share availability and current pricing.",
-    email: "stay@zenithliving.in",
-    establishedYear: "2024",
-    overallRating: 4.9,
-    totalReviewsCount: 380,
-    googleReviewUrl: "https://maps.google.com",
-    city: "Bangalore",
-    targetAudience: "Gents / Working Professionals & Students",
+    name: "Amanora",
+    displayName: "Amanora Stays",
+    legalName: "Amanora Stays Men's PG & Coliving",
+    tagline: "Premium & Budget Men's PG in Palayam, Trivandrum",
+    shortDescription: "Quality living for gentlemen, students, and working professionals in the heart of Trivandrum. High-speed Wi-Fi, washing machine, 24/7 water & electricity, 3-times food arrangement, security, and regular housekeeping.",
+    primaryPhone: "", // kept blank as requested
+    primaryPhoneClean: "",
+    whatsappNumber: "", // kept blank as requested
+    email: "contact@amanorastays.in",
+    city: "Trivandrum",
+    state: "Kerala",
+    startingPrice: 3499,
+    targetAudience: "Gents / Students & Working Professionals",
   },
 
   branches: [
     {
-      id: "koramangala-flagship",
-      name: "Zenith Living - Koramangala (Flagship)",
-      locality: "Koramangala 4th Block",
-      city: "Bangalore",
-      landmark: "Near Sony World Signal & Wipro Park",
-      address: "Plot 42, 80 Feet Road, 4th Block, Koramangala, Bangalore, Karnataka - 560034",
-      phone: "+91 98765 43210",
-      whatsapp: "919876543210",
-      mapEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15555.276326162624!2d77.618645!3d12.934533!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae144e54e4277b%3A0x6d9f7c0a6b986161!2sKoramangala%2C%20Bengaluru%2C%20Karnataka!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin",
-      mapDirectionsUrl: "https://maps.google.com/?q=Koramangala+Bangalore",
+      id: "palayam-flagship",
+      name: "Amanora Stays - Palayam (Main Hub)",
+      locality: "Palayam",
+      city: "Trivandrum",
+      landmark: "Near University of Kerala, Saphalyam Complex & Secretariat, Palayam",
+      address: "Palayam, Thiruvananthapuram, Kerala - 695034",
+      phone: "",
+      whatsapp: "",
+      mapEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15783.567300713506!2d76.945532!3d8.502941!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b05bbb6a27e025d%3A0xbcfc11267b14d246!2sPalayam%2C%20Thiruvananthapuram%2C%20Kerala!5e0!3m2!1sen!2sin!4v1700000000000",
+      mapDirectionsUrl: "https://maps.google.com/?q=Palayam+Thiruvananthapuram",
       coordinates: {
-        latitude: 12.9352,
-        longitude: 77.6245,
+        latitude: 8.5029,
+        longitude: 76.9535,
       },
-      totalBeds: 65,
+      totalBeds: 50,
       isFlagship: true,
       status: "Active",
     },
     {
-      id: "hsr-layout",
-      name: "Zenith Living - HSR Layout (Sector 2)",
-      locality: "HSR Layout Sector 2",
-      city: "Bangalore",
-      landmark: "Opposite BDA Complex, near 27th Main",
-      address: "Building 18, 27th Main Road, Sector 2, HSR Layout, Bangalore, Karnataka - 560102",
-      phone: "+91 98765 43211",
-      whatsapp: "919876543210",
-      mapEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15556.123456789!2d77.64!3d12.91!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae1490!2sHSR+Layout!5e0!3m2!1sen!2sin!4v1700000000000",
-      mapDirectionsUrl: "https://maps.google.com/?q=HSR+Layout+Bangalore",
+      id: "technopark-expansion",
+      name: "Amanora Stays - Kazhakkoottam / Technopark",
+      locality: "Kazhakkoottam (Technopark Corridor)",
+      city: "Trivandrum",
+      landmark: "Near Technopark Main Gate, Kazhakkoottam",
+      address: "Technopark Phase 1 & 3 Corridor, Kazhakkoottam, Trivandrum, Kerala",
+      phone: "",
+      whatsapp: "",
+      mapEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15779.489115291244!2d76.874136!3d8.558231!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b05befafcf7394d%3A0xf6509f7a55920a06!2sTechnopark%2C%20Thiruvananthapuram!5e0!3m2!1sen!2sin!4v1700000000000",
+      mapDirectionsUrl: "https://maps.google.com/?q=Technopark+Trivandrum",
       coordinates: {
-        latitude: 12.9116,
-        longitude: 77.6389,
+        latitude: 8.5582,
+        longitude: 76.8812,
+      },
+      totalBeds: 60,
+      isFlagship: false,
+      status: "Launching Soon",
+    },
+    {
+      id: "vazhuthacaud-expansion",
+      name: "Amanora Stays - Vazhuthacaud",
+      locality: "Vazhuthacaud / Women's College Jn",
+      city: "Trivandrum",
+      landmark: "Near Cotton Hill & Vazhuthacaud Junction",
+      address: "Vazhuthacaud, Thiruvananthapuram, Kerala",
+      phone: "",
+      whatsapp: "",
+      mapEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15783.74312!2d76.96!3d8.498!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b05bb00!2sVazhuthacaud!5e0!3m2!1sen!2sin!4v1700000000000",
+      mapDirectionsUrl: "https://maps.google.com/?q=Vazhuthacaud+Thiruvananthapuram",
+      coordinates: {
+        latitude: 8.498,
+        longitude: 76.964,
+      },
+      totalBeds: 45,
+      isFlagship: false,
+      status: "Launching Soon",
+    },
+    {
+      id: "karyavattom-expansion",
+      name: "Amanora Stays - Karyavattom (Campus Hub)",
+      locality: "Karyavattom (University Campus)",
+      city: "Trivandrum",
+      landmark: "Near Greenfield Stadium & Kerala University Campus",
+      address: "Karyavattom, Thiruvananthapuram, Kerala",
+      phone: "",
+      whatsapp: "",
+      mapEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15780.0!2d76.88!3d8.56!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b05bf00!2sKariavattom!5e0!3m2!1sen!2sin!4v1700000000000",
+      mapDirectionsUrl: "https://maps.google.com/?q=Karyavattom+Thiruvananthapuram",
+      coordinates: {
+        latitude: 8.567,
+        longitude: 76.892,
       },
       totalBeds: 50,
       isFlagship: false,
-      status: "Active",
-    },
-    {
-      id: "electronic-city-phase1",
-      name: "Zenith Living - Electronic City (Phase 1)",
-      locality: "Electronic City Phase 1",
-      city: "Bangalore",
-      landmark: "Next to Infosys Gate 6 / Wipro Gate",
-      address: "Tech Zone Avenue, Phase 1, Electronic City, Bangalore, Karnataka - 560100",
-      phone: "+91 98765 43212",
-      whatsapp: "919876543210",
-      mapEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15560!2d77.66!3d12.84!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae6c!2sElectronic+City!5e0!3m2!1sen!2sin!4v1700000000000",
-      mapDirectionsUrl: "https://maps.google.com/?q=Electronic+City+Phase+1+Bangalore",
-      coordinates: {
-        latitude: 12.8452,
-        longitude: 77.6602,
-      },
-      totalBeds: 80,
-      isFlagship: false,
-      status: "Opening Soon",
+      status: "Launching Soon",
     },
   ] as Branch[],
 
   roomPlans: [
     {
-      id: "single-private-ac",
-      title: "Executive Single Room (Private)",
-      subtitle: "Ultimate privacy & comfort for focused professionals & founders",
-      pricePerMonth: 16500,
-      originalPrice: 18000,
-      securityDeposit: "1 Month Rent (100% Refundable)",
-      sharingType: "Single Private",
-      badge: "Most Popular for WFH",
+      id: "single-premium",
+      title: "Single Room",
+      subtitle: "Personal private sanctuary for students & focused professionals",
+      tier: "Premium",
+      startingPrice: 6999,
+      priceDisplay: "Starts from ₹6,999",
+      sharingType: "Single",
+      badge: "Maximum Privacy",
       features: [
-        "Private King Single Bed with Orthopedic Mattress",
-        "Dedicated Attached Washroom with Hot Geyser",
-        "Air Conditioner (Energy-Efficient Inverter AC)",
-        "Spacious Ergonomic Work Desk + Mesh Chair",
-        "3-Door Wardrobe with Digital Locker",
-        "Private Balcony with City View",
-        "High-Speed 300 Mbps Dedicated LAN & Wi-Fi",
+        "Private individual room with single bed & mattress",
+        "Attached / dedicated washroom",
+        "High-speed Wi-Fi router coverage",
+        "Personal study table & chair",
+        "Individual steel/wooden wardrobe with locker",
+        "Water & electricity included",
+        "3-times food arrangement available on request",
+        "Regular housekeeping & washing machine access",
       ],
       specs: {
-        roomSize: "180 sq.ft.",
-        washroom: "Attached Private",
-        acAvailable: true,
-        balcony: true,
-        workDesk: true,
+        washroom: "Attached / Private",
+        ventilation: "Well-ventilated with window",
+        powerBackup: true,
+        storage: "Dedicated Wardrobe + Lock",
       },
       image: "https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?auto=format&fit=crop&w=800&q=80",
     },
     {
-      id: "double-sharing-luxury",
-      title: "Premium Double Sharing",
-      subtitle: "Spacious dual occupancy with balanced privacy and affordability",
-      pricePerMonth: 10500,
-      originalPrice: 12000,
-      securityDeposit: "1 Month Rent (100% Refundable)",
-      sharingType: "Double Sharing",
-      badge: "Best Value",
+      id: "double-sharing",
+      title: "Double Sharing Room",
+      subtitle: "Comfortable dual-occupancy with balanced space and privacy",
+      tier: "Premium",
+      startingPrice: 4999,
+      priceDisplay: "Starts from ₹4,999",
+      sharingType: "Double",
+      badge: "Most Popular",
       features: [
-        "Two Independent Single Beds with Premium Mattresses",
-        "Attached Modern Washroom with 24/7 Geyser",
-        "Individual 2-Door Wardrobes with Key Locks",
-        "Dual Workstations with Power Outlets",
-        "AC & Non-AC Variants Available",
-        "Weekly Linen & Bedding Change",
-        "Daily Deep Room Sanitization",
+        "Two separate comfortable beds with quality mattresses",
+        "Attached washroom with 24/7 running water",
+        "High-speed Wi-Fi access",
+        "Separate dedicated wardrobes with locks",
+        "Water and electricity covered",
+        "3 times food arrangement (optional for those who want it)",
+        "Washing machine access & housekeeping",
+        "CCTV security and peaceful atmosphere",
       ],
       specs: {
-        roomSize: "220 sq.ft.",
-        washroom: "Attached Private",
-        acAvailable: true,
-        balcony: true,
-        workDesk: true,
+        washroom: "Attached Washroom",
+        ventilation: "Cross-ventilated room",
+        powerBackup: true,
+        storage: "Individual Wardrobes",
       },
       image: "https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?auto=format&fit=crop&w=800&q=80",
     },
     {
-      id: "triple-sharing-smart",
-      title: "Smart Triple Sharing",
-      subtitle: "Budget-friendly shared living with uncompromising amenities",
-      pricePerMonth: 7800,
-      originalPrice: 8900,
-      securityDeposit: "1 Month Rent (100% Refundable)",
-      sharingType: "Triple Sharing",
-      badge: "High Demand",
+      id: "triple-sharing",
+      title: "Triple Sharing Room",
+      subtitle: "Spacious shared living offering premium amenities at affordable rates",
+      tier: "Budget",
+      startingPrice: 3999,
+      priceDisplay: "Starts from ₹3,999",
+      sharingType: "Triple",
+      badge: "Budget Friendly",
       features: [
-        "Individual Beds with Storage Drawers",
-        "Spacious Attached Washroom with Western Fittings",
-        "Separate Dedicated Cupboard per Resident",
-        "High-Speed Wi-Fi on Every Floor",
-        "3-Times Hygienic Meals Included",
-        "Daily Housekeeping & Trash Disposal",
-        "Access to Gym, Lounge & Gaming Zone",
+        "Three individual beds with clean bed setups",
+        "Spacious attached washroom with running water",
+        "Dedicated cupboards/shelves per resident",
+        "High-speed Wi-Fi throughout the floor",
+        "Water & electricity charges included",
+        "Housekeeping & washing machine facility",
+        "3-times food arrangement (optional add-on)",
+        "Secure premises with CCTV coverage",
       ],
       specs: {
-        roomSize: "260 sq.ft.",
-        washroom: "Attached Private",
-        acAvailable: false,
-        balcony: false,
-        workDesk: true,
+        washroom: "Spacious Attached",
+        ventilation: "Wide airy windows",
+        powerBackup: true,
+        storage: "Dedicated Cupboards",
       },
       image: "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=800&q=80",
     },
+    {
+      id: "four-sharing",
+      title: "Four Sharing Room",
+      subtitle: "Our most economical living option with zero compromise on cleanliness",
+      tier: "Budget",
+      startingPrice: 3499,
+      priceDisplay: "Starts from ₹3,499",
+      sharingType: "Four",
+      badge: "Best Economy Stay",
+      features: [
+        "Individual cot and mattress for each resident",
+        "Unbeatable entry price starting from ₹3,499",
+        "High-speed Wi-Fi for study & work",
+        "Water & electricity included",
+        "Regular housekeeping of room and washrooms",
+        "Washing machine facility for clothes",
+        "Optional 3-times daily meals available",
+        "Round-the-clock security surveillance",
+      ],
+      specs: {
+        washroom: "Attached Clean Washroom",
+        ventilation: "Airy & bright room",
+        powerBackup: true,
+        storage: "Allocated Lockers/Shelves",
+      },
+      image: "https://images.unsplash.com/photo-1555854877-bab0e564b8d5?auto=format&fit=crop&w=800&q=80",
+    },
   ] as RoomPlan[],
+
+  dormitory: {
+    title: "Executive Dormitory Stays",
+    subtitle: "Ultra-flexible, pocket-friendly capsule & pod-style community living in Trivandrum",
+    startingPrice: 2999,
+    status: "Launching Soon",
+    badge: "Coming Soon to Palayam & Technopark",
+    description: "Designed for job aspirants, exam candidates, interns, and backpackers looking for short or medium-term stays with individual privacy curtains, personal charging ports, Wi-Fi, and clean washrooms.",
+    highlights: [
+      "Custom privacy curtains and reading lamp per pod",
+      "Individual secure luggage locker",
+      "High-speed Wi-Fi and common study zone",
+      "24/7 Water, Electricity & Housekeeping",
+      "Washing machine and optional meal arrangement",
+      "Prime Palayam center location - walkable to coaching centers & bus hubs",
+    ],
+    image: "https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=800&q=80",
+  },
 
   amenities: [
     {
-      id: "meals",
-      title: "3x Nutritious Meals Daily",
-      description: "Homestyle breakfast, lunch, and dinner prepared fresh in an in-house hygienic kitchen. Special Sunday non-veg / paneer feasts.",
-      category: "Food & Dining",
-      iconName: "Utensils",
-      highlight: "Unlimited North & South Indian Menu",
-    },
-    {
       id: "wifi",
-      title: "Ultra-Fast 300 Mbps Wi-Fi",
-      description: "Dual-band enterprise mesh Wi-Fi with seamless roaming on every floor and zero dropouts for WFH, Zoom calls & gaming.",
-      category: "Work & Tech",
+      title: "High-Speed Wi-Fi",
+      description: "Fast, reliable internet across all floors and rooms, ideal for college study, IT work, and video streaming.",
+      category: "Essential Utilities",
       iconName: "Wifi",
-      highlight: "Zero Lag WFH Ready",
+      highlight: "Uncapped High Speed",
     },
     {
-      id: "housekeeping",
-      title: "Daily Professional Housekeeping",
-      description: "Daily room sweeping, mopping, bathroom scrubbing, and regular bed linen changes to keep your space spotless.",
-      category: "Safety & Cleanliness",
-      iconName: "Sparkles",
-      highlight: "Hotel-Grade Hygiene",
-    },
-    {
-      id: "security",
-      title: "Biometric Access & 24/7 CCTV",
-      description: "Multi-tier security with biometric fingerprint gates, 64+ HD CCTV cameras across common areas, and dedicated night security warden.",
-      category: "Safety & Cleanliness",
-      iconName: "ShieldCheck",
-      highlight: "Resident Safety #1",
-    },
-    {
-      id: "power-backup",
-      title: "100% DG Power Backup",
-      description: "Heavy-duty automatic diesel generator ensuring uninterrupted electricity for lights, fans, Wi-Fi, and work setups 24/7.",
-      category: "Comfort & Living",
-      iconName: "Zap",
-      highlight: "Zero Power Cuts",
-    },
-    {
-      id: "laundry",
-      title: "Automatic Washing Machines",
-      description: "Free access to commercial front-load washing machines with dedicated terrace drying racks and iron stations.",
-      category: "Comfort & Living",
+      id: "washing-machine",
+      title: "Washing Machine",
+      description: "Dedicated automatic washing machines for residents to do their laundry hassle-free, with drying area.",
+      category: "Living Comfort",
       iconName: "Shirt",
       highlight: "Self-Service Laundry",
     },
     {
-      id: "water",
-      title: "24/7 Hot Water & RO Drinking Water",
-      description: "Solar & electric geysers in every washroom, plus multi-stage RO water purifiers with UV/UF filtration on each floor.",
-      category: "Comfort & Living",
-      iconName: "Droplets",
-      highlight: "Tested Mineral Water",
+      id: "water-electricity",
+      title: "24/7 Water & Electricity",
+      description: "Continuous running water supply and electricity coverage to ensure you never face utility disruptions.",
+      category: "Essential Utilities",
+      iconName: "Zap",
+      highlight: "Continuous Supply",
     },
     {
-      id: "gym-recreation",
-      title: "Fitness Center & Game Lounge",
-      description: "Modern fitness equipment, dumbbell rack, PS5 console, table tennis, foosball, and community screening lounge for weekend matches.",
-      category: "Work & Tech",
-      iconName: "Dumbbell",
-      highlight: "Community & Wellness",
+      id: "food-arrangement",
+      title: "3 Times Food Arrangement",
+      description: "Hygienic 3-times homestyle meal arrangements (Breakfast, Lunch & Dinner) available for residents who want it.",
+      category: "Food & Dining",
+      iconName: "Utensils",
+      highlight: "Optional Meal Service",
+    },
+    {
+      id: "security",
+      title: "Round-the-Clock Security",
+      description: "Premises protected with CCTV surveillance and secure entry management to ensure resident safety at all times.",
+      category: "Safety & Cleanliness",
+      iconName: "ShieldCheck",
+      highlight: "Safe & Protected",
+    },
+    {
+      id: "housekeeping",
+      title: "Regular Housekeeping",
+      description: "Scheduled cleaning of common areas, corridors, and washrooms to maintain high hygiene and cleanliness standards.",
+      category: "Safety & Cleanliness",
+      iconName: "Sparkles",
+      highlight: "Clean & Sanitized",
     },
   ] as Amenity[],
 
-  foodDetails: {
-    title: "Delicious, Fresh & Wholesome Meals",
-    subtitle: "Prepared daily by professional in-house chefs with zero compromise on oil quality, hygiene, and taste.",
-    highlights: [
-      { label: "Breakfast (7:30 AM - 10:00 AM)", desc: "Idli Sambar, Dosa, Poha, Aloo Paratha, Upma, Boiled Eggs & Tea/Coffee" },
-      { label: "Lunch (12:30 PM - 2:30 PM)", desc: "Roti, Rice, Dal Fry, Fresh Sabzi, Curd, Salad & Papad (Lunchbox packing available)" },
-      { label: "Dinner (7:45 PM - 10:30 PM)", desc: "Hot Chapati, Paneer Curry, Chicken Biryani (Wed/Sun), Rajma/Chole, Jeera Rice & Sweet" },
-    ],
-    features: [
-      "FSSAI-certified kitchen cleanliness protocol",
-      "Fresh daily vegetables and farm-sourced ingredients",
-      "RO purified water used exclusively for all cooking",
-      "Special festival feasts & birthday community dinners",
-    ],
-  },
-
-  comparisonTable: [
-    { feature: "Brokerage / Commission", zenith: "₹0 (Zero Brokerage)", localPg: "Demands 15-30 days brokerage" },
-    { feature: "Security Deposit", zenith: "Only 1 Month (100% Refundable)", localPg: "2 to 3 Months (Deductions frequent)" },
-    { feature: "Food Quality & Cleanliness", zenith: "In-house Chef, FSSAI Certified", localPg: "Outsourced, repetitive & oily" },
-    { feature: "Wi-Fi Stability", zenith: "300 Mbps Enterprise Mesh Router", localPg: "Single shared router with dropouts" },
-    { feature: "Maintenance Turnaround", zenith: "Same-Day Resolution via Ticket", localPg: "Takes days or goes unanswered" },
-    { feature: "Power & Water Backup", zenith: "100% Automatic Generator + RO", localPg: "Frequent outages, no generator" },
-  ],
-
-  testimonials: [
-    {
-      id: "t1",
-      author: "Aditya Sharma",
-      role: "Senior Software Engineer @ Flipkart",
-      stayDuration: "Resident for 1.5 Years",
-      branch: "Koramangala",
-      rating: 5,
-      review: "Moving to Bangalore was stressful until I found Zenith Living. The 300 Mbps Wi-Fi is flawless for remote work, rooms are cleaned every single day, and the food actually tastes like home. No crazy landlord restrictions either!",
-      date: "August 2024",
-    },
-    {
-      id: "t2",
-      author: "Karthik Menon",
-      role: "Product Manager @ Razorpay",
-      stayDuration: "Resident for 11 Months",
-      branch: "HSR Layout",
-      rating: 5,
-      review: "The transparent pricing with just 1 month deposit won me over immediately. The gym on the terrace and community gaming nights on weekends make it feel like a genuine home, not just a rented room.",
-      date: "September 2024",
-    },
-    {
-      id: "t3",
-      author: "Rohan Verma",
-      role: "Data Analyst @ Deloitte",
-      stayDuration: "Resident for 8 Months",
-      branch: "Koramangala",
-      rating: 5,
-      review: "Biometric access gives huge peace of mind. The management team handles any maintenance request within hours. By far the cleanest gents PG in Koramangala.",
-      date: "October 2024",
-    },
-  ] as Review[],
-
   faqs: [
     {
-      question: "What is the security deposit and notice period at Zenith Living?",
-      answer: "We believe in complete transparency. We only charge 1 month rent as a security deposit, which is 100% refundable upon move-out. Our notice period is just 30 days.",
+      question: "Where is Amanora Stays located in Trivandrum?",
+      answer: "Our main hub is situated in Palayam, Trivandrum—within walking distance of the University of Kerala, Government Secretariat, Saphalyam Complex, and Palayam bus junction. We are also expanding to Kazhakkoottam (near Technopark), Vazhuthacaud, and Karyavattom.",
+      category: "Location & Rules",
+    },
+    {
+      question: "What are the available room types and starting prices?",
+      answer: "We offer Single, Double, Triple, and Four sharing rooms in both Premium and Budget categories starting from ₹3,499. Exact monthly pricing varies based on room type and amenities. Contact us for current price details and package options.",
       category: "Pricing & Booking",
     },
     {
-      question: "Are meals included in the monthly rent?",
-      answer: "Yes! 3 nutritious homestyle meals (Breakfast, Lunch, and Dinner) along with evening tea are completely included in your monthly rent. On working days, we also provide lunchbox packing for office and college goers.",
-      category: "Food & Meals",
+      question: "Is food mandatory or optional at Amanora Stays?",
+      answer: "Food is flexible! We provide 3-times homestyle meal arrangements (breakfast, lunch, and dinner) specifically for those residents who want it. If you prefer eating outside or ordering, you can opt for stay-only plans.",
+      category: "Food & Mess",
     },
     {
-      question: "Is high-speed Wi-Fi provided and is it suitable for Work From Home (WFH)?",
-      answer: "Absolutely. We provide dedicated 300 Mbps enterprise dual-band mesh Wi-Fi with access points on every floor, ensuring zero dead zones and seamless video calls (Zoom, Teams, Google Meet) for IT professionals.",
-      category: "Amenities & Facilities",
+      question: "What utilities are included in the stay?",
+      answer: "High-speed Wi-Fi, 24/7 water and electricity, regular housekeeping, washing machine access, and security surveillance are fully provided for residents.",
+      category: "Amenities & Utilities",
     },
     {
-      question: "What are the check-in timings and security rules?",
-      answer: "Residents have biometric fingerprint access 24/7 for seamless entry. While there is no restrictive curfew for working professionals with night shifts, we maintain strict visitor verification and zero illegal substance policy to guarantee safety.",
-      category: "Rules & Safety",
-    },
-    {
-      question: "Can I schedule a physical or virtual room visit before booking?",
-      answer: "Yes, we encourage room visits! You can click the 'Schedule a Visit' button or message us directly on WhatsApp at +91 98765 43210. Our property manager will show you the available rooms, dining area, and facilities.",
+      question: "When is the Dormitory option launching?",
+      answer: "Our executive Dormitory stay option is Launching Soon in Trivandrum. It is designed for students, exam aspirants, and short-term visitors who want ultra-budget capsule beds with all standard amenities.",
       category: "Pricing & Booking",
     },
     {
-      question: "Are there any hidden maintenance or utility charges?",
-      answer: "No hidden charges whatsoever. High-speed Wi-Fi, 3 meals, daily housekeeping, RO water, and common area amenities are all bundled in your monthly rent. Individual room AC power consumption is metered transparently at official government unit rates.",
+      question: "How can I book a room visit or get exact price details?",
+      answer: "You can click the 'Contact Us' or 'Schedule a Visit' button on the website and submit your inquiry form. Our team will promptly get in touch with available bed options and customized pricing.",
       category: "Pricing & Booking",
-    },
-    {
-      question: "What items do I need to bring when moving in?",
-      answer: "Your room comes fully furnished with a bed, premium mattress, clean bedsheet, wardrobe with locker, work desk, and chair. You only need to bring your personal clothes, toiletries, and laptop!",
-      category: "Amenities & Facilities",
     },
   ] as FaqItem[],
 
   seo: {
-    siteUrl: "https://zenithliving.in",
-    metaTitle: "Zenith Living | Best Luxury Men's PG & Coliving in Bangalore",
-    metaDescription: "Looking for the best Gents PG in Koramangala & HSR Layout, Bangalore? Zenith Living offers luxury single & shared rooms, 3-times homestyle meals, 300 Mbps Wi-Fi, biometric security, and zero brokerage. Book a free visit today!",
+    siteUrl: "https://amanorastays.in",
+    metaTitle: "Amanora Stays | Best Men's PG & Coliving in Palayam, Trivandrum",
+    metaDescription: "Looking for a quality Gents PG in Palayam, Trivandrum? Amanora Stays offers Single, Double, Triple & Four sharing rooms (Budget & Premium) starting from ₹3,499. High-speed Wi-Fi, washing machine, 24/7 water & power, 3x food arrangement & security.",
     keywords: [
-      "Gents PG in Bangalore",
-      "Men's PG Koramangala",
-      "PG for Men HSR Layout",
-      "Luxury Coliving for Gents Bangalore",
-      "Single Room PG for Men",
-      "Executive Paying Guest Bangalore",
-      "Gents PG with food and wifi",
-      "Best PG near Sony World Signal",
-      "Zero brokerage PG Bangalore",
-      "Men's hostel with AC and food",
+      "Amanora Stays",
+      "Amanora PG Trivandrum",
+      "Gents PG Palayam Trivandrum",
+      "Men's PG in Palayam",
+      "PG in Trivandrum for Gents",
+      "Budget PG in Trivandrum",
+      "Single room PG Palayam",
+      "Hostel near University of Kerala Palayam",
+      "PG near Secretariat Trivandrum",
+      "Paying guest accommodation Trivandrum",
+      "Technopark PG Trivandrum",
     ],
   },
 };

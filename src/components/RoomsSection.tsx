@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { Check, MessageCircle, Calendar, Sparkles, Wind, Maximize2, Bath, Monitor } from "lucide-react";
+import { Check, Calendar, Sparkles, MessageCircle, Phone, ArrowRight, ShieldCheck, Bed } from "lucide-react";
 import { PG_DATA, RoomPlan } from "@/config/pg-data";
 
 interface RoomsSectionProps {
@@ -12,12 +12,14 @@ interface RoomsSectionProps {
 export default function RoomsSection({ onOpenEnquiry }: RoomsSectionProps) {
   const [selectedFilter, setSelectedFilter] = useState<string>("All");
 
-  const filterOptions = ["All", "Single Private", "Double Sharing", "Triple Sharing"];
+  const filterOptions = ["All", "Premium", "Budget", "Single", "Double", "Triple", "Four"];
 
-  const filteredRooms =
-    selectedFilter === "All"
-      ? PG_DATA.roomPlans
-      : PG_DATA.roomPlans.filter((room) => room.sharingType === selectedFilter);
+  const filteredRooms = PG_DATA.roomPlans.filter((room) => {
+    if (selectedFilter === "All") return true;
+    if (selectedFilter === "Premium") return room.tier === "Premium";
+    if (selectedFilter === "Budget") return room.tier === "Budget";
+    return room.sharingType === selectedFilter;
+  });
 
   return (
     <section id="rooms" className="py-20 bg-slate-50 text-slate-900 scroll-mt-20">
@@ -26,14 +28,13 @@ export default function RoomsSection({ onOpenEnquiry }: RoomsSectionProps) {
         <div className="text-center max-w-3xl mx-auto space-y-3">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-blue-100 text-blue-700">
             <Sparkles className="w-3.5 h-3.5" />
-            <span>Transparent Pricing • Zero Brokerage</span>
+            <span>Budget &amp; Premium Stays • Starting from ₹3,499</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-            Curated Living Spaces for Gentlemen
+            Single, Double, Triple &amp; Four Sharing Rooms
           </h2>
           <p className="text-base text-slate-600">
-            Every room is designed for maximum quietness, productivity, and restful sleep.
-            Rent includes 3x meals, 300 Mbps Wi-Fi, power backup, and daily housekeeping.
+            Tailored for students and working professionals in Palayam, Trivandrum. Whether you need complete single room privacy or an economical shared stay, we have you covered.
           </p>
         </div>
 
@@ -45,97 +46,91 @@ export default function RoomsSection({ onOpenEnquiry }: RoomsSectionProps) {
               onClick={() => setSelectedFilter(option)}
               className={`px-4 py-2 rounded-full text-sm font-medium transition-all cursor-pointer ${
                 selectedFilter === option
-                  ? "bg-blue-600 text-white shadow-md shadow-blue-500/20"
+                  ? "bg-slate-900 text-white shadow-md shadow-slate-900/20"
                   : "bg-white text-slate-600 hover:bg-slate-100 border border-slate-200"
               }`}
             >
-              {option}
+              {option === "Premium" ? "⭐ Premium Stays" : option === "Budget" ? "💰 Budget Stays" : option}
             </button>
           ))}
         </div>
 
         {/* Rooms Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {filteredRooms.map((room) => (
             <div
               key={room.id}
               className="flex flex-col bg-white rounded-2xl overflow-hidden border border-slate-200/80 shadow-sm hover:shadow-xl transition-all duration-300 group"
             >
               {/* Image & Badges */}
-              <div className="relative h-56 w-full overflow-hidden bg-slate-100">
+              <div className="relative h-48 w-full overflow-hidden bg-slate-100">
                 <Image
                   src={room.image}
-                  alt={`${room.title} at ${PG_DATA.brand.name}`}
+                  alt={`${room.title} at ${PG_DATA.brand.displayName} Palayam Trivandrum`}
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-500"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent" />
 
-                {/* Badge top-left */}
-                {room.badge && (
-                  <span className="absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-bold bg-blue-600 text-white shadow-md">
-                    {room.badge}
-                  </span>
-                )}
-
-                {/* Sharing label top-right */}
-                <span className="absolute top-3 right-3 px-2.5 py-1 rounded-md text-xs font-semibold bg-slate-900/80 text-white backdrop-blur-md">
-                  {room.sharingType}
+                {/* Tier Badge top-left */}
+                <span className={`absolute top-3 left-3 px-2.5 py-1 rounded-full text-[11px] font-bold text-white shadow-md ${
+                  room.tier === "Premium" ? "bg-indigo-600" : "bg-emerald-600"
+                }`}>
+                  {room.tier} Tier
                 </span>
 
-                {/* Price display inside image bottom */}
-                <div className="absolute bottom-3 left-4 right-4 flex items-baseline justify-between text-white">
-                  <div>
-                    <span className="text-2xl font-black">₹{room.pricePerMonth.toLocaleString("en-IN")}</span>
-                    <span className="text-xs text-slate-200 font-medium"> / month</span>
+                {/* Sharing label top-right */}
+                <span className="absolute top-3 right-3 px-2 py-0.5 rounded text-[11px] font-semibold bg-slate-950/80 text-white backdrop-blur-md">
+                  {room.sharingType} Sharing
+                </span>
+
+                {/* Price Display */}
+                <div className="absolute bottom-3 left-3 right-3 text-white">
+                  <div className="text-xs text-slate-300 font-medium">Starting from</div>
+                  <div className="text-xl font-black">
+                    ₹{room.startingPrice.toLocaleString("en-IN")}{" "}
+                    <span className="text-[11px] font-normal text-slate-300">/ month</span>
                   </div>
-                  {room.originalPrice && (
-                    <span className="text-xs text-slate-300 line-through">
-                      ₹{room.originalPrice.toLocaleString("en-IN")}
-                    </span>
-                  )}
                 </div>
               </div>
 
               {/* Room Body */}
-              <div className="p-6 flex-1 flex flex-col justify-between space-y-6">
+              <div className="p-5 flex-1 flex flex-col justify-between space-y-4">
                 <div>
-                  <h3 className="text-xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
-                    {room.title}
-                  </h3>
-                  <p className="text-xs text-slate-500 mt-1">{room.subtitle}</p>
+                  <div className="flex items-center justify-between">
+                    <h3 className="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
+                      {room.title}
+                    </h3>
+                  </div>
+                  <p className="text-xs text-slate-500 mt-1 line-clamp-2">{room.subtitle}</p>
 
-                  {/* Spec Quick Badges */}
-                  <div className="grid grid-cols-2 gap-2 mt-4 py-3 border-y border-slate-100 text-xs text-slate-700">
-                    <div className="flex items-center gap-1.5">
-                      <Maximize2 className="w-3.5 h-3.5 text-blue-600" />
-                      <span>{room.specs.roomSize}</span>
+                  {/* Quick specs */}
+                  <div className="mt-3 py-2.5 px-3 rounded-lg bg-slate-50 border border-slate-100 text-xs text-slate-700 space-y-1">
+                    <div className="flex justify-between">
+                      <span className="text-slate-500">Washroom:</span>
+                      <span className="font-semibold">{room.specs.washroom}</span>
                     </div>
-                    <div className="flex items-center gap-1.5">
-                      <Bath className="w-3.5 h-3.5 text-emerald-600" />
-                      <span>{room.specs.washroom}</span>
+                    <div className="flex justify-between">
+                      <span className="text-slate-500">Ventilation:</span>
+                      <span className="font-semibold">{room.specs.ventilation}</span>
                     </div>
-                    <div className="flex items-center gap-1.5">
-                      <Wind className="w-3.5 h-3.5 text-indigo-600" />
-                      <span>{room.specs.acAvailable ? "AC Equipped" : "Non-AC / Ventilated"}</span>
-                    </div>
-                    <div className="flex items-center gap-1.5">
-                      <Monitor className="w-3.5 h-3.5 text-blue-600" />
-                      <span>Work Desk + Chair</span>
+                    <div className="flex justify-between">
+                      <span className="text-slate-500">Storage:</span>
+                      <span className="font-semibold">{room.specs.storage}</span>
                     </div>
                   </div>
 
-                  {/* Features list */}
-                  <div className="mt-4 space-y-2">
-                    <p className="text-xs font-semibold text-slate-900 uppercase tracking-wider">
-                      Included with Room:
+                  {/* Key Included Features */}
+                  <div className="mt-4 space-y-1.5">
+                    <p className="text-[11px] font-bold text-slate-800 uppercase tracking-wider">
+                      Included with Stay:
                     </p>
-                    <ul className="space-y-1.5 text-xs text-slate-600">
-                      {room.features.slice(0, 5).map((feature, idx) => (
-                        <li key={idx} className="flex items-start gap-2">
+                    <ul className="space-y-1 text-xs text-slate-600">
+                      {room.features.slice(0, 4).map((feature, idx) => (
+                        <li key={idx} className="flex items-start gap-1.5">
                           <Check className="w-3.5 h-3.5 text-emerald-500 shrink-0 mt-0.5" />
-                          <span>{feature}</span>
+                          <span className="text-[11px]">{feature}</span>
                         </li>
                       ))}
                     </ul>
@@ -143,32 +138,27 @@ export default function RoomsSection({ onOpenEnquiry }: RoomsSectionProps) {
                 </div>
 
                 {/* Footer CTAs for this room */}
-                <div className="pt-2 border-t border-slate-100 space-y-2">
-                  <div className="text-[11px] text-slate-500 flex justify-between items-center">
-                    <span>Deposit: <strong>{room.securityDeposit}</strong></span>
-                    <span className="text-emerald-600 font-semibold">Zero Brokerage</span>
+                <div className="pt-3 border-t border-slate-100 space-y-2">
+                  <div className="text-[11px] text-center font-medium text-blue-700 bg-blue-50 py-1.5 px-2 rounded-md">
+                    Contact us for exact price details &amp; packages
                   </div>
 
                   <div className="grid grid-cols-2 gap-2">
                     <button
-                      onClick={() => onOpenEnquiry(room.sharingType)}
-                      className="w-full flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-lg text-xs font-semibold text-slate-800 bg-slate-100 hover:bg-slate-200 border border-slate-200 transition-colors cursor-pointer"
+                      onClick={() => onOpenEnquiry(`${room.title} (${room.tier})`)}
+                      className="w-full flex items-center justify-center gap-1 py-2.5 px-2 rounded-lg text-xs font-semibold text-white bg-slate-900 hover:bg-slate-800 transition-colors cursor-pointer"
                     >
-                      <Calendar className="w-3.5 h-3.5 text-blue-600" />
+                      <Calendar className="w-3.5 h-3.5" />
                       <span>Book Visit</span>
                     </button>
 
-                    <a
-                      href={`https://wa.me/${PG_DATA.brand.whatsappNumber}?text=${encodeURIComponent(
-                        `Hi Zenith Living, I am interested in the ${room.title} (₹${room.pricePerMonth}/mo). Is there a bed available to check out?`
-                      )}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-full flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-lg text-xs font-semibold text-white bg-emerald-600 hover:bg-emerald-700 transition-colors"
+                    <button
+                      onClick={() => onOpenEnquiry(`${room.title} (${room.tier})`)}
+                      className="w-full flex items-center justify-center gap-1 py-2.5 px-2 rounded-lg text-xs font-semibold text-blue-700 bg-blue-50 hover:bg-blue-100 border border-blue-200 transition-colors cursor-pointer"
                     >
-                      <MessageCircle className="w-3.5 h-3.5" />
-                      <span>WhatsApp</span>
-                    </a>
+                      <MessageCircle className="w-3.5 h-3.5 text-blue-600" />
+                      <span>Inquire Rate</span>
+                    </button>
                   </div>
                 </div>
               </div>
@@ -176,16 +166,27 @@ export default function RoomsSection({ onOpenEnquiry }: RoomsSectionProps) {
           ))}
         </div>
 
-        {/* Custom inquiry note */}
-        <div className="mt-12 text-center p-6 rounded-2xl bg-white border border-slate-200/80 shadow-sm max-w-2xl mx-auto">
-          <p className="text-sm font-medium text-slate-800">
-            Need customized accommodation for a team, company booking, or internship cohort?
-          </p>
+        {/* Dormitory Promo Banner inside Rooms Section */}
+        <div className="mt-12 p-6 rounded-2xl bg-gradient-to-r from-amber-500/10 via-amber-400/5 to-transparent border border-amber-300/60 flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="space-y-1 text-center md:text-left">
+            <div className="inline-flex items-center gap-1.5 text-xs font-bold text-amber-800">
+              <Sparkles className="w-3.5 h-3.5" />
+              <span>Looking for Capsule / Pod / Dormitory Living?</span>
+            </div>
+            <h4 className="text-lg font-bold text-slate-900">
+              Executive Dormitory Stays — Launching Soon in Trivandrum!
+            </h4>
+            <p className="text-xs text-slate-600">
+              Ultra-economical individual pods for exam students, interns, and short-term visits.
+            </p>
+          </div>
+
           <a
-            href={`tel:${PG_DATA.brand.primaryPhoneClean}`}
-            className="text-sm font-semibold text-blue-600 hover:underline mt-1 inline-block"
+            href="#dormitory"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-semibold text-xs tracking-wide shadow-md transition-all whitespace-nowrap cursor-pointer"
           >
-            Call our Property Manager directly at {PG_DATA.brand.primaryPhone} →
+            <span>View Dormitory Details</span>
+            <ArrowRight className="w-4 h-4" />
           </a>
         </div>
       </div>

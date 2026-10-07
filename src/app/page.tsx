@@ -4,6 +4,7 @@ import { useState } from "react";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import RoomsSection from "@/components/RoomsSection";
+import DormitorySection from "@/components/DormitorySection";
 import AmenitiesSection from "@/components/AmenitiesSection";
 import FoodSection from "@/components/FoodSection";
 import BranchesSection from "@/components/BranchesSection";
@@ -39,35 +40,38 @@ export default function Home() {
         {/* Hero Banner with Value Proposition & Direct Funnel */}
         <Hero onOpenEnquiry={handleOpenEnquiry} />
 
-        {/* Room Types, Specs & Transparent Monthly Pricing */}
+        {/* Room Types: Single/Double/Triple/Four Sharing (Budget & Premium) */}
         <RoomsSection onOpenEnquiry={handleOpenEnquiry} />
 
-        {/* High-Grade Facilities & Tech-First Amenities */}
+        {/* Dedicated Dormitory Section - Launching Soon */}
+        <DormitorySection onOpenEnquiry={handleOpenEnquiry} />
+
+        {/* Essential Amenities (Wi-Fi, Washing machine, Water & Power, Housekeeping, Security) */}
         <AmenitiesSection />
 
-        {/* 3x Daily Homestyle Food & In-House Kitchen Standards */}
-        <FoodSection onOpenEnquiry={() => handleOpenEnquiry()} />
+        {/* 3x Daily Homestyle Food Arrangement (For those who want it) */}
+        <FoodSection onOpenEnquiry={() => handleOpenEnquiry("Stay with 3x Food Arrangement")} />
 
-        {/* Multi-Branch Expansion Architecture & Google Maps Locator */}
+        {/* Palayam Main Hub & Upcoming 4-5 Trivandrum Branches Expansion */}
         <BranchesSection onOpenEnquiry={handleOpenEnquiry} />
 
-        {/* Authority & Trust Comparison: Zenith Living vs Traditional PG */}
+        {/* Trust Comparison: Amanora Stays vs Typical PG/Hostel */}
         <TrustComparison />
 
-        {/* Social Proof: Real Google Verified Resident Testimonials */}
+        {/* Social Proof: Real Resident Experiences in Trivandrum */}
         <TestimonialsSection />
 
         {/* AEO / GEO Answer Engine Optimized FAQ Accordion */}
-        <FaqSection />
+        <FaqSection onOpenEnquiry={() => handleOpenEnquiry()} />
       </main>
 
-      {/* Comprehensive Footer with SEO Keywords & Partnership Desk */}
+      {/* Comprehensive Footer with amanorastays.in Branding & Expansion Desk */}
       <Footer />
 
-      {/* Mobile Sticky Bottom Conversion Bar + Desktop WhatsApp Bubble */}
+      {/* Mobile Sticky Bottom Conversion Bar + Desktop Action Bubble */}
       <FloatingActionBar onOpenEnquiry={() => handleOpenEnquiry()} />
 
-      {/* Instant Room Visit & Booking Modal */}
+      {/* Instant Room Visit & Price Enquiry Modal */}
       <EnquiryModal
         isOpen={isModalOpen}
         onClose={handleCloseEnquiry}
