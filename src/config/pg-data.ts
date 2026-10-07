@@ -65,7 +65,7 @@ export const PG_DATA = {
     callingNumber: "6282830532",
     whatsappNumber: "919048575403",
     whatsappDisplay: "+91 9048575403",
-    email: "contact@amanurostays.in",
+    email: "contact@amanuro.in",
     city: "Trivandrum",
     state: "Kerala",
     startingPrice: 3499,
@@ -367,7 +367,7 @@ export const PG_DATA = {
   ] as FaqItem[],
 
   seo: {
-    siteUrl: "https://amanurostays.in",
+    siteUrl: "https://amanuro.in",
     metaTitle: "Mens PG Trivandrum | Paying Guest, Student Stay & Lodge | Amanuro Stays",
     metaDescription: "Looking for a PG, Paying Guest, Homestay, or Lodge in Trivandrum? Amanuro Stays in Palayam offers budget stays from ₹3,499. Premier Mens PG, Boys Lodge & Student Stay with Wi-Fi, washing machine, 24/7 power, water & food arrangement.",
     keywords: [

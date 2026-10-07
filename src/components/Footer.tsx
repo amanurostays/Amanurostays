@@ -172,7 +172,7 @@ export default function Footer() {
           </div>
 
           <div>
-            &copy; {currentYear} {PG_DATA.brand.displayName} (amanurostays.in). All rights reserved.
+            &copy; {currentYear} {PG_DATA.brand.displayName} (amanuro.in). All rights reserved.
           </div>
         </div>
       </div>
