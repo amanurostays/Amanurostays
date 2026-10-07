@@ -54,34 +54,36 @@ export interface FaqItem {
 
 export const PG_DATA = {
   brand: {
-    name: "Amanora",
-    displayName: "Amanora Stays",
-    legalName: "Amanora Stays Men's PG & Coliving",
+    name: "Amanuro",
+    displayName: "Amanuro Stays",
+    legalName: "Amanuro Stays Men's PG & Coliving",
     tagline: "Comfort. Living. Belonging.",
     subTagline: "Premium & Affordable Mens PG & Boys PG in Palayam, Trivandrum",
-    shortDescription: "Amanora Stays provides comfortable, affordable Mens PG and Boys PG in Palayam, Trivandrum starting from ₹3,499. Perfect student PG and working men's PG with high-speed Wi-Fi, washing machine, 24/7 water & electricity, and 3-times food arrangement.",
-    primaryPhone: "", // kept blank
-    primaryPhoneClean: "",
-    whatsappNumber: "", // kept blank
-    email: "contact@amanorastays.in",
+    shortDescription: "Amanuro Stays provides comfortable, affordable Mens PG, Paying Guest accommodation, and student stay in Palayam, Trivandrum starting from ₹3,499. Perfect boys lodge and homestay living with high-speed Wi-Fi, washing machine, 24/7 water & electricity, and 3-times food arrangement.",
+    primaryPhone: "+91 6282830532",
+    primaryPhoneClean: "+916282830532",
+    callingNumber: "6282830532",
+    whatsappNumber: "919048575403",
+    whatsappDisplay: "+91 9048575403",
+    email: "contact@amanurostays.in",
     city: "Trivandrum",
     state: "Kerala",
     startingPrice: 3499,
     startingPriceDisplay: "₹3,499",
     targetAudience: "Gents / Students & Working Professionals",
-    logoPath: "/logo.png",
+    logoPath: "/amanuro-brand-logo.jpg",
   },
 
   branches: [
     {
       id: "palayam-flagship",
-      name: "Amanora Stays - Palayam (Main Hub)",
+      name: "Amanuro Stays - Palayam (Main Hub)",
       locality: "Palayam",
       city: "Trivandrum",
       landmark: "Near University of Kerala, Saphalyam Complex & Secretariat, Palayam",
       address: "Palayam, Thiruvananthapuram, Kerala - 695034",
-      phone: "",
-      whatsapp: "",
+      phone: "+91 6282830532",
+      whatsapp: "+91 9048575403",
       mapEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15783.567300713506!2d76.945532!3d8.502941!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b05bbb6a27e025d%3A0xbcfc11267b14d246!2sPalayam%2C%20Thiruvananthapuram%2C%20Kerala!5e0!3m2!1sen!2sin!4v1700000000000",
       mapDirectionsUrl: "https://maps.google.com/?q=Palayam+Thiruvananthapuram",
       coordinates: {
@@ -94,7 +96,7 @@ export const PG_DATA = {
     },
     {
       id: "technopark-expansion",
-      name: "Amanora Stays - Kazhakkoottam / Technopark",
+      name: "Amanuro Stays - Kazhakkoottam / Technopark",
       locality: "Kazhakkoottam (Technopark Corridor)",
       city: "Trivandrum",
       landmark: "Near Technopark Main Gate, Kazhakkoottam",
@@ -113,7 +115,7 @@ export const PG_DATA = {
     },
     {
       id: "vazhuthacaud-expansion",
-      name: "Amanora Stays - Vazhuthacaud",
+      name: "Amanuro Stays - Vazhuthacaud",
       locality: "Vazhuthacaud / Women's College Jn",
       city: "Trivandrum",
       landmark: "Near Cotton Hill & Vazhuthacaud Junction",
@@ -132,7 +134,7 @@ export const PG_DATA = {
     },
     {
       id: "karyavattom-expansion",
-      name: "Amanora Stays - Karyavattom (Campus Hub)",
+      name: "Amanuro Stays - Karyavattom (Campus Hub)",
       locality: "Karyavattom (University Campus)",
       city: "Trivandrum",
       landmark: "Near Greenfield Stadium & Kerala University Campus",
@@ -168,10 +170,11 @@ export const PG_DATA = {
         "24/7 Water & Electricity covered",
         "Regular housekeeping & washing machine access",
         "Optional 3-times daily food arrangement",
+        "Clean, well-maintained washrooms with running water",
         "Round-the-clock CCTV security",
       ],
       specs: {
-        washroom: "Attached Clean Washroom",
+        washroom: "Clean & Maintained Washrooms",
         ventilation: "Airy & bright room",
         powerBackup: true,
         storage: "Allocated Lockers/Shelves",
@@ -188,7 +191,7 @@ export const PG_DATA = {
       badge: "Budget Friendly",
       features: [
         "Three individual beds with clean setups",
-        "Spacious attached washroom with running water",
+        "Clean, hygienic washrooms with 24/7 running water",
         "Dedicated cupboards per resident",
         "High-speed Wi-Fi throughout the floor",
         "Water & electricity charges covered",
@@ -196,7 +199,7 @@ export const PG_DATA = {
         "3-times food arrangement available on request",
       ],
       specs: {
-        washroom: "Spacious Attached",
+        washroom: "Clean & Maintained Washrooms",
         ventilation: "Wide airy windows",
         powerBackup: true,
         storage: "Dedicated Cupboards",
@@ -213,7 +216,7 @@ export const PG_DATA = {
       badge: "Most Popular",
       features: [
         "Two separate comfortable beds with quality mattresses",
-        "Attached washroom with 24/7 running water",
+        "Clean washrooms with 24/7 running water",
         "High-speed Wi-Fi access",
         "Separate dedicated wardrobes with locks",
         "Water and electricity covered",
@@ -221,7 +224,7 @@ export const PG_DATA = {
         "Washing machine access & regular housekeeping",
       ],
       specs: {
-        washroom: "Attached Washroom",
+        washroom: "Clean & Maintained Washrooms",
         ventilation: "Cross-ventilated room",
         powerBackup: true,
         storage: "Individual Wardrobes",
@@ -238,7 +241,7 @@ export const PG_DATA = {
       badge: "Maximum Privacy",
       features: [
         "Private individual room with single bed & mattress",
-        "Attached / dedicated washroom",
+        "Dedicated clean washroom facilities",
         "High-speed Wi-Fi router coverage",
         "Personal study table & chair",
         "Individual steel/wooden wardrobe with locker",
@@ -247,7 +250,7 @@ export const PG_DATA = {
         "Regular housekeeping & washing machine access",
       ],
       specs: {
-        washroom: "Attached / Private",
+        washroom: "Dedicated Clean Washrooms",
         ventilation: "Well-ventilated with window",
         powerBackup: true,
         storage: "Dedicated Wardrobe + Lock",
@@ -328,17 +331,17 @@ export const PG_DATA = {
   faqs: [
     {
       question: "Where is this Mens PG in Trivandrum located?",
-      answer: "Amanora Stays is centrally located in Palayam, Trivandrum—within walking distance of the University of Kerala, Government Secretariat, Central Library, Saphalyam Complex, and Palayam Central Bus Terminal. We are also planning 4 to 5 more PGs across Trivandrum soon (near Technopark, Kazhakkoottam, and Vazhuthacaud).",
+      answer: "Amanuro Stays is centrally located in Palayam, Trivandrum—within walking distance of the University of Kerala, Government Secretariat, Central Library, Saphalyam Complex, and Palayam Central Bus Terminal. We are also planning 4 to 5 more PGs across Trivandrum soon (near Technopark, Kazhakkoottam, and Vazhuthacaud).",
       category: "Location & Dormitory",
     },
     {
-      question: "Why is Amanora Stays known as an affordable PG in Trivandrum?",
+      question: "Why is Amanuro Stays known as an affordable PG in Trivandrum?",
       answer: "We offer budget four-sharing rooms starting from just ₹3,499 per month, making it one of the most affordable PG options in Trivandrum. Single, Double, and Triple sharing options are also available. Contact us directly for customized packages.",
       category: "Pricing & Booking",
     },
     {
       question: "Do you offer a PG with food in Trivandrum?",
-      answer: "Yes! Amanora Stays provides an optional 3-times homestyle food arrangement (Breakfast, Lunch, and Dinner) for those who want it. If you prefer eating out or ordering, you can choose a stay-only plan with zero compulsory food charges.",
+      answer: "Yes! Amanuro Stays provides an optional 3-times homestyle food arrangement (Breakfast, Lunch, and Dinner) for those who want it. If you prefer eating out or ordering, you can choose a stay-only plan with zero compulsory food charges.",
       category: "Food & Meals",
     },
     {
@@ -352,7 +355,7 @@ export const PG_DATA = {
       category: "Amenities & Utilities",
     },
     {
-      question: "Is Amanora Stays suitable as a student PG and working men's PG in Trivandrum?",
+      question: "Is Amanuro Stays suitable as a student PG and working men's PG in Trivandrum?",
       answer: "Yes, our premises cater specifically to college students (University of Kerala, civil service & PSC aspirants) and working gentlemen (Technopark engineers, bank officers, corporate professionals) with peaceful study hours and round-the-clock CCTV security.",
       category: "Location & Dormitory",
     },
@@ -364,9 +367,9 @@ export const PG_DATA = {
   ] as FaqItem[],
 
   seo: {
-    siteUrl: "https://amanorastays.in",
-    metaTitle: "Mens PG Trivandrum | Boys & Student PG in Trivandrum | Amanora Stays",
-    metaDescription: "Looking for the best PG in Trivandrum? Amanora Stays offers affordable Mens PG & Boys PG in Palayam, Trivandrum starting from ₹3,499. Ideal student PG & working men's PG with Wi-Fi, washing machine, 24/7 water, electricity & 3-times food arrangement.",
+    siteUrl: "https://amanurostays.in",
+    metaTitle: "Mens PG Trivandrum | Paying Guest, Student Stay & Lodge | Amanuro Stays",
+    metaDescription: "Looking for a PG, Paying Guest, Homestay, or Lodge in Trivandrum? Amanuro Stays in Palayam offers budget stays from ₹3,499. Premier Mens PG, Boys Lodge & Student Stay with Wi-Fi, washing machine, 24/7 power, water & food arrangement.",
     keywords: [
       "PG in Trivandrum",
       "Mens PG Trivandrum",
@@ -377,10 +380,25 @@ export const PG_DATA = {
       "Student PG Trivandrum",
       "PG with Wi-Fi Trivandrum",
       "PG with washing machine Trivandrum",
-      "Amanora Stays",
+      "Paying Guest Trivandrum",
+      "Paying Guest in Trivandrum",
+      "Paying Guest Palayam",
+      "Gents Paying Guest Trivandrum",
+      "Boys Paying Guest Trivandrum",
+      "Stay in Trivandrum",
+      "Men's Stay Trivandrum",
+      "Student Stay Trivandrum",
+      "Budget Stay Trivandrum",
+      "Homestay Trivandrum",
+      "Gents Homestay Trivandrum",
+      "Homestay in Trivandrum for Gents",
+      "Lodge in Trivandrum",
+      "Boys Lodge Trivandrum",
+      "Lodge near Palayam Trivandrum",
+      "Gents Lodge Palayam",
+      "Amanuro Stays",
+      "Amanuro PG",
       "PG in Palayam Trivandrum",
-      "Gents PG Trivandrum",
-      "Hostel in Trivandrum for Boys",
     ],
   },
 };

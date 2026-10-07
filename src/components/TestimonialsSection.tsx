@@ -33,28 +33,28 @@ export default function TestimonialsSection() {
   ];
 
   return (
-    <section className="py-20 bg-slate-900 text-white">
+    <section className="py-16 sm:py-20 bg-white text-slate-900 border-b border-emerald-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-3">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
-            <CheckCircle className="w-3.5 h-3.5" />
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-emerald-100 text-teal-900 border border-emerald-200">
+            <CheckCircle className="w-3.5 h-3.5 text-emerald-700" />
             <span>Resident Experiences</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-teal-950 tracking-tight">
             Trusted by Students &amp; Professionals in Trivandrum
           </h2>
-          <p className="text-base text-slate-300">
+          <p className="text-base text-slate-600">
             Here is what our residents have to say about staying at {PG_DATA.brand.displayName}.
           </p>
         </div>
 
         {/* Testimonials Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-10">
           {testimonials.map((t) => (
             <div
               key={t.id}
-              className="p-6 rounded-2xl bg-slate-800/80 border border-slate-700/80 flex flex-col justify-between space-y-6 hover:border-slate-500 transition-colors"
+              className="p-6 rounded-2xl bg-gradient-to-b from-white to-emerald-50/30 border border-emerald-100 shadow-sm hover:border-emerald-300 hover:shadow-md flex flex-col justify-between space-y-6 transition-all group"
             >
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
@@ -63,36 +63,27 @@ export default function TestimonialsSection() {
                       <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />
                     ))}
                   </div>
-                  <Quote className="w-6 h-6 text-slate-600" />
+                  <Quote className="w-5 h-5 text-emerald-200" />
                 </div>
 
-                <p className="text-sm text-slate-300 leading-relaxed italic">
+                <p className="text-xs sm:text-sm text-slate-700 leading-relaxed italic">
                   &ldquo;{t.review}&rdquo;
                 </p>
               </div>
 
-              <div className="pt-4 border-t border-slate-700/60 flex items-center justify-between">
+              <div className="pt-4 border-t border-emerald-100 flex items-center justify-between">
                 <div>
-                  <h4 className="text-sm font-bold text-white">{t.author}</h4>
-                  <p className="text-xs text-lime-300 font-semibold">{t.role}</p>
-                  <p className="text-[11px] text-slate-400 mt-0.5">
-                    {t.location} • {t.stayDuration}
-                  </p>
+                  <h4 className="text-xs font-bold text-teal-950">{t.author}</h4>
+                  <p className="text-[11px] text-emerald-700 font-semibold">{t.role}</p>
+                </div>
+                <div className="text-right">
+                  <span className="text-[10px] font-bold text-teal-900 bg-emerald-100 border border-emerald-200 px-2 py-0.5 rounded-md">
+                    {t.stayDuration}
+                  </span>
                 </div>
               </div>
             </div>
           ))}
-        </div>
-
-        {/* Aggregate Badge */}
-        <div className="mt-12 text-center">
-          <div className="inline-flex flex-col sm:flex-row items-center gap-3 px-6 py-3 rounded-2xl bg-slate-800 border border-slate-700 text-xs text-slate-300">
-            <span className="font-semibold text-white">
-              ⭐ 4.9 out of 5 Resident Satisfaction
-            </span>
-            <span className="hidden sm:inline text-slate-600">•</span>
-            <span className="text-emerald-400 font-medium">Palayam, Thiruvananthapuram, Kerala</span>
-          </div>
         </div>
       </div>
     </section>

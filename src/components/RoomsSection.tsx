@@ -22,7 +22,7 @@ export default function RoomsSection({ onOpenEnquiry }: RoomsSectionProps) {
   });
 
   return (
-    <section id="rooms" className="py-20 bg-slate-50 text-slate-900 scroll-mt-20">
+    <section id="rooms" className="py-16 sm:py-20 bg-gradient-to-b from-emerald-50/40 via-white to-emerald-50/30 text-slate-900 scroll-mt-20 border-b border-emerald-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header with Proper Centering & High-Intent SEO Keywords */}
         <div className="text-center max-w-3xl mx-auto space-y-3">
@@ -34,7 +34,7 @@ export default function RoomsSection({ onOpenEnquiry }: RoomsSectionProps) {
             Single, Double, Triple &amp; Four Sharing Rooms
           </h2>
           <p className="text-base text-slate-600">
-            Looking for an <strong>affordable PG in Trivandrum</strong>? Amanora Stays offers well-ventilated, fully furnished rooms for college students and working bachelors in Palayam. Stays start from ₹3,499. Contact us for complete room packages.
+            Looking for an <strong className="text-teal-900 font-semibold">affordable PG in Trivandrum</strong>? Amanuro Stays offers well-ventilated, fully furnished rooms for college students and working bachelors in Palayam. Stays start from ₹3,499. Contact us for complete room packages.
           </p>
         </div>
 
@@ -44,10 +44,10 @@ export default function RoomsSection({ onOpenEnquiry }: RoomsSectionProps) {
             <button
               key={option}
               onClick={() => setSelectedFilter(option)}
-              className={`px-4 py-2 rounded-full text-sm font-semibold transition-all cursor-pointer ${
+              className={`px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer ${
                 selectedFilter === option
-                  ? "bg-teal-950 text-white shadow-md shadow-teal-950/20 scale-105"
-                  : "bg-white text-slate-700 hover:bg-emerald-50 border border-slate-200 hover:border-emerald-300"
+                  ? "bg-teal-900 text-white shadow-md shadow-teal-900/20"
+                  : "bg-white text-slate-700 hover:bg-emerald-50 hover:text-emerald-800 border border-emerald-200"
               }`}
             >
               {option === "Premium" ? "⭐ Premium Stays" : option === "Budget" ? "💰 Budget Stays" : option}
@@ -72,17 +72,19 @@ export default function RoomsSection({ onOpenEnquiry }: RoomsSectionProps) {
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-teal-950/80 via-transparent to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-teal-950/85 via-teal-950/20 to-transparent" />
 
                   {/* Tier Badge top-left */}
-                  <span className={`absolute top-3 left-3 px-2.5 py-1 rounded-full text-[11px] font-bold text-white shadow-md ${
-                    room.tier === "Premium" ? "bg-teal-700" : "bg-emerald-600"
+                  <span className={`absolute top-3 left-3 px-2.5 py-1 rounded-md text-[10px] font-bold shadow-md text-white ${
+                    room.tier === "Premium"
+                      ? "bg-teal-700 border border-teal-500/50"
+                      : "bg-emerald-600 border border-emerald-400/50"
                   }`}>
                     {room.tier} Tier
                   </span>
 
                   {/* Sharing label top-right */}
-                  <span className="absolute top-3 right-3 px-2 py-0.5 rounded text-[11px] font-semibold bg-slate-950/80 text-white backdrop-blur-md">
+                  <span className="absolute top-3 right-3 px-2 py-0.5 rounded text-[10px] font-bold bg-slate-950/80 text-white backdrop-blur-md shadow-sm">
                     {room.sharingType} Sharing
                   </span>
 
@@ -90,14 +92,14 @@ export default function RoomsSection({ onOpenEnquiry }: RoomsSectionProps) {
                   <div className="absolute bottom-3 left-3 right-3 text-white">
                     {room.hasStartingRate ? (
                       <div>
-                        <div className="text-[11px] text-emerald-200 font-medium">Monthly Tariff</div>
+                        <div className="text-[10px] text-emerald-200 font-medium">Monthly Tariff</div>
                         <div className="text-xl font-black text-lime-300">
                           Starting from ₹3,499
                         </div>
                       </div>
                     ) : (
                       <div>
-                        <div className="text-[11px] text-emerald-200 font-medium">Pricing Details</div>
+                        <div className="text-[10px] text-emerald-200 font-medium">Pricing Details</div>
                         <div className="text-sm font-bold text-white">
                           Contact us for price details
                         </div>
@@ -107,8 +109,8 @@ export default function RoomsSection({ onOpenEnquiry }: RoomsSectionProps) {
                 </div>
 
                 {/* Room Details */}
-                <div className="p-5 space-y-3">
-                  <h3 className="text-lg font-bold text-slate-900 group-hover:text-emerald-700 transition-colors">
+                <div className="p-4 space-y-3">
+                  <h3 className="text-base font-bold text-slate-900 group-hover:text-emerald-700 transition-colors">
                     {room.title}
                   </h3>
                   <p className="text-xs text-slate-500 line-clamp-2">{room.subtitle}</p>
@@ -131,7 +133,7 @@ export default function RoomsSection({ onOpenEnquiry }: RoomsSectionProps) {
 
                   {/* Key Included Features */}
                   <div className="pt-1 space-y-1.5">
-                    <p className="text-[11px] font-bold text-teal-950 uppercase tracking-wider">
+                    <p className="text-[10px] font-bold text-teal-950 uppercase tracking-wider">
                       Included with Stay:
                     </p>
                     <ul className="space-y-1 text-xs text-slate-600">
@@ -147,15 +149,15 @@ export default function RoomsSection({ onOpenEnquiry }: RoomsSectionProps) {
               </div>
 
               {/* Footer CTAs for this room */}
-              <div className="p-5 pt-0 space-y-2 mt-auto">
-                <div className="text-[11px] text-center font-medium text-teal-900 bg-emerald-50/80 py-1.5 px-2 rounded-md">
+              <div className="p-4 pt-0 space-y-2 mt-auto">
+                <div className="text-[11px] text-center font-medium text-teal-900 bg-emerald-50/80 py-1 px-2 rounded border border-emerald-100">
                   Contact us for exact price details
                 </div>
 
                 <div className="grid grid-cols-2 gap-2">
                   <button
                     onClick={() => onOpenEnquiry(`${room.title} (${room.tier})`)}
-                    className="w-full flex items-center justify-center gap-1 py-2.5 px-2 rounded-lg text-xs font-bold text-white bg-teal-950 hover:bg-teal-900 transition-colors cursor-pointer"
+                    className="w-full flex items-center justify-center gap-1 py-2 px-2 rounded-lg text-xs font-bold text-white bg-teal-900 hover:bg-teal-800 transition-colors cursor-pointer shadow-xs"
                   >
                     <Calendar className="w-3.5 h-3.5" />
                     <span>Book Visit</span>
@@ -163,7 +165,7 @@ export default function RoomsSection({ onOpenEnquiry }: RoomsSectionProps) {
 
                   <button
                     onClick={() => onOpenEnquiry(`${room.title} (${room.tier})`)}
-                    className="w-full flex items-center justify-center gap-1 py-2.5 px-2 rounded-lg text-xs font-bold text-teal-950 bg-emerald-100 hover:bg-emerald-200 transition-colors cursor-pointer"
+                    className="w-full flex items-center justify-center gap-1 py-2 px-2 rounded-lg text-xs font-bold text-teal-950 bg-emerald-100 hover:bg-emerald-200 border border-emerald-200 transition-colors cursor-pointer"
                   >
                     <MessageCircle className="w-3.5 h-3.5 text-emerald-700" />
                     <span>Inquire Rate</span>
@@ -175,10 +177,10 @@ export default function RoomsSection({ onOpenEnquiry }: RoomsSectionProps) {
         </div>
 
         {/* Dormitory Promo Banner inside Rooms Section */}
-        <div className="mt-12 p-6 rounded-2xl bg-gradient-to-r from-emerald-50 via-teal-50 to-white border border-emerald-200 flex flex-col md:flex-row items-center justify-between gap-6 shadow-sm">
+        <div className="mt-12 p-6 rounded-2xl bg-gradient-to-r from-emerald-100/70 via-teal-50 to-white border border-emerald-200 flex flex-col md:flex-row items-center justify-between gap-6 shadow-xs">
           <div className="space-y-1 text-center md:text-left">
             <div className="inline-flex items-center gap-1.5 text-xs font-bold text-teal-900">
-              <Sparkles className="w-3.5 h-3.5 text-emerald-600" />
+              <Sparkles className="w-3.5 h-3.5 text-emerald-700" />
               <span>Looking for Short-Term / Daily Stay Pods in Trivandrum?</span>
             </div>
             <h4 className="text-lg font-bold text-teal-950">
@@ -191,7 +193,7 @@ export default function RoomsSection({ onOpenEnquiry }: RoomsSectionProps) {
 
           <a
             href="#dormitory"
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-teal-950 hover:bg-teal-900 text-white font-bold text-xs tracking-wide shadow-md transition-all whitespace-nowrap cursor-pointer shrink-0"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-teal-900 hover:bg-teal-800 text-white font-bold text-xs tracking-wide shadow-md transition-all whitespace-nowrap cursor-pointer shrink-0"
           >
             <span>View Daily Dormitory</span>
             <ArrowRight className="w-4 h-4" />

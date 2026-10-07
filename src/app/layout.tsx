@@ -1,21 +1,18 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import JsonLd from "@/components/JsonLd";
 import { PG_DATA } from "@/config/pg-data";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const plusJakartaSans = Plus_Jakarta_Sans({
+  variable: "--font-plus-jakarta",
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+  display: "swap",
 });
 
 export const viewport: Viewport = {
-  themeColor: "#0f172a",
+  themeColor: "#ffffff",
   width: "device-width",
   initialScale: 1,
 };
@@ -51,7 +48,7 @@ export const metadata: Metadata = {
     siteName: PG_DATA.brand.displayName,
     images: [
       {
-        url: "/logo.png",
+        url: "/amanuro-brand-logo.jpg",
         width: 800,
         height: 800,
         alt: `${PG_DATA.brand.displayName} - Mens PG in Trivandrum`,
@@ -77,12 +74,12 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased scroll-smooth`}
+      className={`${plusJakartaSans.variable} h-full antialiased scroll-smooth`}
     >
       <head>
         <JsonLd />
       </head>
-      <body className="min-h-full flex flex-col bg-white text-slate-900 selection:bg-blue-600 selection:text-white">
+      <body className="min-h-full flex flex-col bg-white text-stone-900 selection:bg-emerald-900 selection:text-white">
         {children}
       </body>
     </html>

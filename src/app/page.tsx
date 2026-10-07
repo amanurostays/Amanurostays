@@ -56,7 +56,7 @@ export default function Home() {
         {/* Palayam Main Hub & Upcoming 4-5 Trivandrum Branches Expansion */}
         <BranchesSection onOpenEnquiry={handleOpenEnquiry} />
 
-        {/* Trust Comparison: Amanora Stays vs Typical PG/Hostel */}
+        {/* Trust Comparison: Amanuro Stays vs Typical PG/Hostel */}
         <TrustComparison />
 
         {/* Social Proof: Real Resident Experiences in Trivandrum */}
@@ -69,7 +69,7 @@ export default function Home() {
         <LocalSeoCloud />
       </main>
 
-      {/* Comprehensive Footer with amanorastays.in Branding */}
+      {/* Comprehensive Footer with amanurostays.in Branding */}
       <Footer />
 
       {/* Mobile Sticky Bottom Conversion Bar + Desktop Action Bubble */}
