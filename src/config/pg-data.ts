@@ -368,7 +368,7 @@ export const PG_DATA = {
 
   seo: {
     siteUrl: "https://amanuro.in",
-    metaTitle: "Mens PG Trivandrum | Paying Guest, Student Stay & Lodge | Amanuro Stays",
+    metaTitle: "Affordable PG in the heart of Trivandrum | Amanuro Stays",
     metaDescription: "Looking for a PG, Paying Guest, Homestay, or Lodge in Trivandrum? Amanuro Stays in Palayam offers budget stays from ₹3,499. Premier Mens PG, Boys Lodge & Student Stay with Wi-Fi, washing machine, 24/7 power, water & food arrangement.",
     keywords: [
       "PG in Trivandrum",
