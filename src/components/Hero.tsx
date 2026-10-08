@@ -112,7 +112,7 @@ export default function Hero({ onOpenEnquiry }: HeroProps) {
             <div className="pt-4 border-t border-emerald-900/60 flex flex-wrap items-center justify-center lg:justify-start gap-2 text-xs text-stone-400 w-full">
               <div className="flex items-center gap-1.5 text-stone-300 font-medium">
                 <MapPin className="w-3.5 h-3.5 text-amber-400" />
-                <span>Hubs Open: Palayam (near Sanskrit College &amp; RBI), Pattom &amp; Edappazhanji</span>
+                <span>Hubs Open: Palayam, Pattom, Vellayambalam &amp; Sasthamangalam</span>
               </div>
               <span className="hidden sm:inline text-stone-600">•</span>
               <span className="text-amber-300 font-semibold">

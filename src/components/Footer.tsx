@@ -163,7 +163,7 @@ export default function Footer() {
                 </li>
               ))}
               <li className="pt-2 text-[11px] text-stone-400">
-                Planning 4–5 more PG branches across Trivandrum soon.
+                Sufficient branches across Trivandrum with continuous expansion planned.
               </li>
             </ul>
           </div>
