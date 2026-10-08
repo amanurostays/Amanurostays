@@ -77,6 +77,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: PG_DATA.seo.siteUrl,
   },
+  verification: {
+    google: "r9rdAvDuS4s9n8vmjUp-nHFhE3NX06W91BIPiF7181Q",
+  },
 };
 
 export default function RootLayout({
@@ -95,7 +98,8 @@ export default function RootLayout({
         <link rel="icon" type="image/png" sizes="32x32" href="/icon-32x32.png" />
         <link rel="icon" type="image/png" sizes="192x192" href="/icon-192x192.png" />
         <link rel="icon" type="image/png" sizes="512x512" href="/icon.png" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon.png" />
+        {/* Google Search Console Verification */}
+        <meta name="google-site-verification" content="r9rdAvDuS4s9n8vmjUp-nHFhE3NX06W91BIPiF7181Q" />
 
         {/* Primary Meta Tags for Social & WhatsApp Crawlers */}
         <meta name="title" content="Affordable PG in the heart of Trivandrum | Amanuro Stays" />
