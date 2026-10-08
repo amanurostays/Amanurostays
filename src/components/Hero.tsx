@@ -104,7 +104,7 @@ export default function Hero({ onOpenEnquiry }: HeroProps) {
                 className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold transition-colors shadow-xs"
               >
                 <MessageCircle className="w-3.5 h-3.5" />
-                <span>WhatsApp: <strong>9048575403</strong></span>
+                <span>WhatsApp: <strong>6282830532</strong></span>
               </a>
             </div>
 

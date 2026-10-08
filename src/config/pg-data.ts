@@ -64,8 +64,8 @@ export const PG_DATA = {
     primaryPhone: "+91 6282830532",
     primaryPhoneClean: "+916282830532",
     callingNumber: "6282830532",
-    whatsappNumber: "919048575403",
-    whatsappDisplay: "+91 9048575403",
+    whatsappNumber: "916282830532",
+    whatsappDisplay: "+91 6282830532",
     email: "contact@amanuro.in",
     city: "Trivandrum",
     state: "Kerala",
@@ -93,7 +93,7 @@ export const PG_DATA = {
       landmark: "Near Sanskrit College, RBI, Secretariat & University of Kerala",
       address: "Palayam, Thiruvananthapuram, Kerala - 695034",
       phone: "+91 6282830532",
-      whatsapp: "+91 9048575403",
+      whatsapp: "+91 6282830532",
       mapEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15783.567300713506!2d76.945532!3d8.502941!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b05bbb6a27e025d%3A0xbcfc11267b14d246!2sPalayam%2C%20Thiruvananthapuram%2C%20Kerala!5e0!3m2!1sen!2sin!4v1700000000000",
       mapDirectionsUrl: "https://maps.google.com/?q=Palayam+Thiruvananthapuram",
       coordinates: {
@@ -113,7 +113,7 @@ export const PG_DATA = {
       landmark: "Plamood • Medical College • Kumarapuram",
       address: "Pattom Hub, Thiruvananthapuram, Kerala - 695004",
       phone: "+91 6282830532",
-      whatsapp: "+91 9048575403",
+      whatsapp: "+91 6282830532",
       mapEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15783.567300713506!2d76.945532!3d8.502941!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b05bbb6a27e025d%3A0xbcfc11267b14d246!2sPalayam%2C%20Thiruvananthapuram%2C%20Kerala!5e0!3m2!1sen!2sin!4v1700000000000",
       mapDirectionsUrl: "https://maps.google.com/?q=Pattom+Thiruvananthapuram",
       coordinates: {
@@ -133,7 +133,7 @@ export const PG_DATA = {
       landmark: "Kowdiar • Ambalamukku • Peroorkada",
       address: "Vellayambalam Hub, Thiruvananthapuram, Kerala - 695010",
       phone: "+91 6282830532",
-      whatsapp: "+91 9048575403",
+      whatsapp: "+91 6282830532",
       mapEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15783.567300713506!2d76.945532!3d8.502941!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b05bbb6a27e025d%3A0xbcfc11267b14d246!2sPalayam%2C%20Thiruvananthapuram%2C%20Kerala!5e0!3m2!1sen!2sin!4v1700000000000",
       mapDirectionsUrl: "https://maps.google.com/?q=Vellayambalam+Thiruvananthapuram",
       coordinates: {
@@ -153,7 +153,7 @@ export const PG_DATA = {
       landmark: "Edapazhanji • Jagathi • Vazhuthacaud",
       address: "Sasthamangalam Hub, Thiruvananthapuram, Kerala - 695010",
       phone: "+91 6282830532",
-      whatsapp: "+91 9048575403",
+      whatsapp: "+91 6282830532",
       mapEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15783.567300713506!2d76.945532!3d8.502941!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b05bbb6a27e025d%3A0xbcfc11267b14d246!2sPalayam%2C%20Thiruvananthapuram%2C%20Kerala!5e0!3m2!1sen!2sin!4v1700000000000",
       mapDirectionsUrl: "https://maps.google.com/?q=Sasthamangalam+Thiruvananthapuram",
       coordinates: {
@@ -173,7 +173,7 @@ export const PG_DATA = {
       landmark: "Near Technopark Main Gate & NH Bypass Corridor",
       address: "Technopark Phase 1 & 3 Corridor, Kazhakkoottam, Trivandrum, Kerala",
       phone: "+91 6282830532",
-      whatsapp: "+91 9048575403",
+      whatsapp: "+91 6282830532",
       mapEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15783.567300713506!2d76.945532!3d8.502941!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b05bbb6a27e025d%3A0xbcfc11267b14d246!2sPalayam%2C%20Thiruvananthapuram%2C%20Kerala!5e0!3m2!1sen!2sin!4v1700000000000",
       mapDirectionsUrl: "https://maps.google.com/?q=Technopark+Trivandrum",
       coordinates: {

@@ -185,7 +185,7 @@ export default function BranchesSection({ onOpenEnquiry }: BranchesSectionProps)
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-xl text-xs font-bold text-white bg-emerald-600 hover:bg-emerald-700 transition-colors shadow-2xs"
-                    title="WhatsApp 9048575403"
+                    title="WhatsApp 6282830532"
                   >
                     <MessageCircle className="w-3.5 h-3.5" />
                     <span>WhatsApp</span>

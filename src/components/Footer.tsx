@@ -55,7 +55,7 @@ export default function Footer() {
                 className="flex items-center gap-2 text-emerald-300 hover:text-amber-300 font-semibold transition-colors"
               >
                 <MessageCircle className="w-4 h-4 text-emerald-400 shrink-0" />
-                <span>WhatsApp: +91 9048575403</span>
+                <span>WhatsApp: +91 6282830532</span>
               </a>
 
               <div className="flex items-center gap-2">

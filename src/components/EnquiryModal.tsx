@@ -107,7 +107,7 @@ export default function EnquiryModal({
                   className="inline-flex items-center justify-center gap-1.5 px-3.5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-2xs"
                 >
                   <MessageCircle className="w-3.5 h-3.5" />
-                  <span>WhatsApp 9048575403</span>
+                  <span>WhatsApp 6282830532</span>
                 </a>
                 <button
                   onClick={handleResetAndClose}
@@ -234,7 +234,7 @@ export default function EnquiryModal({
                     rel="noopener noreferrer"
                     className="font-bold text-emerald-700 hover:underline"
                   >
-                    WhatsApp 9048575403
+                    WhatsApp 6282830532
                   </a>
                 </p>
                 <p className="text-[11px] text-slate-400">

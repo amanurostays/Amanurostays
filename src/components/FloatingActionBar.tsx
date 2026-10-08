@@ -40,7 +40,7 @@ export default function FloatingActionBar({ onOpenEnquiry }: FloatingActionBarPr
           </div>
           <div className="text-left pr-1">
             <span className="block text-[9px] uppercase font-bold text-emerald-100">WhatsApp</span>
-            <span className="block text-xs font-bold text-white leading-none">9048575403</span>
+            <span className="block text-xs font-bold text-white leading-none">6282830532</span>
           </div>
         </a>
 
@@ -66,7 +66,7 @@ export default function FloatingActionBar({ onOpenEnquiry }: FloatingActionBarPr
             <span className="text-[11px] font-bold">Call</span>
           </a>
 
-          {/* WhatsApp 9048575403 */}
+          {/* WhatsApp 6282830532 */}
           <a
             href={whatsappUrl}
             target="_blank"
