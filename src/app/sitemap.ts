@@ -3,50 +3,44 @@ import { PG_DATA } from "@/config/pg-data";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = PG_DATA.seo.siteUrl;
-  const lastMod = new Date("2026-10-01");
+  const lastMod = new Date();
 
   return [
     {
       url: baseUrl,
       lastModified: lastMod,
-      changeFrequency: "weekly",
+      changeFrequency: "daily",
       priority: 1.0,
     },
     {
-      url: `${baseUrl}#rooms`,
+      url: `${baseUrl}/pg-in-palayam`,
       lastModified: lastMod,
       changeFrequency: "weekly",
       priority: 0.9,
     },
     {
-      url: `${baseUrl}#amenities`,
-      lastModified: lastMod,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}#dormitory`,
+      url: `${baseUrl}/pg-in-pattom`,
       lastModified: lastMod,
       changeFrequency: "weekly",
-      priority: 0.8,
+      priority: 0.9,
     },
     {
-      url: `${baseUrl}#food`,
-      lastModified: lastMod,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}#branches`,
+      url: `${baseUrl}/pg-in-vellayambalam`,
       lastModified: lastMod,
       changeFrequency: "weekly",
-      priority: 0.8,
+      priority: 0.9,
     },
     {
-      url: `${baseUrl}#faqs`,
+      url: `${baseUrl}/pg-in-sasthamangalam`,
       lastModified: lastMod,
-      changeFrequency: "monthly",
-      priority: 0.7,
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/executive-dormitory-trivandrum`,
+      lastModified: lastMod,
+      changeFrequency: "weekly",
+      priority: 0.9,
     },
   ];
 }

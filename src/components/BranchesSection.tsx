@@ -194,6 +194,38 @@ export default function BranchesSection({ onOpenEnquiry }: BranchesSectionProps)
               </div>
 
               <div className="text-xs text-slate-500 pt-2 border-t border-slate-100 flex flex-wrap items-center justify-between gap-2">
+                {activeBranch.id === "palayam-hub" && (
+                  <a
+                    href="/pg-in-palayam"
+                    className="flex items-center gap-1 font-bold text-teal-950 hover:text-emerald-700 hover:underline"
+                  >
+                    <span>Explore Palayam Hub Neighborhood Guide →</span>
+                  </a>
+                )}
+                {activeBranch.id === "pattom-hub" && (
+                  <a
+                    href="/pg-in-pattom"
+                    className="flex items-center gap-1 font-bold text-teal-950 hover:text-emerald-700 hover:underline"
+                  >
+                    <span>Explore Pattom Hub Neighborhood Guide →</span>
+                  </a>
+                )}
+                {activeBranch.id === "vellayambalam-hub" && (
+                  <a
+                    href="/pg-in-vellayambalam"
+                    className="flex items-center gap-1 font-bold text-teal-950 hover:text-emerald-700 hover:underline"
+                  >
+                    <span>Explore Vellayambalam Hub Neighborhood Guide →</span>
+                  </a>
+                )}
+                {activeBranch.id === "sasthamangalam-hub" && (
+                  <a
+                    href="/pg-in-sasthamangalam"
+                    className="flex items-center gap-1 font-bold text-teal-950 hover:text-emerald-700 hover:underline"
+                  >
+                    <span>Explore Sasthamangalam Hub Neighborhood Guide →</span>
+                  </a>
+                )}
                 <a
                   href="https://maps.google.com/?q=Palayam+Thiruvananthapuram"
                   target="_blank"
@@ -201,7 +233,7 @@ export default function BranchesSection({ onOpenEnquiry }: BranchesSectionProps)
                   className="flex items-center gap-1 font-bold text-emerald-700 hover:text-emerald-800 hover:underline"
                 >
                   <Navigation className="w-3.5 h-3.5" />
-                  <span>View Palayam Central Hub on Google Maps →</span>
+                  <span>View on Google Maps →</span>
                 </a>
                 <span className="text-slate-500 font-medium">
                   Direct Line: <strong className="text-teal-950">6282830532</strong>
