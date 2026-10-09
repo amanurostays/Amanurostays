@@ -20,10 +20,10 @@ export default function Header({ onOpenEnquiry }: HeaderProps) {
 
       {/* Main navigation bar */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-between h-20 gap-4">
           {/* Logo & Brand Identity */}
-          <a href="#" className="flex items-center gap-3.5 group py-1.5">
-            <div className="relative w-13 h-13 sm:w-14 sm:h-14 shrink-0 rounded-xl overflow-hidden bg-white border border-emerald-200/80 shadow-sm group-hover:scale-105 transition-transform">
+          <Link href="/" className="flex items-center gap-3 shrink-0 group py-1.5">
+            <div className="relative w-11 h-11 sm:w-12 sm:h-12 shrink-0 rounded-xl overflow-hidden bg-white border border-emerald-200/80 shadow-xs group-hover:scale-105 transition-transform">
               <Image
                 src="/amanuro-brand-logo.jpg"
                 alt="Amanuro Stays - Mens PG & Paying Guest in Trivandrum"
@@ -32,52 +32,50 @@ export default function Header({ onOpenEnquiry }: HeaderProps) {
                 priority
               />
             </div>
-            <div className="flex flex-col justify-center">
-              <div className="flex items-center gap-1.5">
-                <span className="text-xl sm:text-2xl font-extrabold tracking-tight text-teal-950 group-hover:text-emerald-700 transition-colors uppercase leading-tight">
-                  {PG_DATA.brand.displayName}
-                </span>
-              </div>
-              <p className="text-[10px] sm:text-[11px] font-bold tracking-[0.14em] text-emerald-700 uppercase">
-                Across Trivandrum • Mens PG &amp; Stays
+            <div className="flex flex-col justify-center leading-tight">
+              <span className="text-lg sm:text-xl font-extrabold tracking-tight text-teal-950 group-hover:text-emerald-700 transition-colors uppercase whitespace-nowrap">
+                {PG_DATA.brand.displayName}
+              </span>
+              <p className="text-[9px] sm:text-[10px] font-bold tracking-wider text-emerald-700 uppercase whitespace-nowrap">
+                Trivandrum • Mens PG &amp; Stays
               </p>
             </div>
-          </a>
+          </Link>
 
-          {/* Desktop Nav Links with Rich Colors */}
-          <nav className="hidden lg:flex items-center gap-7 text-[13px] font-bold tracking-wide text-slate-700">
-            <a href="#rooms" className="hover:text-emerald-700 transition-colors py-1">
+          {/* Desktop Nav Links */}
+          <nav className="hidden xl:flex items-center gap-5 text-[13px] font-bold tracking-wide text-slate-700 whitespace-nowrap">
+            <a href="/#rooms" className="hover:text-emerald-700 transition-colors py-1">
               Rooms &amp; Pricing
             </a>
-            <a href="#dormitory" className="hover:text-emerald-700 transition-colors flex items-center gap-1.5 py-1">
+            <a href="/#dormitory" className="hover:text-emerald-700 transition-colors flex items-center gap-1.5 py-1">
               <span>Dormitory</span>
               <span className="text-[10px] bg-emerald-100 text-teal-900 border border-emerald-300 px-1.5 py-0.2 rounded-full font-bold">Monthly</span>
             </a>
-            <a href="#amenities" className="hover:text-emerald-700 transition-colors py-1">
+            <a href="/#amenities" className="hover:text-emerald-700 transition-colors py-1">
               Amenities
             </a>
-            <a href="#food" className="hover:text-emerald-700 transition-colors py-1">
+            <a href="/#food" className="hover:text-emerald-700 transition-colors py-1">
               3x Food
             </a>
-            <a href="#branches" className="hover:text-emerald-700 transition-colors py-1">
+            <a href="/#branches" className="hover:text-emerald-700 transition-colors py-1">
               Locations
             </a>
-            <a href="#why-us" className="hover:text-emerald-700 transition-colors py-1">
+            <a href="/#why-us" className="hover:text-emerald-700 transition-colors py-1">
               Why Us
             </a>
-            <Link href="/blog" className="hover:text-emerald-700 transition-colors py-1 flex items-center gap-1">
-              <span>Blog &amp; Guides</span>
+            <Link href="/blog" className="hover:text-emerald-700 transition-colors py-1 text-emerald-800 font-extrabold">
+              Blog &amp; Guides
             </Link>
-            <a href="#faqs" className="hover:text-emerald-700 transition-colors py-1">
+            <a href="/#faqs" className="hover:text-emerald-700 transition-colors py-1">
               FAQs
             </a>
           </nav>
 
           {/* Desktop Executive Action Cluster */}
-          <div className="hidden sm:flex items-center gap-2.5">
+          <div className="hidden md:flex items-center gap-2 shrink-0">
             <a
               href={`tel:${PG_DATA.brand.primaryPhoneClean}`}
-              className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold text-teal-950 bg-emerald-50/70 hover:bg-emerald-100 border border-emerald-200/80 shadow-2xs transition-all"
+              className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold text-teal-950 bg-emerald-50/70 hover:bg-emerald-100 border border-emerald-200/80 shadow-2xs transition-all whitespace-nowrap"
             >
               <Phone className="w-3.5 h-3.5 text-emerald-700" />
               <span>Call: 6282830532</span>
@@ -86,14 +84,14 @@ export default function Header({ onOpenEnquiry }: HeaderProps) {
               href={`https://wa.me/${PG_DATA.brand.whatsappNumber}?text=${encodeURIComponent("Hi Amanuro Stays, I would like to inquire about room availability and pricing.")}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-bold text-white bg-emerald-600 hover:bg-emerald-700 shadow-sm transition-all"
+              className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold text-white bg-emerald-600 hover:bg-emerald-700 shadow-sm transition-all whitespace-nowrap"
             >
               <MessageCircle className="w-3.5 h-3.5" />
               <span>WhatsApp</span>
             </a>
             <button
               onClick={() => onOpenEnquiry()}
-              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-bold text-white bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-500 hover:to-teal-600 shadow-md shadow-emerald-700/25 transition-all hover:scale-102 cursor-pointer"
+              className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-bold text-white bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-500 hover:to-teal-600 shadow-md shadow-emerald-700/25 transition-all hover:scale-102 cursor-pointer whitespace-nowrap"
             >
               <Calendar className="w-3.5 h-3.5" />
               <span>Schedule Visit</span>
@@ -101,7 +99,7 @@ export default function Header({ onOpenEnquiry }: HeaderProps) {
           </div>
 
           {/* Mobile hamburger button */}
-          <div className="flex sm:hidden items-center gap-1.5">
+          <div className="flex xl:hidden items-center gap-1.5">
             <a
               href={`tel:${PG_DATA.brand.primaryPhoneClean}`}
               className="p-2 rounded-lg text-teal-950 bg-emerald-50 border border-emerald-200"
