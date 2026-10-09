@@ -1,6 +1,6 @@
 import fs from "fs";
 import path from "path";
-import matter from "gray-matter";
+import * as yaml from "js-yaml";
 import { marked } from "marked";
 import {
   BlogPost,
@@ -325,13 +325,25 @@ function readPostFile(slug: string): {
 
   try {
     const rawFile = fs.readFileSync(targetPath, "utf-8");
-    const parsed = matter(rawFile);
-    const frontmatter = normalizeFrontmatter(parsed.data, parsed.content, trimmedSlug);
-    const headings = extractHeadings(parsed.content);
+    let data: Record<string, unknown> = {};
+    let content = rawFile;
+
+    const match = /^\s*---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/.exec(rawFile);
+    if (match) {
+      try {
+        data = (yaml.load(match[1]) as Record<string, unknown>) || {};
+      } catch (err) {
+        console.error(`Error parsing YAML frontmatter in ${trimmedSlug}:`, err);
+      }
+      content = match[2];
+    }
+
+    const frontmatter = normalizeFrontmatter(data, content, trimmedSlug);
+    const headings = extractHeadings(content);
 
     return {
       frontmatter,
-      rawContent: parsed.content,
+      rawContent: content,
       headings,
     };
   } catch (error) {
