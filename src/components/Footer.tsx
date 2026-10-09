@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { Mail, MapPin, ShieldCheck, Phone, MessageCircle } from "lucide-react";
 import { PG_DATA } from "@/config/pg-data";
 
@@ -96,10 +97,10 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <a href="/executive-dormitory-trivandrum" className="hover:text-amber-300 transition-colors font-bold text-emerald-300 flex items-center gap-1.5">
+                <Link href="/executive-dormitory-trivandrum" className="hover:text-amber-300 transition-colors font-bold text-emerald-300 flex items-center gap-1.5">
                   <span>Executive Dormitory (Monthly Basis)</span>
                   <span className="text-[10px] bg-amber-400/20 text-amber-300 px-1.5 rounded border border-amber-400/30">Soon</span>
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -111,34 +112,40 @@ export default function Footer() {
             </h4>
             <ul className="space-y-2 text-xs">
               <li>
-                <a href="/#amenities" className="hover:text-white transition-colors">
+                <Link href="/#amenities" className="hover:text-white transition-colors">
                   High Speed 5G Wi-Fi
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/#amenities" className="hover:text-white transition-colors">
+                <Link href="/#amenities" className="hover:text-white transition-colors">
                   Washing Machine Facility
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/#amenities" className="hover:text-white transition-colors">
+                <Link href="/#amenities" className="hover:text-white transition-colors">
                   24/7 Water &amp; Electricity
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/#food" className="hover:text-white transition-colors">
+                <Link href="/#food" className="hover:text-white transition-colors">
                   3x Homestyle Food Arrangement
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/#why-us" className="hover:text-white transition-colors">
+                <Link href="/#why-us" className="hover:text-white transition-colors">
                   Safe &amp; Alcohol/Drug-Free
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/#amenities" className="hover:text-white transition-colors">
+                <Link href="/#amenities" className="hover:text-white transition-colors">
                   Scheduled Cleaning &amp; CCTV
-                </a>
+                </Link>
+              </li>
+              <li className="pt-2 border-t border-emerald-900/60">
+                <Link href="/blog" className="text-amber-300 hover:text-white font-bold transition-colors flex items-center gap-1.5">
+                  <span>📖 Read Local Guides &amp; Blog</span>
+                  <span className="text-[10px] bg-amber-400/20 text-amber-300 px-1.5 py-0.2 rounded border border-amber-400/30">New</span>
+                </Link>
               </li>
             </ul>
           </div>
@@ -150,39 +157,39 @@ export default function Footer() {
             </h4>
             <ul className="space-y-2 text-xs">
               <li>
-                <a href="/pg-in-palayam" className="hover:text-white transition-colors flex items-center gap-1.5">
+                <Link href="/pg-in-palayam" className="hover:text-white transition-colors flex items-center gap-1.5">
                   <MapPin className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
                   <span>Palayam Hub</span>
                   <span className="text-[10px] px-1.5 py-0.2 rounded font-semibold bg-emerald-900/80 text-amber-300 border border-emerald-700/60">Active</span>
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/pg-in-pattom" className="hover:text-white transition-colors flex items-center gap-1.5">
+                <Link href="/pg-in-pattom" className="hover:text-white transition-colors flex items-center gap-1.5">
                   <MapPin className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
                   <span>Pattom Hub</span>
                   <span className="text-[10px] px-1.5 py-0.2 rounded font-semibold bg-emerald-900/80 text-amber-300 border border-emerald-700/60">Active</span>
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/pg-in-vellayambalam" className="hover:text-white transition-colors flex items-center gap-1.5">
+                <Link href="/pg-in-vellayambalam" className="hover:text-white transition-colors flex items-center gap-1.5">
                   <MapPin className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
                   <span>Vellayambalam Hub</span>
                   <span className="text-[10px] px-1.5 py-0.2 rounded font-semibold bg-emerald-900/80 text-amber-300 border border-emerald-700/60">Active</span>
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/pg-in-sasthamangalam" className="hover:text-white transition-colors flex items-center gap-1.5">
+                <Link href="/pg-in-sasthamangalam" className="hover:text-white transition-colors flex items-center gap-1.5">
                   <MapPin className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
                   <span>Sasthamangalam Hub</span>
                   <span className="text-[10px] px-1.5 py-0.2 rounded font-semibold bg-emerald-900/80 text-amber-300 border border-emerald-700/60">Active</span>
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/#branches" className="hover:text-white transition-colors flex items-center gap-1.5">
+                <Link href="/#branches" className="hover:text-white transition-colors flex items-center gap-1.5">
                   <MapPin className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
                   <span>Kazhakkoottam / Technopark</span>
                   <span className="text-[10px] px-1.5 py-0.2 rounded font-semibold text-stone-400">Launching Soon</span>
-                </a>
+                </Link>
               </li>
               <li className="pt-2 text-[11px] text-stone-400">
                 Sufficient branches across Trivandrum with continuous expansion planned.

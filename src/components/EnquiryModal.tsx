@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { X, Calendar, MessageCircle, Phone, CheckCircle2, User, Sparkles } from "lucide-react";
 import { PG_DATA } from "@/config/pg-data";
 
@@ -19,15 +19,13 @@ export default function EnquiryModal({
 }: EnquiryModalProps) {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
-  const [branch, setBranch] = useState(defaultBranch || PG_DATA.branches[0].name);
-  const [roomType, setRoomType] = useState(defaultRoomType || "Four Sharing (Budget - Starts ₹3,499)");
+  const [selectedBranch, setSelectedBranch] = useState<string | null>(null);
+  const [selectedRoomType, setSelectedRoomType] = useState<string | null>(null);
   const [moveInTimeline, setMoveInTimeline] = useState("Immediately (Within 24-48 hrs)");
   const [submitted, setSubmitted] = useState(false);
 
-  useEffect(() => {
-    if (defaultRoomType) setRoomType(defaultRoomType);
-    if (defaultBranch) setBranch(defaultBranch);
-  }, [defaultRoomType, defaultBranch]);
+  const branch = selectedBranch ?? (defaultBranch || PG_DATA.branches[0].name);
+  const roomType = selectedRoomType ?? (defaultRoomType || "Four Sharing (Budget - Starts ₹3,499)");
 
   if (!isOpen) return null;
 
@@ -54,6 +52,8 @@ export default function EnquiryModal({
 
   const handleResetAndClose = () => {
     setSubmitted(false);
+    setSelectedBranch(null);
+    setSelectedRoomType(null);
     onClose();
   };
 
@@ -163,7 +163,7 @@ export default function EnquiryModal({
                   </label>
                   <select
                     value={branch}
-                    onChange={(e) => setBranch(e.target.value)}
+                    onChange={(e) => setSelectedBranch(e.target.value)}
                     className="w-full py-2 px-3 rounded-xl border border-emerald-200 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 bg-white shadow-2xs"
                   >
                     {PG_DATA.branches.map((b) => (
@@ -181,7 +181,7 @@ export default function EnquiryModal({
                   </label>
                   <select
                     value={roomType}
-                    onChange={(e) => setRoomType(e.target.value)}
+                    onChange={(e) => setSelectedRoomType(e.target.value)}
                     className="w-full py-2 px-3 rounded-xl border border-emerald-200 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 bg-white shadow-2xs"
                   >
                     <option value="Single Room (Premium Tier)">Single Room (Premium Tier)</option>

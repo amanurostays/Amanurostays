@@ -101,26 +101,6 @@ export default function RootLayout({
         {/* Google Search Console Verification */}
         <meta name="google-site-verification" content="r9rdAvDuS4s9n8vmjUp-nHFhE3NX06W91BIPiF7181Q" />
 
-        {/* Primary Meta Tags for Social & WhatsApp Crawlers */}
-        <meta name="title" content="Affordable PG in the heart of Trivandrum | Amanuro Stays" />
-        <meta property="og:site_name" content="Amanuro Stays" />
-        <meta property="og:title" content="Affordable PG in the heart of Trivandrum | Amanuro Stays" />
-        <meta property="og:description" content="Affordable & comfortable Mens PG across Trivandrum starting from ₹3,499. High speed 5G Wi-Fi, washing machine, 24/7 water & power, and homestyle food." />
-        <meta property="og:url" content="https://amanuro.in" />
-        <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://amanuro.in/amanuro-brand-logo.jpg" />
-        <meta property="og:image:secure_url" content="https://amanuro.in/amanuro-brand-logo.jpg" />
-        <meta property="og:image:type" content="image/jpeg" />
-        <meta property="og:image:width" content="1024" />
-        <meta property="og:image:height" content="1024" />
-        <meta property="og:image:alt" content="Amanuro Stays - Affordable PG in the heart of Trivandrum" />
-
-        {/* Twitter Card Meta Tags */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Affordable PG in the heart of Trivandrum | Amanuro Stays" />
-        <meta name="twitter:description" content="Affordable & comfortable Mens PG across Trivandrum starting from ₹3,499. High speed 5G Wi-Fi, washing machine, 24/7 water & power, and homestyle food." />
-        <meta name="twitter:image" content="https://amanuro.in/amanuro-brand-logo.jpg" />
-
         <JsonLd />
       </head>
       <body className="min-h-full flex flex-col bg-white text-stone-900 selection:bg-emerald-900 selection:text-white">

@@ -39,3 +39,10 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# agent scratch & test artifacts
+.agents/
+PROJECT.md
+TEST_INFRA.md
+TEST_READY.md
+tests/

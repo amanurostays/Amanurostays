@@ -7,6 +7,7 @@ export default function LocalSeoCloud() {
     { label: "PG in Vellayambalam (Kowdiar & Ambalamukku)", query: "/pg-in-vellayambalam" },
     { label: "PG in Sasthamangalam (Edapazhanji & Vazhuthacaud)", query: "/pg-in-sasthamangalam" },
     { label: "Executive Dormitory on Monthly Basis", query: "/executive-dormitory-trivandrum" },
+    { label: "📖 Student & Techie PG Guides (Blog)", query: "/blog" },
     { label: "PG in Trivandrum", query: "/#rooms" },
     { label: "Mens PG Trivandrum", query: "/#rooms" },
     { label: "Boys PG Trivandrum", query: "/#rooms" },
