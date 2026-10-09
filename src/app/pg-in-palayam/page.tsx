@@ -8,6 +8,9 @@ export const metadata: Metadata = {
     "Looking for a safe, affordable Mens PG in Palayam, Trivandrum? Amanuro Stays offers comfortable student & gents accommodation near Sanskrit College, RBI, Secretariat & University from ₹3,499/mo with 5G Wi-Fi, washing machine & food.",
   keywords: [
     "pg in palayam trivandrum",
+    "palace pg trivandrum",
+    "palace pg palayam",
+    "palace mens pg trivandrum",
     "mens pg palayam",
     "paying guest in palayam trivandrum",
     "hostel near sanskrit college trivandrum",
@@ -20,9 +23,9 @@ export const metadata: Metadata = {
     canonical: `${PG_DATA.seo.siteUrl}/pg-in-palayam`,
   },
   openGraph: {
-    title: "Best Mens PG in Palayam Trivandrum | Near Sanskrit College & RBI",
+    title: "Best Mens PG in Palayam Trivandrum | Palace PG - Amanuro Stays",
     description:
-      "Comfortable Mens PG & Paying Guest stay in Palayam, Trivandrum starting from ₹3,499/month. High-speed 5G Wi-Fi, washing machine, and homestyle food.",
+      "Comfortable Mens PG & Paying Guest stay in Palayam, Trivandrum (Palace PG managed by Amanuro Stays) starting from ₹3,499/month. High-speed 5G Wi-Fi, washing machine, and homestyle food.",
     url: `${PG_DATA.seo.siteUrl}/pg-in-palayam`,
     siteName: PG_DATA.brand.displayName,
     images: [{ url: "https://amanuro.in/amanuro-brand-logo.jpg", width: 1024, height: 1024 }],
@@ -31,7 +34,12 @@ export const metadata: Metadata = {
 
 const palayamFaqs = [
   {
-    question: "Where is Amanuro Stays Palayam Hub located?",
+    question: "Is this property also known as Palace PG?",
+    answer:
+      "Yes! Palace PG in Palayam is now proudly managed and operated under the Amanuro Stays network. Existing residents and new applicants enjoy upgraded 5G Wi-Fi, automatic laundry, hygienic Kerala homestyle food, and 24/7 support.",
+  },
+  {
+    question: "Where is Amanuro Stays Palayam Hub (Palace PG) located?",
     answer:
       "Our Palayam Hub is located in central Palayam, Trivandrum, within walking distance of Sanskrit College, the Reserve Bank of India (RBI), Secretariat, and the University of Kerala campus.",
   },
@@ -58,12 +66,17 @@ export default function PgInPalayamPage() {
     "@graph": [
       {
         "@type": "LodgingBusiness",
-        name: "Amanuro Stays - Palayam Hub",
+        name: "Palace PG - Amanuro Stays",
+        alternateName: "Palace PG",
         description:
-          "Affordable Mens PG and Student accommodation in Palayam, Trivandrum near Sanskrit College and RBI.",
+          "Affordable Mens PG and Student accommodation in Palayam, Trivandrum (Palace PG operated by Amanuro Stays) near Sanskrit College, RBI & Secretariat.",
         url: `${PG_DATA.seo.siteUrl}/pg-in-palayam`,
         telephone: PG_DATA.brand.primaryPhoneClean,
         priceRange: "₹3,499 - ₹7,500",
+        brand: {
+          "@type": "Brand",
+          name: "Amanuro Stays",
+        },
         address: {
           "@type": "PostalAddress",
           streetAddress: "Palayam",
@@ -120,7 +133,7 @@ export default function PgInPalayamPage() {
         badgeText="Flagship Central Hub • Palayam, Trivandrum"
         headline="Premier Mens PG in Palayam, Trivandrum"
         subheadline="Near Sanskrit College, RBI &amp; Secretariat"
-        metaIntro="Looking for an affordable, safe PG in Palayam? Amanuro Stays provides student and working men's accommodation with high-speed 5G Wi-Fi, washing machine, scheduled cleaning, and optional 3-times homestyle food starting from ₹3,499/month."
+        metaIntro="Looking for an affordable, safe PG in Palayam? Palace PG is now managed by Amanuro Stays, providing student and working men's accommodation with high-speed 5G Wi-Fi, washing machine, scheduled cleaning, and optional 3-times homestyle food starting from ₹3,499/month."
         coveredLocations={[
           "Sanskrit College",
           "RBI (Reserve Bank of India)",
@@ -138,6 +151,10 @@ export default function PgInPalayamPage() {
         address="Palayam, Thiruvananthapuram, Kerala - 695034"
         status="Active"
         branchId="palayam-hub"
+        trustNotice={{
+          badge: "Palace PG",
+          text: "Proudly managed & operated by Amanuro Stays",
+        }}
         customFaqs={palayamFaqs}
       />
     </>

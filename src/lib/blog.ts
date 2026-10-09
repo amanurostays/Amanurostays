@@ -70,21 +70,21 @@ export function slugify(text: string): string {
  */
 marked.use({
   renderer: {
-    heading(
-      this: { parser?: { parseInline?: (tokens: unknown[]) => string } },
-      arg1: unknown,
-      arg2?: unknown
-    ): string {
+    heading(this: unknown, ...args: unknown[]): string {
+      const arg1 = args[0];
+      const arg2 = args[1];
       let depth = 2;
       let content = "";
       let plainText = "";
+
+      const self = this as { parser?: { parseInline?: (tokens: unknown[]) => string } } | undefined;
 
       if (typeof arg1 === "object" && arg1 !== null) {
         const headingObj = arg1 as { depth?: number; tokens?: unknown[]; text?: string };
         depth = headingObj.depth || 2;
         content =
-          this?.parser?.parseInline && Array.isArray(headingObj.tokens) && headingObj.tokens.length > 0
-            ? this.parser.parseInline(headingObj.tokens)
+          self?.parser?.parseInline && Array.isArray(headingObj.tokens) && headingObj.tokens.length > 0
+            ? self.parser.parseInline(headingObj.tokens)
             : headingObj.text || "";
         plainText = (headingObj.text || content)
           .replace(/!\[([^\]]*)\]\([^)]+\)/g, "")

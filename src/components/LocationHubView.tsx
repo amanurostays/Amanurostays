@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import {
   MapPin,
@@ -17,7 +16,6 @@ import {
   Shirt,
   Utensils,
   Zap,
-  Building2,
   ChevronRight,
   HelpCircle,
   ChevronDown
@@ -28,7 +26,7 @@ import FloatingActionBar from "@/components/FloatingActionBar";
 import EnquiryModal from "@/components/EnquiryModal";
 import TrustComparison from "@/components/TrustComparison";
 import TestimonialsSection from "@/components/TestimonialsSection";
-import { PG_DATA, RoomPlan } from "@/config/pg-data";
+import { PG_DATA } from "@/config/pg-data";
 
 export interface LocationHubViewProps {
   hubName: string;
@@ -42,6 +40,7 @@ export interface LocationHubViewProps {
   status: "Active" | "Launching Soon";
   branchId?: string;
   isDormitorySpecial?: boolean;
+  trustNotice?: { badge: string; text: string };
   customFaqs: { question: string; answer: string }[];
 }
 
@@ -57,6 +56,7 @@ export default function LocationHubView({
   status,
   branchId,
   isDormitorySpecial,
+  trustNotice,
   customFaqs,
 }: LocationHubViewProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -101,10 +101,21 @@ export default function LocationHubView({
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
               {/* Left Column: Targeted Value Prop */}
               <div className="lg:col-span-7 space-y-5 text-center lg:text-left flex flex-col items-center lg:items-start">
-                {/* Pill Badge */}
-                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-emerald-900/60 text-amber-300 border border-amber-400/30 backdrop-blur-md">
-                  <span className="flex h-2 w-2 rounded-full bg-amber-400" />
-                  <span>{badgeText}</span>
+                {/* Badges strip */}
+                <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2.5">
+                  <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-emerald-900/60 text-amber-300 border border-amber-400/30 backdrop-blur-md">
+                    <span className="flex h-2 w-2 rounded-full bg-amber-400" />
+                    <span>{badgeText}</span>
+                  </div>
+
+                  {trustNotice && (
+                    <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-amber-500/15 text-amber-200 border border-amber-400/40 backdrop-blur-md shadow-xs">
+                      <Sparkles className="w-3.5 h-3.5 text-amber-400 shrink-0" />
+                      <span>
+                        <strong className="text-amber-300">{trustNotice.badge}:</strong> {trustNotice.text}
+                      </span>
+                    </div>
+                  )}
                 </div>
 
                 {/* H1 Headline */}

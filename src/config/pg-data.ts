@@ -17,6 +17,8 @@ export interface Branch {
   totalBeds: number;
   isFlagship: boolean;
   status: "Active" | "Launching Soon";
+  alternateName?: string;
+  formerName?: string;
 }
 
 export interface RoomPlan {
@@ -103,6 +105,8 @@ export const PG_DATA = {
       totalBeds: 50,
       isFlagship: true,
       status: "Active",
+      alternateName: "Palace PG - Amanuro Stays",
+      formerName: "Palace PG",
     },
     {
       id: "pattom-hub",

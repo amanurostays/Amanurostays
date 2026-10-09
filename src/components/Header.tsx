@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { MessageCircle, Menu, X, Calendar, Phone, Sparkles } from "lucide-react";
+import Link from "next/link";
+import { MessageCircle, Menu, X, Calendar, Phone } from "lucide-react";
 import { PG_DATA } from "@/config/pg-data";
 
 interface HeaderProps {
@@ -64,9 +65,9 @@ export default function Header({ onOpenEnquiry }: HeaderProps) {
             <a href="#why-us" className="hover:text-emerald-700 transition-colors py-1">
               Why Us
             </a>
-            <a href="/blog" className="hover:text-emerald-700 transition-colors py-1 flex items-center gap-1">
+            <Link href="/blog" className="hover:text-emerald-700 transition-colors py-1 flex items-center gap-1">
               <span>Blog &amp; Guides</span>
-            </a>
+            </Link>
             <a href="#faqs" className="hover:text-emerald-700 transition-colors py-1">
               FAQs
             </a>
@@ -175,14 +176,14 @@ export default function Header({ onOpenEnquiry }: HeaderProps) {
             >
               Why Choose Amanuro Stays
             </a>
-            <a
+            <Link
               href="/blog"
               onClick={() => setMobileMenuOpen(false)}
               className="py-1.5 px-2 rounded-lg hover:bg-emerald-50 hover:text-emerald-700 text-slate-800 transition-colors flex items-center justify-between"
             >
               <span>Blog &amp; Local Guides</span>
               <span className="text-[10px] bg-emerald-100 text-teal-900 border border-emerald-300 px-2 py-0.5 rounded-full font-bold">New</span>
-            </a>
+            </Link>
             <a
               href="#faqs"
               onClick={() => setMobileMenuOpen(false)}
