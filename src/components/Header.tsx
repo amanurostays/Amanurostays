@@ -75,25 +75,25 @@ export default function Header({ onOpenEnquiry }: HeaderProps) {
           <div className="hidden md:flex items-center gap-2 shrink-0">
             <a
               href={`tel:${PG_DATA.brand.primaryPhoneClean}`}
-              className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold text-teal-950 bg-emerald-50/70 hover:bg-emerald-100 border border-emerald-200/80 shadow-2xs transition-all whitespace-nowrap"
+              className="inline-flex items-center justify-center h-9 gap-1.5 px-3 rounded-xl text-xs font-bold text-teal-950 bg-emerald-50/80 hover:bg-emerald-100 border border-emerald-200/90 shadow-2xs transition-all whitespace-nowrap"
             >
-              <Phone className="w-3.5 h-3.5 text-emerald-700" />
+              <Phone className="w-3.5 h-3.5 text-emerald-700 shrink-0" />
               <span>Call: 6282830532</span>
             </a>
             <a
               href={`https://wa.me/${PG_DATA.brand.whatsappNumber}?text=${encodeURIComponent("Hi Amanuro Stays, I would like to inquire about room availability and pricing.")}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold text-white bg-emerald-600 hover:bg-emerald-700 shadow-sm transition-all whitespace-nowrap"
+              className="inline-flex items-center justify-center h-9 gap-1.5 px-3.5 rounded-xl text-xs font-bold text-white bg-emerald-600 hover:bg-emerald-700 shadow-sm transition-all whitespace-nowrap"
             >
-              <MessageCircle className="w-3.5 h-3.5" />
+              <MessageCircle className="w-3.5 h-3.5 shrink-0" />
               <span>WhatsApp</span>
             </a>
             <button
               onClick={() => onOpenEnquiry()}
-              className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-bold text-white bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-500 hover:to-teal-600 shadow-md shadow-emerald-700/25 transition-all hover:scale-102 cursor-pointer whitespace-nowrap"
+              className="inline-flex items-center justify-center h-9 gap-1.5 px-3.5 rounded-xl text-xs font-bold text-white bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-500 hover:to-teal-600 shadow-sm shadow-emerald-700/20 transition-all hover:scale-102 cursor-pointer whitespace-nowrap"
             >
-              <Calendar className="w-3.5 h-3.5" />
+              <Calendar className="w-3.5 h-3.5 shrink-0" />
               <span>Schedule Visit</span>
             </button>
           </div>
