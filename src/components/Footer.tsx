@@ -77,24 +77,24 @@ export default function Footer() {
             </h4>
             <ul className="space-y-2 text-xs">
               <li>
-                <a href="#rooms" className="hover:text-white transition-colors">
+                <Link href="/rooms" className="hover:text-white transition-colors">
                   Single Room (Premium Tier)
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#rooms" className="hover:text-white transition-colors">
+                <Link href="/rooms" className="hover:text-white transition-colors">
                   Double Sharing (Premium Tier)
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#rooms" className="hover:text-white transition-colors">
+                <Link href="/rooms" className="hover:text-white transition-colors">
                   Triple Sharing (Budget Tier)
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#rooms" className="hover:text-white transition-colors">
+                <Link href="/rooms" className="hover:text-white transition-colors">
                   Four Sharing (From ₹3,499)
-                </a>
+                </Link>
               </li>
               <li>
                 <Link href="/executive-dormitory-trivandrum" className="hover:text-amber-300 transition-colors font-bold text-emerald-300 flex items-center gap-1.5">
@@ -191,7 +191,12 @@ export default function Footer() {
                   <span className="text-[10px] px-1.5 py-0.2 rounded font-semibold text-stone-400">Launching Soon</span>
                 </Link>
               </li>
-              <li className="pt-2 text-[11px] text-stone-400">
+              <li className="pt-2">
+                <Link href="/locations" className="text-amber-300 hover:text-white font-bold transition-colors flex items-center gap-1.5">
+                  <span>📍 View All Locations &amp; Connectivity</span>
+                </Link>
+              </li>
+              <li className="pt-1 text-[11px] text-stone-400">
                 Sufficient branches across Trivandrum with continuous expansion planned.
               </li>
             </ul>

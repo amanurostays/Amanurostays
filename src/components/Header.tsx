@@ -44,25 +44,19 @@ export default function Header({ onOpenEnquiry }: HeaderProps) {
 
           {/* Desktop Nav Links */}
           <nav className="hidden xl:flex items-center gap-5 text-[13px] font-bold tracking-wide text-slate-700 whitespace-nowrap">
-            <a href="/#rooms" className="hover:text-emerald-700 transition-colors py-1">
+            <Link href="/rooms" className="hover:text-emerald-700 transition-colors py-1">
               Rooms &amp; Pricing
-            </a>
-            <a href="/#dormitory" className="hover:text-emerald-700 transition-colors flex items-center gap-1.5 py-1">
+            </Link>
+            <Link href="/executive-dormitory-trivandrum" className="hover:text-emerald-700 transition-colors flex items-center gap-1.5 py-1">
               <span>Dormitory</span>
               <span className="text-[10px] bg-emerald-100 text-teal-900 border border-emerald-300 px-1.5 py-0.2 rounded-full font-bold">Monthly</span>
-            </a>
-            <a href="/#amenities" className="hover:text-emerald-700 transition-colors py-1">
-              Amenities
-            </a>
-            <a href="/#food" className="hover:text-emerald-700 transition-colors py-1">
-              3x Food
-            </a>
-            <a href="/#branches" className="hover:text-emerald-700 transition-colors py-1">
+            </Link>
+            <Link href="/amenities-and-food" className="hover:text-emerald-700 transition-colors py-1">
+              Amenities &amp; Food
+            </Link>
+            <Link href="/locations" className="hover:text-emerald-700 transition-colors py-1">
               Locations
-            </a>
-            <a href="/#why-us" className="hover:text-emerald-700 transition-colors py-1">
-              Why Us
-            </a>
+            </Link>
             <Link href="/blog" className="hover:text-emerald-700 transition-colors py-1 text-emerald-800 font-extrabold">
               Blog &amp; Guides
             </Link>
@@ -75,26 +69,27 @@ export default function Header({ onOpenEnquiry }: HeaderProps) {
           <div className="hidden md:flex items-center gap-2 shrink-0">
             <a
               href={`tel:${PG_DATA.brand.primaryPhoneClean}`}
-              className="inline-flex items-center justify-center h-9 gap-1.5 px-3 rounded-xl text-xs font-bold text-teal-950 bg-emerald-50/80 hover:bg-emerald-100 border border-emerald-200/90 shadow-2xs transition-all whitespace-nowrap"
+              className="inline-flex items-center justify-center h-9 gap-1.5 px-3 rounded-xl text-xs font-bold text-teal-950 bg-emerald-50/80 hover:bg-emerald-100 border border-emerald-200/90 shadow-2xs transition-all whitespace-nowrap leading-none"
             >
               <Phone className="w-3.5 h-3.5 text-emerald-700 shrink-0" />
-              <span>Call: 6282830532</span>
+              <span className="translate-y-[0.5px]">Call: 6282830532</span>
             </a>
             <a
               href={`https://wa.me/${PG_DATA.brand.whatsappNumber}?text=${encodeURIComponent("Hi Amanuro Stays, I would like to inquire about room availability and pricing.")}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center h-9 gap-1.5 px-3.5 rounded-xl text-xs font-bold text-white bg-emerald-600 hover:bg-emerald-700 shadow-sm transition-all whitespace-nowrap"
+              className="inline-flex items-center justify-center h-9 gap-1.5 px-3.5 rounded-xl text-xs font-bold text-white bg-emerald-600 hover:bg-emerald-700 shadow-sm transition-all whitespace-nowrap leading-none"
             >
               <MessageCircle className="w-3.5 h-3.5 shrink-0" />
-              <span>WhatsApp</span>
+              <span className="translate-y-[0.5px]">WhatsApp</span>
             </a>
             <button
+              type="button"
               onClick={() => onOpenEnquiry()}
-              className="inline-flex items-center justify-center h-9 gap-1.5 px-3.5 rounded-xl text-xs font-bold text-white bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-500 hover:to-teal-600 shadow-sm shadow-emerald-700/20 transition-all hover:scale-102 cursor-pointer whitespace-nowrap"
+              className="inline-flex items-center justify-center h-9 gap-1.5 px-3.5 rounded-xl text-xs font-bold text-white bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-500 hover:to-teal-600 shadow-sm shadow-emerald-700/20 transition-all hover:scale-102 cursor-pointer whitespace-nowrap leading-none"
             >
               <Calendar className="w-3.5 h-3.5 shrink-0" />
-              <span>Schedule Visit</span>
+              <span className="translate-y-[0.5px]">Schedule Visit</span>
             </button>
           </div>
 
@@ -131,49 +126,35 @@ export default function Header({ onOpenEnquiry }: HeaderProps) {
       {mobileMenuOpen && (
         <div className="lg:hidden border-t border-emerald-100 bg-white px-4 pt-3 pb-6 space-y-3 shadow-lg">
           <nav className="flex flex-col space-y-2 text-sm font-bold text-slate-800">
-            <a
-              href="#rooms"
+            <Link
+              href="/rooms"
               onClick={() => setMobileMenuOpen(false)}
               className="py-1.5 px-2 rounded-lg hover:bg-emerald-50 hover:text-emerald-700 text-slate-800 transition-colors"
             >
               Rooms &amp; Pricing (Starts from ₹3,499)
-            </a>
-            <a
-              href="#dormitory"
+            </Link>
+            <Link
+              href="/executive-dormitory-trivandrum"
               onClick={() => setMobileMenuOpen(false)}
               className="py-1.5 px-2 rounded-lg hover:bg-emerald-50 text-teal-900 font-bold flex items-center justify-between transition-colors"
             >
               <span>Executive Dormitory (Monthly Basis)</span>
               <span className="text-[10px] bg-emerald-100 text-teal-900 border border-emerald-300 px-2 py-0.5 rounded-full">Launching Soon</span>
-            </a>
-            <a
-              href="#amenities"
+            </Link>
+            <Link
+              href="/amenities-and-food"
               onClick={() => setMobileMenuOpen(false)}
               className="py-1.5 px-2 rounded-lg hover:bg-emerald-50 hover:text-emerald-700 text-slate-800 transition-colors"
             >
-              Essential Amenities
-            </a>
-            <a
-              href="#food"
+              Amenities &amp; 3x Food
+            </Link>
+            <Link
+              href="/locations"
               onClick={() => setMobileMenuOpen(false)}
               className="py-1.5 px-2 rounded-lg hover:bg-emerald-50 hover:text-emerald-700 text-slate-800 transition-colors"
             >
-              3x Homestyle Food Arrangement
-            </a>
-            <a
-              href="#branches"
-              onClick={() => setMobileMenuOpen(false)}
-              className="py-1.5 px-2 rounded-lg hover:bg-emerald-50 hover:text-emerald-700 text-slate-800 transition-colors"
-            >
-              Locations (Palayam &amp; Upcoming Hubs)
-            </a>
-            <a
-              href="#why-us"
-              onClick={() => setMobileMenuOpen(false)}
-              className="py-1.5 px-2 rounded-lg hover:bg-emerald-50 hover:text-emerald-700 text-slate-800 transition-colors"
-            >
-              Why Choose Amanuro Stays
-            </a>
+              Locations Across Trivandrum
+            </Link>
             <Link
               href="/blog"
               onClick={() => setMobileMenuOpen(false)}
@@ -183,7 +164,7 @@ export default function Header({ onOpenEnquiry }: HeaderProps) {
               <span className="text-[10px] bg-emerald-100 text-teal-900 border border-emerald-300 px-2 py-0.5 rounded-full font-bold">New</span>
             </Link>
             <a
-              href="#faqs"
+              href="/#faqs"
               onClick={() => setMobileMenuOpen(false)}
               className="py-1.5 px-2 rounded-lg hover:bg-emerald-50 hover:text-emerald-700 text-slate-800 transition-colors"
             >

@@ -56,7 +56,7 @@ export default function Home() {
         {/* Palayam Main Hub & Upcoming 4-5 Trivandrum Branches Expansion */}
         <BranchesSection onOpenEnquiry={handleOpenEnquiry} />
 
-        {/* Trust Comparison: Amanuro Stays vs Typical PG/Hostel */}
+        {/* Trust Comparison: Amanuro Stays vs Typical PG/Hostel (Desktop emphasis, compact on mobile) */}
         <TrustComparison />
 
         {/* Social Proof: Real Resident Experiences in Trivandrum */}
