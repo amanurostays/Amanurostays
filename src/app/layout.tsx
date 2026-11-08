@@ -1,8 +1,11 @@
 import type { Metadata, Viewport } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import JsonLd from "@/components/JsonLd";
 import { PG_DATA } from "@/config/pg-data";
+
+const GA_ID = "G-KZKRRJ3HVS";
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   variable: "--font-plus-jakarta",
@@ -104,6 +107,21 @@ export default function RootLayout({
         <JsonLd />
       </head>
       <body className="min-h-full flex flex-col bg-white text-stone-900 selection:bg-emerald-900 selection:text-white">
+        {/* Google Analytics 4 */}
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
+          strategy="afterInteractive"
+        />
+        <Script id="ga4-init" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${GA_ID}', {
+              page_path: window.location.pathname,
+            });
+          `}
+        </Script>
         {children}
       </body>
     </html>

@@ -3,6 +3,27 @@
 import { MessageCircle, Calendar, Phone } from "lucide-react";
 import { PG_DATA } from "@/config/pg-data";
 
+// GA4 event helpers
+declare global {
+  interface Window {
+    gtag?: (...args: unknown[]) => void;
+  }
+}
+
+function trackCall(location: string) {
+  window.gtag?.("event", "phone_call_click", {
+    event_category: "Contact",
+    event_label: location,
+  });
+}
+
+function trackWhatsApp(location: string) {
+  window.gtag?.("event", "whatsapp_click", {
+    event_category: "Contact",
+    event_label: location,
+  });
+}
+
 interface FloatingActionBarProps {
   onOpenEnquiry: () => void;
 }
@@ -17,6 +38,7 @@ export default function FloatingActionBar({ onOpenEnquiry }: FloatingActionBarPr
         {/* Direct Call Pill */}
         <a
           href={`tel:${PG_DATA.brand.primaryPhoneClean}`}
+          onClick={() => trackCall("floating_bar_desktop")}
           className="group flex items-center gap-2.5 bg-white text-teal-950 hover:text-emerald-900 px-3.5 py-2 rounded-full shadow-md border border-emerald-200 hover:border-emerald-400 transition-all hover:scale-102"
         >
           <div className="w-7 h-7 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-700">
@@ -33,6 +55,7 @@ export default function FloatingActionBar({ onOpenEnquiry }: FloatingActionBarPr
           href={whatsappUrl}
           target="_blank"
           rel="noopener noreferrer"
+          onClick={() => trackWhatsApp("floating_bar_desktop")}
           className="group flex items-center gap-2.5 bg-emerald-600 hover:bg-emerald-700 text-white px-3.5 py-2 rounded-full shadow-md transition-all hover:scale-102"
         >
           <div className="w-7 h-7 rounded-full bg-white/20 flex items-center justify-center text-white">
@@ -60,6 +83,7 @@ export default function FloatingActionBar({ onOpenEnquiry }: FloatingActionBarPr
           {/* Call 6282830532 */}
           <a
             href={`tel:${PG_DATA.brand.primaryPhoneClean}`}
+            onClick={() => trackCall("floating_bar_mobile")}
             className="flex flex-col items-center justify-center py-2 px-1 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-teal-950 border border-emerald-200 transition-colors"
           >
             <Phone className="w-4 h-4 text-emerald-700 mb-0.5" />
@@ -71,6 +95,7 @@ export default function FloatingActionBar({ onOpenEnquiry }: FloatingActionBarPr
             href={whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => trackWhatsApp("floating_bar_mobile")}
             className="flex flex-col items-center justify-center py-2 px-1 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold shadow-xs transition-colors"
           >
             <MessageCircle className="w-4 h-4 mb-0.5" />
