@@ -39,3 +39,16 @@ body {
 .animate-page-fade {
   animation: pageFadeIn 0.25s ease-out forwards;
 }
+
+/* Modern, warm font styling for Operations Portal */
+.portal-theme {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Inter", "Helvetica Neue", Arial, sans-serif;
+  letter-spacing: -0.015em;
+}
+
+.portal-theme input,
+.portal-theme select,
+.portal-theme textarea,
+.portal-theme button {
+  font-family: inherit;
+}

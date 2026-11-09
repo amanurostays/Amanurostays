@@ -170,6 +170,17 @@ export default function Header({ onOpenEnquiry }: HeaderProps) {
             >
               Frequently Asked Questions
             </a>
+            <Link
+              href="/portal"
+              onClick={() => setMobileMenuOpen(false)}
+              className="mt-2 py-2.5 px-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold flex items-center justify-between text-xs shadow-md border border-slate-800"
+            >
+              <div className="flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                <span>Operations Portal (Admin &amp; Staff)</span>
+              </div>
+              <span className="text-amber-400 font-extrabold">Sign In →</span>
+            </Link>
           </nav>
           <div className="pt-3 border-t border-emerald-100 flex flex-col gap-2">
             <div className="grid grid-cols-2 gap-2">

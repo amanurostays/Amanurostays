@@ -210,8 +210,17 @@ export default function Footer() {
             <span>Amanuro Stays • Verified Gents Accommodation in Palayam, Trivandrum</span>
           </div>
 
-          <div>
-            &copy; {currentYear} {PG_DATA.brand.displayName} (amanuro.in). All rights reserved.
+          <div className="flex flex-wrap items-center gap-4">
+            <Link
+              href="/portal"
+              className="text-stone-400 hover:text-amber-300 transition-colors flex items-center gap-1.5 font-medium"
+            >
+              <span>Operations Portal</span>
+              <span className="text-[10px] bg-stone-800 text-stone-300 px-1.5 py-0.5 rounded border border-stone-700">Staff &amp; Partners</span>
+            </Link>
+            <div>
+              &copy; {currentYear} {PG_DATA.brand.displayName} (amanuro.in). All rights reserved.
+            </div>
           </div>
         </div>
       </div>

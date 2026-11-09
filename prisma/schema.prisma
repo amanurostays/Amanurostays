@@ -1,0 +1,72 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           Int      @id @default(autoincrement())
+  name         String?
+  email        String   @unique
+  passwordHash String
+  role         Role     @default(STAFF)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  locations    Location[] @relation("UserLocations")
+}
+
+enum Role {
+  ADMIN
+  STAFF
+  PARTNER
+}
+
+model Location {
+  id          Int        @id @default(autoincrement())
+  name        String
+  address     String?
+  residents   Resident[]
+  expenses    Expense[]
+  users       User[]     @relation("UserLocations")
+}
+
+model Resident {
+  id            Int       @id @default(autoincrement())
+  name          String
+  contact       String?
+  admissionDate DateTime
+  status        String?   // e.g., active, checked-out
+  locationId    Int
+  location      Location  @relation(fields: [locationId], references: [id])
+  payments      Payment[]
+}
+
+model Payment {
+  id          Int      @id @default(autoincrement())
+  residentId  Int
+  resident    Resident @relation(fields: [residentId], references: [id])
+  amount      Decimal  @db.Decimal(10,2)
+  date        DateTime @default(now())
+  method      String?
+  notes       String?
+}
+
+model Expense {
+  id          Int      @id @default(autoincrement())
+  locationId  Int
+  location    Location @relation(fields: [locationId], references: [id])
+  categoryId  Int
+  category    Category @relation(fields: [categoryId], references: [id])
+  amount      Decimal  @db.Decimal(10,2)
+  date        DateTime @default(now())
+  description String?
+}
+
+model Category {
+  id   Int    @id @default(autoincrement())
+  name String @unique
+  expenses Expense[]
+}
