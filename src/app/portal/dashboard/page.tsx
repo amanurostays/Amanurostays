@@ -19,6 +19,9 @@ import {
   ShieldCheck,
   CheckCircle,
   Banknote,
+  Wrench,
+  UserPlus,
+  AlertTriangle,
 } from "lucide-react";
 import PortalNav from "@/components/portal/PortalNav";
 import {
@@ -35,6 +38,9 @@ export default function DashboardOverviewPage() {
   const [stats, setStats] = useState(() => OperationsStore.getBranchStats("all"));
   const [recentPayments, setRecentPayments] = useState(() => OperationsStore.getPayments("all"));
   const [recentExpenses, setRecentExpenses] = useState(() => OperationsStore.getExpenses("all"));
+  const [openTicketsCount, setOpenTicketsCount] = useState(0);
+  const [pendingAppsCount, setPendingAppsCount] = useState(0);
+  const [upcomingVacancies, setUpcomingVacancies] = useState<ReturnType<typeof OperationsStore.getUpcomingVacancies>>([]);
   const [copiedAlert, setCopiedAlert] = useState(false);
 
   useEffect(() => {
@@ -52,6 +58,9 @@ export default function DashboardOverviewPage() {
     setRecentPayments(OperationsStore.getPayments(branch));
     setRecentExpenses(OperationsStore.getExpenses(branch));
     setBranches(OperationsStore.getBranches());
+    setOpenTicketsCount(OperationsStore.getTickets(branch, "Reported").length);
+    setPendingAppsCount(OperationsStore.getOnboardingApplications(branch, "Pending Review").length);
+    setUpcomingVacancies(OperationsStore.getUpcomingVacancies());
   };
 
   const handleBranchChange = (branchId: string) => {
@@ -258,6 +267,88 @@ export default function DashboardOverviewPage() {
             </p>
           </div>
         </div>
+
+        {/* Operational Quick Action Cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <Link
+            href="/portal/tickets"
+            className="bg-slate-900 border border-slate-800 hover:border-amber-500/50 rounded-2xl p-4 shadow-lg flex items-center justify-between transition group"
+          >
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center">
+                <Wrench className="w-5 h-5" />
+              </div>
+              <div>
+                <span className="text-xs font-bold text-white block group-hover:text-amber-400 transition">
+                  Maintenance Tickets
+                </span>
+                <span className="text-[11px] text-slate-400">
+                  {openTicketsCount > 0 ? `${openTicketsCount} complaints open` : "All repairs resolved"}
+                </span>
+              </div>
+            </div>
+            <span className="text-xs text-amber-400 font-bold">Open Desk →</span>
+          </Link>
+
+          <Link
+            href="/portal/onboarding"
+            className="bg-slate-900 border border-slate-800 hover:border-emerald-500/50 rounded-2xl p-4 shadow-lg flex items-center justify-between transition group"
+          >
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center">
+                <UserPlus className="w-5 h-5" />
+              </div>
+              <div>
+                <span className="text-xs font-bold text-white block group-hover:text-emerald-400 transition">
+                  New Joinees Admission
+                </span>
+                <span className="text-[11px] text-slate-400">
+                  {pendingAppsCount > 0 ? `${pendingAppsCount} applications pending` : "No pending joinees"}
+                </span>
+              </div>
+            </div>
+            <span className="text-xs text-emerald-400 font-bold">Review →</span>
+          </Link>
+
+          <Link
+            href="/portal/pnl"
+            className="bg-slate-900 border border-slate-800 hover:border-purple-500/50 rounded-2xl p-4 shadow-lg flex items-center justify-between transition group"
+          >
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center">
+                <TrendingUp className="w-5 h-5" />
+              </div>
+              <div>
+                <span className="text-xs font-bold text-white block group-hover:text-purple-400 transition">
+                  Monthly P&amp;L Statement
+                </span>
+                <span className="text-[11px] text-slate-400">
+                  Branch-wise profit margins
+                </span>
+              </div>
+            </div>
+            <span className="text-xs text-purple-400 font-bold">Finance →</span>
+          </Link>
+        </div>
+
+        {/* Notice Vacancy Alert Banner if any */}
+        {upcomingVacancies.length > 0 && (
+          <div className="bg-amber-950/40 border border-amber-500/30 rounded-2xl p-4 flex items-center justify-between gap-3 text-xs">
+            <div className="flex items-center gap-2.5">
+              <AlertTriangle className="w-4 h-4 text-amber-400 shrink-0" />
+              <span className="text-slate-200">
+                <strong>{upcomingVacancies.length} beds vacating soon:</strong>{" "}
+                {upcomingVacancies.map((v) => `${v.resident.name} (Room ${v.resident.roomNo}, ${v.daysLeft}d left)`).join(", ")}.
+              </span>
+            </div>
+            <Link
+              href="/portal/residents?status=Notice"
+              className="text-amber-400 font-bold hover:underline shrink-0"
+            >
+              View Notice List →
+            </Link>
+          </div>
+        )}
 
         {/* Middle Section: Overdue Rent Defaulters & Expense Breakdown */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">

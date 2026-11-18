@@ -37,11 +37,80 @@ export interface Resident {
   advanceStatus?: "Paid" | "Partial" | "Pending" | "Refunded" | "Adjusted";
   advanceDate?: string;
   status: "Active" | "Notice" | "Checked Out";
-  idProofUrl?: string;
+  idProofUrl?: string; // photo/scan of ID card
+  idType?: string; // e.g. "Aadhaar Card", "Driving License", "Passport", "Voter ID"
+  idNumber?: string; // e.g. "9876 5432 1098"
+  permanentAddress?: string;
+  emergencyContactName?: string;
+  emergencyContactPhone?: string;
+  workplaceOrCollege?: string;
+  bloodGroup?: string;
+  onNotice?: boolean;
+  noticeDate?: string;
+  expectedCheckoutDate?: string;
+  depositRefunded?: number;
+  depositDeductions?: number;
+  depositSettlementDate?: string;
+  depositSettlementNotes?: string;
   notes?: string;
   lastPaymentDate?: string;
   lastPaidMonth?: string;
   paymentStatus?: "Paid" | "Pending" | "Overdue";
+}
+
+export type TicketCategory =
+  | "Wi-Fi & Internet"
+  | "Plumbing & Water"
+  | "Electrical & Geyser"
+  | "Room & Bathroom Cleaning"
+  | "Bed, Furniture & Lock"
+  | "Noise, Common Area & Others";
+
+export interface MaintenanceTicket {
+  id: string; // e.g. "TKT-1042"
+  branchId: string;
+  roomNo: string;
+  bedNo?: string;
+  residentName: string;
+  residentPhone: string;
+  category: TicketCategory;
+  urgency: "Normal" | "Urgent";
+  description: string;
+  photoUrl?: string;
+  status: "Reported" | "In Progress" | "Resolved";
+  reportedDate: string; // YYYY-MM-DD
+  reportedTime?: string;
+  assignedTo?: string;
+  resolvedDate?: string;
+  repairCost?: number;
+  resolutionNotes?: string;
+  expenseId?: string;
+}
+
+export interface OnboardingApplication {
+  id: string; // e.g. "APP-8291"
+  branchId: string;
+  name: string;
+  phone: string;
+  whatsapp: string;
+  permanentAddress: string;
+  workplaceOrCollege: string;
+  emergencyContactName: string;
+  emergencyContactPhone: string;
+  bloodGroup?: string;
+  idType: "Aadhaar Card" | "Driving License" | "Passport" | "Voter ID";
+  idNumber: string;
+  idPhotoUrl?: string;
+  roomPreference?: string;
+  plannedMoveInDate: string;
+  status: "Pending Review" | "Approved" | "Declined";
+  submittedAt: string;
+  assignedRoomNo?: string;
+  assignedBedNo?: string;
+  monthlyRent?: number;
+  securityDeposit?: number;
+  advancePaid?: number;
+  notes?: string;
 }
 
 export interface RentPayment {
@@ -200,6 +269,8 @@ const STORAGE_KEYS = {
   PAYMENTS: "amanuro_payments",
   ADVANCES: "amanuro_advances",
   EXPENSES: "amanuro_expenses",
+  TICKETS: "amanuro_tickets",
+  ONBOARDING: "amanuro_onboarding",
 };
 
 export class OperationsStore {
@@ -692,6 +763,364 @@ export class OperationsStore {
       r.lastPaidMonth || "N/A",
     ]);
     return [headers.join(","), ...rows.map((e) => e.join(","))].join("\n");
+  }
+
+  // --- Notice Period & Vacating Forecast (Feature B) ---
+  static markResidentNotice(id: string, expectedCheckoutDate: string): void {
+    const list = this.getResidents();
+    const index = list.findIndex((r) => r.id === id);
+    if (index !== -1) {
+      list[index] = {
+        ...list[index],
+        status: "Notice",
+        onNotice: true,
+        noticeDate: new Date().toISOString().slice(0, 10),
+        expectedCheckoutDate,
+      };
+      if (this.isClient()) {
+        localStorage.setItem(STORAGE_KEYS.RESIDENTS, JSON.stringify(list));
+      }
+    }
+  }
+
+  static cancelResidentNotice(id: string): void {
+    const list = this.getResidents();
+    const index = list.findIndex((r) => r.id === id);
+    if (index !== -1) {
+      list[index] = {
+        ...list[index],
+        status: "Active",
+        onNotice: false,
+        noticeDate: undefined,
+        expectedCheckoutDate: undefined,
+      };
+      if (this.isClient()) {
+        localStorage.setItem(STORAGE_KEYS.RESIDENTS, JSON.stringify(list));
+      }
+    }
+  }
+
+  static getUpcomingVacancies(): Array<{ resident: Resident; branch?: PGBranch; daysLeft: number }> {
+    if (!this.isClient()) return [];
+    const residents = this.getResidents();
+    const branches = this.getBranches();
+    const noticeResidents = residents.filter((r) => r.onNotice && r.expectedCheckoutDate);
+    const today = new Date().toISOString().slice(0, 10);
+
+    return noticeResidents
+      .map((r) => {
+        const branch = branches.find((b) => b.id === r.branchId);
+        const diffMs = new Date(r.expectedCheckoutDate!).getTime() - new Date(today).getTime();
+        const daysLeft = Math.ceil(diffMs / (1000 * 60 * 60 * 24));
+        return { resident: r, branch, daysLeft };
+      })
+      .sort((a, b) => a.daysLeft - b.daysLeft);
+  }
+
+  // --- Deposit Settlement & Refund Calculator (Feature C) ---
+  static settleResidentDeposit(params: {
+    residentId: string;
+    refundAmount: number;
+    deductionAmount: number;
+    notes?: string;
+    paymentMode: "UPI" | "Cash" | "Bank Transfer";
+    recordedBy?: string;
+  }): AdvanceRecord | null {
+    const residents = this.getResidents();
+    const resident = residents.find((r) => r.id === params.residentId);
+    if (!resident) return null;
+
+    const dateToday = new Date().toISOString().slice(0, 10);
+
+    // Record refund transaction in advance ledger
+    const refundRecord = this.recordAdvance({
+      residentId: resident.id,
+      residentName: resident.name,
+      branchId: resident.branchId,
+      type: "REFUNDED",
+      amount: params.refundAmount,
+      date: dateToday,
+      paymentMode: params.paymentMode,
+      notes: `Deposit settlement: Refund ₹${params.refundAmount} (Deductions: ₹${params.deductionAmount}). ${params.notes || ""}`,
+      recordedBy: params.recordedBy || "Admin / Settlement Desk",
+    });
+
+    // Update resident profile
+    this.updateResident(resident.id, {
+      status: "Checked Out",
+      onNotice: false,
+      advanceStatus: "Refunded",
+      depositRefunded: params.refundAmount,
+      depositDeductions: params.deductionAmount,
+      depositSettlementDate: dateToday,
+      depositSettlementNotes: params.notes,
+    });
+
+    return refundRecord;
+  }
+
+  // --- Maintenance & Complaints Desk (Feature D) ---
+  static getTickets(branchId?: string, statusFilter?: string): MaintenanceTicket[] {
+    if (!this.isClient()) return [];
+    const data = localStorage.getItem(STORAGE_KEYS.TICKETS);
+    let list: MaintenanceTicket[] = [];
+    if (data) {
+      try {
+        list = JSON.parse(data);
+      } catch {
+        list = [];
+      }
+    }
+    if (branchId && branchId !== "all") {
+      list = list.filter((t) => t.branchId === branchId);
+    }
+    if (statusFilter && statusFilter !== "all") {
+      list = list.filter((t) => t.status === statusFilter);
+    }
+    return list;
+  }
+
+  static createTicket(ticket: Omit<MaintenanceTicket, "id" | "reportedDate" | "status"> & { id?: string; status?: MaintenanceTicket["status"] }): MaintenanceTicket {
+    const list = this.getTickets();
+    const ticketSeq = Math.floor(1000 + Math.random() * 9000);
+    const newTicket: MaintenanceTicket = {
+      ...ticket,
+      id: ticket.id || `TKT-${ticketSeq}`,
+      reportedDate: new Date().toISOString().slice(0, 10),
+      reportedTime: new Date().toLocaleTimeString("en-IN", { hour: "2-digit", minute: "2-digit" }),
+      status: ticket.status || "Reported",
+    };
+    list.unshift(newTicket);
+    if (this.isClient()) {
+      localStorage.setItem(STORAGE_KEYS.TICKETS, JSON.stringify(list));
+    }
+    return newTicket;
+  }
+
+  static updateTicket(id: string, updates: Partial<MaintenanceTicket>): MaintenanceTicket | null {
+    const list = this.getTickets();
+    const index = list.findIndex((t) => t.id === id);
+    if (index !== -1) {
+      list[index] = { ...list[index], ...updates };
+      if (this.isClient()) {
+        localStorage.setItem(STORAGE_KEYS.TICKETS, JSON.stringify(list));
+      }
+      return list[index];
+    }
+    return null;
+  }
+
+  static deleteTicket(id: string): void {
+    const list = this.getTickets().filter((t) => t.id !== id);
+    if (this.isClient()) {
+      localStorage.setItem(STORAGE_KEYS.TICKETS, JSON.stringify(list));
+    }
+  }
+
+  static convertTicketToExpense(params: {
+    ticketId: string;
+    cost: number;
+    paidTo: string;
+    description: string;
+    recordedBy?: string;
+  }): Expense | null {
+    const tickets = this.getTickets();
+    const ticket = tickets.find((t) => t.id === params.ticketId);
+    if (!ticket) return null;
+
+    // Create Maintenance & Repair expense
+    const expense = this.addExpense({
+      branchId: ticket.branchId,
+      category: "Maintenance & Repairs",
+      amount: Number(params.cost),
+      expenseDate: new Date().toISOString().slice(0, 10),
+      paidTo: params.paidTo || "Technician / Repair Vendor",
+      description: `[Ticket #${ticket.id}] Room ${ticket.roomNo} (${ticket.category}): ${params.description || ticket.description}`,
+      recordedBy: params.recordedBy || "Staff / Tickets Desk",
+    });
+
+    // Update ticket with expense reference and marked as Resolved
+    this.updateTicket(ticket.id, {
+      status: "Resolved",
+      resolvedDate: new Date().toISOString().slice(0, 10),
+      repairCost: Number(params.cost),
+      resolutionNotes: `Repaired by ${params.paidTo}. Cost: ₹${params.cost}.`,
+      expenseId: expense.id,
+    });
+
+    return expense;
+  }
+
+  // --- Self-Onboarding Applications (New Joinees) ---
+  static getOnboardingApplications(branchId?: string, statusFilter?: string): OnboardingApplication[] {
+    if (!this.isClient()) return [];
+    const data = localStorage.getItem(STORAGE_KEYS.ONBOARDING);
+    let list: OnboardingApplication[] = [];
+    if (data) {
+      try {
+        list = JSON.parse(data);
+      } catch {
+        list = [];
+      }
+    }
+    if (branchId && branchId !== "all") {
+      list = list.filter((a) => a.branchId === branchId);
+    }
+    if (statusFilter && statusFilter !== "all") {
+      list = list.filter((a) => a.status === statusFilter);
+    }
+    return list;
+  }
+
+  static submitOnboarding(app: Omit<OnboardingApplication, "id" | "status" | "submittedAt">): OnboardingApplication {
+    const list = this.getOnboardingApplications();
+    const appSeq = Math.floor(1000 + Math.random() * 9000);
+    const newApp: OnboardingApplication = {
+      ...app,
+      id: `APP-${appSeq}`,
+      status: "Pending Review",
+      submittedAt: new Date().toISOString().slice(0, 19).replace("T", " "),
+    };
+    list.unshift(newApp);
+    if (this.isClient()) {
+      localStorage.setItem(STORAGE_KEYS.ONBOARDING, JSON.stringify(list));
+    }
+    return newApp;
+  }
+
+  static updateOnboarding(id: string, updates: Partial<OnboardingApplication>): void {
+    const list = this.getOnboardingApplications();
+    const index = list.findIndex((a) => a.id === id);
+    if (index !== -1) {
+      list[index] = { ...list[index], ...updates };
+      if (this.isClient()) {
+        localStorage.setItem(STORAGE_KEYS.ONBOARDING, JSON.stringify(list));
+      }
+    }
+  }
+
+  static approveOnboarding(
+    appId: string,
+    allocation: {
+      roomNo: string;
+      bedNo: string;
+      monthlyRent: number;
+      securityDeposit: number;
+      advancePaid: number;
+      notes?: string;
+    }
+  ): Resident | null {
+    const apps = this.getOnboardingApplications();
+    const app = apps.find((a) => a.id === appId);
+    if (!app) return null;
+
+    // Create active resident record
+    const newResident = this.addResident({
+      branchId: app.branchId,
+      name: app.name,
+      phone: app.phone,
+      whatsapp: app.whatsapp || app.phone,
+      roomNo: allocation.roomNo,
+      bedNo: allocation.bedNo,
+      admissionDate: new Date().toISOString().slice(0, 10),
+      monthlyRent: Number(allocation.monthlyRent),
+      securityDeposit: Number(allocation.securityDeposit),
+      advancePaid: Number(allocation.advancePaid),
+      idType: app.idType,
+      idNumber: app.idNumber,
+      idProofUrl: app.idPhotoUrl,
+      permanentAddress: app.permanentAddress,
+      emergencyContactName: app.emergencyContactName,
+      emergencyContactPhone: app.emergencyContactPhone,
+      workplaceOrCollege: app.workplaceOrCollege,
+      bloodGroup: app.bloodGroup,
+      notes: allocation.notes || `Admitted via Self-Onboarding Form (${app.id})`,
+      status: "Active",
+      paymentStatus: allocation.advancePaid > 0 ? "Paid" : "Pending",
+    });
+
+    // Mark application as Approved
+    this.updateOnboarding(app.id, {
+      status: "Approved",
+      assignedRoomNo: allocation.roomNo,
+      assignedBedNo: allocation.bedNo,
+      monthlyRent: allocation.monthlyRent,
+      securityDeposit: allocation.securityDeposit,
+      advancePaid: allocation.advancePaid,
+    });
+
+    return newResident;
+  }
+
+  // --- Branch-Wise Monthly Profit & Loss Statement (Feature F) ---
+  static getBranchPnL(monthFor?: string): Array<{
+    branchId: string;
+    branchName: string;
+    locality: string;
+    activeResidents: number;
+    totalRentCollected: number;
+    totalAdvanceCollected: number;
+    totalInflow: number;
+    totalExpenses: number;
+    netOperatingProfit: number;
+    profitMargin: number;
+    categoryExpenses: Record<string, number>;
+  }> {
+    if (!this.isClient()) return [];
+    const branches = this.getBranches();
+    const residents = this.getResidents();
+    const payments = this.getPayments();
+    const advances = this.getAdvanceRecords();
+    const expenses = this.getExpenses();
+
+    // Default to current month if not specified
+    const currentMonthLabel =
+      monthFor ||
+      new Date().toLocaleString("en-IN", { month: "long", year: "numeric" });
+
+    return branches.map((branch) => {
+      const branchResidents = residents.filter((r) => r.branchId === branch.id && r.status === "Active");
+      
+      // Rent collected for this branch (matching month if specified)
+      const branchPayments = payments.filter((p) => {
+        if (p.branchId !== branch.id) return false;
+        if (monthFor && p.monthFor !== monthFor) return false;
+        return true;
+      });
+      const totalRentCollected = branchPayments.reduce((sum, p) => sum + Number(p.amount || 0), 0);
+
+      // Advances collected
+      const branchAdvances = advances.filter((a) => a.branchId === branch.id && a.type === "COLLECTED");
+      const totalAdvanceCollected = branchAdvances.reduce((sum, a) => sum + Number(a.amount || 0), 0);
+
+      const totalInflow = totalRentCollected + totalAdvanceCollected;
+
+      // Expenses for this branch
+      const branchExpenses = expenses.filter((e) => e.branchId === branch.id);
+      const totalExpenses = branchExpenses.reduce((sum, e) => sum + Number(e.amount || 0), 0);
+
+      const categoryExpenses: Record<string, number> = {};
+      branchExpenses.forEach((e) => {
+        categoryExpenses[e.category] = (categoryExpenses[e.category] || 0) + Number(e.amount || 0);
+      });
+
+      const netOperatingProfit = totalInflow - totalExpenses;
+      const profitMargin = totalInflow > 0 ? Math.round((netOperatingProfit / totalInflow) * 100) : 0;
+
+      return {
+        branchId: branch.id,
+        branchName: branch.name,
+        locality: branch.locality,
+        activeResidents: branchResidents.length,
+        totalRentCollected,
+        totalAdvanceCollected,
+        totalInflow,
+        totalExpenses,
+        netOperatingProfit,
+        profitMargin,
+        categoryExpenses,
+      };
+    });
   }
 
   static exportExpensesCSV(branchId?: string): string {

@@ -147,6 +147,15 @@ export default function Footer() {
                   <span className="text-[10px] bg-amber-400/20 text-amber-300 px-1.5 py-0.2 rounded border border-amber-400/30">New</span>
                 </Link>
               </li>
+              <li className="pt-1.5 flex items-center gap-3 text-xs">
+                <Link href="/join" className="text-emerald-300 hover:text-white font-medium transition-colors">
+                  📝 Digital Admission
+                </Link>
+                <span className="text-emerald-800">•</span>
+                <Link href="/help" className="text-amber-300 hover:text-white font-medium transition-colors">
+                  🛠️ Maintenance Desk
+                </Link>
+              </li>
             </ul>
           </div>
 

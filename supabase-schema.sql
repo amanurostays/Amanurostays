@@ -1,9 +1,11 @@
 -- ====================================================================
--- AMANURO STAYS - OPERATIONS & MULTI-PG DASHBOARD SCHEMA
--- Clean setup: drops old versions and recreates the full schema
+-- AMANURO STAYS - COMPLETE MULTI-PG OPERATIONS SCHEMA
+-- Run this in your Supabase SQL Editor
 -- ====================================================================
 
--- 0. Clean up any existing older schema versions
+-- 0. Clean up previous versions
+DROP TABLE IF EXISTS public.onboarding_applications CASCADE;
+DROP TABLE IF EXISTS public.maintenance_tickets CASCADE;
 DROP TABLE IF EXISTS public.advance_deposits CASCADE;
 DROP TABLE IF EXISTS public.rent_payments CASCADE;
 DROP TABLE IF EXISTS public.expenses CASCADE;
@@ -32,7 +34,7 @@ VALUES
   ('vellayambalam-hub', 'Amanuro Stays - Vellayambalam Hub', 'Vellayambalam Hub', 'Vellayambalam Hub, Thiruvananthapuram - 695010', 45, 'Active'),
   ('sasthamangalam-hub', 'Amanuro Stays - Sasthamangalam Hub', 'Sasthamangalam Hub', 'Sasthamangalam Hub, Thiruvananthapuram - 695010', 40, 'Active');
 
--- 2. Residents Table
+-- 2. Residents Table (With ID Proof, Notice & Settlement fields)
 CREATE TABLE public.residents (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   branch_id TEXT NOT NULL REFERENCES public.pg_branches(id) ON DELETE CASCADE,
@@ -47,8 +49,22 @@ CREATE TABLE public.residents (
   advance_paid NUMERIC(10, 2) NOT NULL DEFAULT 5000,
   advance_status TEXT DEFAULT 'Paid',
   advance_date DATE DEFAULT CURRENT_DATE,
-  status TEXT DEFAULT 'Active',
+  status TEXT DEFAULT 'Active', -- 'Active', 'Notice', 'Checked Out'
+  id_type TEXT DEFAULT 'Aadhaar Card',
+  id_number TEXT,
   id_proof_url TEXT,
+  permanent_address TEXT,
+  emergency_contact_name TEXT,
+  emergency_contact_phone TEXT,
+  workplace_or_college TEXT,
+  blood_group TEXT,
+  on_notice BOOLEAN DEFAULT FALSE,
+  notice_date DATE,
+  expected_checkout_date DATE,
+  deposit_refunded NUMERIC(10, 2),
+  deposit_deductions NUMERIC(10, 2),
+  deposit_settlement_date DATE,
+  deposit_settlement_notes TEXT,
   notes TEXT,
   last_payment_date DATE,
   last_paid_month TEXT,
@@ -79,7 +95,7 @@ CREATE TABLE public.advance_deposits (
   resident_id UUID REFERENCES public.residents(id) ON DELETE CASCADE,
   resident_name TEXT NOT NULL,
   branch_id TEXT NOT NULL REFERENCES public.pg_branches(id) ON DELETE CASCADE,
-  type TEXT NOT NULL DEFAULT 'COLLECTED',
+  type TEXT NOT NULL DEFAULT 'COLLECTED', -- 'COLLECTED', 'REFUNDED', 'ADJUSTED_TO_RENT'
   amount NUMERIC(10, 2) NOT NULL,
   date DATE NOT NULL DEFAULT CURRENT_DATE,
   payment_mode TEXT NOT NULL DEFAULT 'UPI',
@@ -103,7 +119,54 @@ CREATE TABLE public.expenses (
   created_at TIMESTAMPTZ DEFAULT NOW()
 );
 
--- 6. Portal Users & Staff Credentials
+-- 6. Maintenance Tickets Table (Feature D)
+CREATE TABLE public.maintenance_tickets (
+  id TEXT PRIMARY KEY,
+  branch_id TEXT NOT NULL REFERENCES public.pg_branches(id) ON DELETE CASCADE,
+  room_no TEXT NOT NULL,
+  bed_no TEXT,
+  resident_name TEXT NOT NULL,
+  resident_phone TEXT NOT NULL,
+  category TEXT NOT NULL,
+  urgency TEXT DEFAULT 'Normal',
+  description TEXT NOT NULL,
+  photo_url TEXT,
+  status TEXT DEFAULT 'Reported', -- 'Reported', 'In Progress', 'Resolved'
+  reported_date DATE DEFAULT CURRENT_DATE,
+  reported_time TEXT,
+  assigned_to TEXT,
+  resolved_date DATE,
+  repair_cost NUMERIC(10, 2),
+  resolution_notes TEXT,
+  expense_id UUID REFERENCES public.expenses(id),
+  created_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- 7. Digital Onboarding Applications (New Joinees)
+CREATE TABLE public.onboarding_applications (
+  id TEXT PRIMARY KEY,
+  branch_id TEXT NOT NULL REFERENCES public.pg_branches(id) ON DELETE CASCADE,
+  name TEXT NOT NULL,
+  phone TEXT NOT NULL,
+  whatsapp TEXT,
+  permanent_address TEXT NOT NULL,
+  workplace_or_college TEXT,
+  emergency_contact_name TEXT NOT NULL,
+  emergency_contact_phone TEXT NOT NULL,
+  blood_group TEXT,
+  id_type TEXT DEFAULT 'Aadhaar Card',
+  id_number TEXT NOT NULL,
+  id_photo_url TEXT,
+  room_preference TEXT,
+  planned_move_in_date DATE NOT NULL,
+  status TEXT DEFAULT 'Pending Review', -- 'Pending Review', 'Approved', 'Declined'
+  assigned_room_no TEXT,
+  assigned_bed_no TEXT,
+  notes TEXT,
+  submitted_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- 8. Portal Users & Staff Credentials
 CREATE TABLE public.portal_users (
   id TEXT PRIMARY KEY,
   username TEXT UNIQUE NOT NULL,
@@ -124,12 +187,14 @@ VALUES
   ('usr-vellayambalam', 'vellayambalam.staff', 'staff123', 'vellayambalam@amanuro.in', 'Vellayambalam Caretaker', 'STAFF_CARETAKER', 'vellayambalam-hub'),
   ('usr-sasthamangalam', 'sasthamangalam.staff', 'staff123', 'sasthamangalam@amanuro.in', 'Sasthamangalam Caretaker', 'STAFF_CARETAKER', 'sasthamangalam-hub');
 
--- 7. Row Level Security & Access Policies
+-- 9. Row Level Security & Access Policies
 ALTER TABLE public.pg_branches ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.residents ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.rent_payments ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.advance_deposits ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.expenses ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.maintenance_tickets ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.onboarding_applications ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.portal_users ENABLE ROW LEVEL SECURITY;
 
 -- Allow full read/write access via Supabase Client
@@ -138,4 +203,6 @@ CREATE POLICY "Public access residents" ON public.residents FOR ALL USING (true)
 CREATE POLICY "Public access rent_payments" ON public.rent_payments FOR ALL USING (true) WITH CHECK (true);
 CREATE POLICY "Public access advance_deposits" ON public.advance_deposits FOR ALL USING (true) WITH CHECK (true);
 CREATE POLICY "Public access expenses" ON public.expenses FOR ALL USING (true) WITH CHECK (true);
+CREATE POLICY "Public access maintenance_tickets" ON public.maintenance_tickets FOR ALL USING (true) WITH CHECK (true);
+CREATE POLICY "Public access onboarding_applications" ON public.onboarding_applications FOR ALL USING (true) WITH CHECK (true);
 CREATE POLICY "Public access portal_users" ON public.portal_users FOR ALL USING (true) WITH CHECK (true);

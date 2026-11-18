@@ -18,6 +18,9 @@ import {
   MapPin,
   KeyRound,
   LogOut,
+  Wrench,
+  UserPlus,
+  TrendingUp,
 } from "lucide-react";
 import { OperationsStore, PGBranch, PortalUser } from "@/lib/operations-store";
 
@@ -56,11 +59,24 @@ export default function PortalNav({
       roles: ["PARTNER_OWNER", "STAFF_CARETAKER"],
     },
     {
+      label: "New Joinees",
+      href: "/portal/onboarding",
+      icon: UserPlus,
+      roles: ["PARTNER_OWNER", "STAFF_CARETAKER"],
+      badge: "Form",
+    },
+    {
+      label: "Tickets & Complaints",
+      href: "/portal/tickets",
+      icon: Wrench,
+      roles: ["PARTNER_OWNER", "STAFF_CARETAKER"],
+      badge: "Desk",
+    },
+    {
       label: "Advance / Deposits",
       href: "/portal/advances",
       icon: Banknote,
       roles: ["PARTNER_OWNER", "STAFF_CARETAKER"],
-      badge: "New",
     },
     {
       label: "Rent Payments",
@@ -73,6 +89,13 @@ export default function PortalNav({
       href: "/portal/expenses",
       icon: Receipt,
       roles: ["PARTNER_OWNER", "STAFF_CARETAKER"],
+    },
+    {
+      label: "P&L Statement",
+      href: "/portal/pnl",
+      icon: TrendingUp,
+      roles: ["PARTNER_OWNER"],
+      badge: "Finance",
     },
     {
       label: "PGs & Beds",
