@@ -42,14 +42,14 @@ export default function Header({ onOpenEnquiry }: HeaderProps) {
             </div>
           </Link>
 
-          {/* Desktop Nav Links */}
-          <nav className="hidden xl:flex items-center gap-5 text-[13px] font-bold tracking-wide text-slate-700 whitespace-nowrap">
+          {/* Desktop Nav Links - Centered */}
+          <nav className="hidden lg:flex items-center justify-center gap-3.5 xl:gap-5 text-xs xl:text-[13px] font-bold tracking-wide text-slate-700 whitespace-nowrap flex-1">
             <Link href="/rooms" className="hover:text-emerald-700 transition-colors py-1">
               Rooms &amp; Pricing
             </Link>
             <Link href="/executive-dormitory-trivandrum" className="hover:text-emerald-700 transition-colors flex items-center gap-1.5 py-1">
               <span>Dormitory</span>
-              <span className="text-[10px] bg-emerald-100 text-teal-900 border border-emerald-300 px-1.5 py-0.2 rounded-full font-bold">Monthly</span>
+              <span className="hidden xl:inline text-[9px] bg-emerald-100 text-teal-900 border border-emerald-300 px-1.5 py-0.2 rounded-full font-bold">Monthly</span>
             </Link>
             <Link href="/amenities-and-food" className="hover:text-emerald-700 transition-colors py-1">
               Amenities &amp; Food
@@ -66,22 +66,25 @@ export default function Header({ onOpenEnquiry }: HeaderProps) {
           </nav>
 
           {/* Desktop Executive Action Cluster */}
-          <div className="hidden md:flex items-center gap-2 shrink-0">
+          <div className="hidden lg:flex items-center gap-2 shrink-0">
             <a
               href={`tel:${PG_DATA.brand.primaryPhoneClean}`}
-              className="inline-flex items-center justify-center h-9 gap-1.5 px-3 rounded-xl text-xs font-bold text-teal-950 bg-emerald-50/80 hover:bg-emerald-100 border border-emerald-200/90 shadow-2xs transition-all whitespace-nowrap leading-none"
+              className="inline-flex items-center justify-center h-9 w-9 xl:w-auto xl:px-2.5 gap-1.5 rounded-xl text-xs font-bold text-teal-950 bg-emerald-50/80 hover:bg-emerald-100 border border-emerald-200/90 shadow-2xs transition-all whitespace-nowrap leading-none"
+              title="Call Amanuro Stays: 6282830532"
+              aria-label="Call Amanuro Stays"
             >
               <Phone className="w-3.5 h-3.5 text-emerald-700 shrink-0" />
-              <span className="translate-y-[0.5px]">Call: 6282830532</span>
+              <span className="hidden xl:inline">6282830532</span>
             </a>
             <a
               href={`https://wa.me/${PG_DATA.brand.whatsappNumber}?text=${encodeURIComponent("Hi Amanuro Stays, I would like to inquire about room availability and pricing.")}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center h-9 gap-1.5 px-3.5 rounded-xl text-xs font-bold text-white bg-emerald-600 hover:bg-emerald-700 shadow-sm transition-all whitespace-nowrap leading-none"
+              className="inline-flex items-center justify-center h-9 w-9 rounded-xl text-white bg-emerald-600 hover:bg-emerald-700 shadow-sm transition-all hover:scale-105 shrink-0"
+              title="Chat on WhatsApp"
+              aria-label="WhatsApp"
             >
-              <MessageCircle className="w-3.5 h-3.5 shrink-0" />
-              <span className="translate-y-[0.5px]">WhatsApp</span>
+              <MessageCircle className="w-4 h-4 shrink-0" />
             </a>
             <button
               type="button"
@@ -89,12 +92,12 @@ export default function Header({ onOpenEnquiry }: HeaderProps) {
               className="inline-flex items-center justify-center h-9 gap-1.5 px-3.5 rounded-xl text-xs font-bold text-white bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-500 hover:to-teal-600 shadow-sm shadow-emerald-700/20 transition-all hover:scale-102 cursor-pointer whitespace-nowrap leading-none"
             >
               <Calendar className="w-3.5 h-3.5 shrink-0" />
-              <span className="translate-y-[0.5px]">Schedule Visit</span>
+              <span>Schedule Visit</span>
             </button>
           </div>
 
           {/* Mobile hamburger button */}
-          <div className="flex xl:hidden items-center gap-1.5">
+          <div className="flex lg:hidden items-center gap-1.5">
             <a
               href={`tel:${PG_DATA.brand.primaryPhoneClean}`}
               className="p-2 rounded-lg text-teal-950 bg-emerald-50 border border-emerald-200"

@@ -69,9 +69,10 @@ export default function Hero({ onOpenEnquiry }: HeroProps) {
               </div>
             </div>
 
-            {/* Action Buttons: Confident Luxury CTAs */}
-            <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3.5 pt-2 w-full sm:w-auto">
+            {/* Action Buttons: Clean High-Converting CTAs */}
+            <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 pt-2 w-full sm:w-auto">
               <button
+                type="button"
                 onClick={() => onOpenEnquiry()}
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl text-sm font-extrabold text-stone-950 bg-gradient-to-r from-amber-300 via-amber-400 to-amber-500 hover:from-amber-200 hover:to-amber-400 shadow-lg shadow-amber-500/20 transition-all hover:scale-[1.02] cursor-pointer"
               >
@@ -79,33 +80,29 @@ export default function Hero({ onOpenEnquiry }: HeroProps) {
                 <span>Schedule a Free Visit</span>
               </button>
 
-              <button
-                onClick={() => onOpenEnquiry(undefined, flagship.name)}
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl text-sm font-bold text-white bg-white/10 hover:bg-white/20 border border-white/25 backdrop-blur-md transition-all hover:scale-[1.02] cursor-pointer"
-              >
-                <MessageCircle className="w-4 h-4 text-amber-300" />
-                <span>Contact for Price Details</span>
-              </button>
-            </div>
-
-            {/* Direct Instant Contact strip */}
-            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 text-xs font-semibold pt-1">
               <a
-                href={`tel:${PG_DATA.brand.primaryPhoneClean}`}
-                className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-emerald-950/90 hover:bg-black border border-emerald-700/60 text-white transition-colors shadow-xs"
-              >
-                <Phone className="w-3.5 h-3.5 text-amber-400" />
-                <span>Call: <strong className="text-amber-300">6282830532</strong></span>
-              </a>
-              <a
-                href={`https://wa.me/${PG_DATA.brand.whatsappNumber}?text=${encodeURIComponent("Hi Amanuro Stays, I would like to inquire about room availability.")}`}
+                href={`https://wa.me/${PG_DATA.brand.whatsappNumber}?text=${encodeURIComponent("Hi Amanuro Stays, I would like to inquire about room availability and pricing.")}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold transition-colors shadow-xs"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl text-sm font-bold text-white bg-emerald-600 hover:bg-emerald-500 shadow-md shadow-emerald-950/30 transition-all hover:scale-[1.02]"
               >
-                <MessageCircle className="w-3.5 h-3.5" />
-                <span>WhatsApp: <strong>6282830532</strong></span>
+                <MessageCircle className="w-4 h-4" />
+                <span>WhatsApp Enquiry</span>
               </a>
+            </div>
+
+            {/* Direct Instant Contact line */}
+            <div className="flex items-center justify-center lg:justify-start gap-2 text-xs text-stone-300 pt-0.5">
+              <span>Prefer calling?</span>
+              <a
+                href={`tel:${PG_DATA.brand.primaryPhoneClean}`}
+                className="inline-flex items-center gap-1 font-bold text-amber-300 hover:text-white underline underline-offset-2 transition-colors"
+              >
+                <Phone className="w-3.5 h-3.5 text-amber-400" />
+                <span>+91 6282830532</span>
+              </a>
+              <span className="text-stone-500">•</span>
+              <span className="text-emerald-300">All Trivandrum Hubs</span>
             </div>
 
             {/* Location & Expansion Callout */}
